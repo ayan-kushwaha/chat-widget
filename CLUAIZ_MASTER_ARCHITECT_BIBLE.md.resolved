@@ -1,0 +1,492 @@
+# 🏛️ CLUAIZ: THE GLOBAL "ANTI-GRAVITY" ARCHITECTURE (V2.1 - HINDI EDITION)
+**Status:** HIGH PRIORITY | **Mode:** STRICT EXECUTION
+**Document Type:** THE BIBLE (Do Not Summarize)
+
+---
+
+## 🎯 इस Architecture का "Main Goal" (असली मकसद)
+इस आर्किटेक्चर का एक ही मकसद है: "एक ऐसा AI सिस्टम बनाना जो 'Atmanirbhar' (Self-Sufficient) और 'Immortal' (अमर) हो।"
+
+### 1. ZERO Dependency (गुलामी नहीं)
+हम Google TTS, Twilio, या Firebase के भरोसे नहीं बैठेंगे।
+अगर कल Google अपना API महंगा कर दे, या नेट बंद हो जाए, तो भी हमारा सिस्टम (Native TTS, P2P Calling, Offline Queue) चलता रहेगा। यह किसी का गुलाम नहीं है।
+
+### 2. PROFIT Machine (खर्चा कम, कमाई ज्यादा)
+हर फीचर (बोलना, कॉल करना) की कॉस्ट ₹0 होनी चाहिए।
+ताकि अगर हम यूजर से 1 पैसा भी लें, तो वो पूरा का पूरा प्रॉफिट हो। हमें अपनी जेब से सर्वर का बिल नहीं भरना है।
+
+### 3. UNIFIED Soul (एक आत्मा, दो शरीर)
+बैकएंड ऐसा हो जो आज Web पर चल रहा है, लेकिन कल जब हम Mobile App (React Native) लाएं, तो हमें एक लाइन भी कोड न बदलना पड़े। यह "Future Ready" है।
+
+---
+
+## 🔧 PART 0: IMMEDIATE "ZERO-DAY" FIXES (सबसे पहले इसे ठीक करो)
+V2 शुरू करने से पहले, मौजूदा V1 `embed.worker.ts` को ठीक करो:
+1.  **AI Intent API:** अगर `generateMetadata()` फेल हो जाए, तो उसे दोबारा कोशिश (Retry) कराओ। अभी यह स्किप हो रहा है।
+2.  **Token Logic:** बिलिंग का फार्मूला ठीक करो। [(Inventory + Processing)](file:///c:/Users/Aryan/my/cluaiz/Backend/src/models/User.ts#3-71) दोनों को जोड़कर True Value दिखाओ।
+3.  **Status Loop:** सिस्टम "Processing..." पर अटक जाता है। Status को "Active" करने से पहले चेक करो कि डेटाबेस में राइट (Write) हुआ है या नहीं।
+
+---
+
+# 🏗️ SECTION A: THE 5-D DEEP CORE ARCHITECTURE
+**Methodology:** हर मॉड्यूल को 5 नजरियों से परखा गया है:
+1.  **What:** फीचर क्या है?
+2.  **Why:** क्यों चाहिए? (फायदा)
+3.  **How:** यह कैसे काम करता है?
+4.  **Logic:** कोडिंग का लॉजिक क्या होगा?
+5.  **Edge Case:** यह कहाँ फेल हो सकता है और कैसे बचाएं?
+
+---
+
+## 🧠 MODULE 1: THE HIERARCHICAL BRAIN (The Tree of Decisions)
+*AI को "Jack of all trades" नहीं, "Tree of Wisdom" बनाना है।*
+
+### 1. The Architecture (3 Layer Routing)
+सिस्टम को 3 लेयर्स में बांटेंगे ताकि कोई "Loop" में न फंसे और डिसीजन मिली-सेकंड्स में हो।
+
+*   **Layer 1: The Grand Router (Receptionist):**
+    *   यह तय करेगा कि यूजर किस **Phase (Department)** में जाना चाहता है।
+    *   *Input:* "Meeting fix karo." -> *Result:* `Phase_03_Booking`.
+*   **Layer 2: The Phase Manager (Department Head):**
+    *   Booking फेज के अंदर 5 Sub-tasks हो सकते हैं (Check, Confirm, Cancel)।
+    *   यह तय करेगा कि कौन सा **Case** चलाना है।
+*   **Layer 3: The Prompt (Worker):**
+    *   यह फाइनल प्रॉम्प्ट है जो Gemini के पास जाएगा।
+
+### 2. The "Smart Page" Structure (File Design)
+हम हर Phase के लिए एक **Structured Python Class** बनाएंगे।
+*   **Metadata:** `Global Triggers` (Keywords), `Anti-Triggers` (Negative Keywords).
+*   **Cases:** हर सब-टास्क का अपना `Intent Vector`.
+*   **Fail-Safe:** `validate_entry()` फंक्शन जो गलत यूजर को गेट पर ही रोक दे।
+
+### 3. The Code Logic (Routing Engine)
+*   **Fast Filtering (Level 1):** पहले कीवर्ड मैच चेक करो (O(1) Speed). अगर "Meeting" मिला, तो सीधे BookingPhase में।
+*   **Semantic Check (Level 2):** अगर कीवर्ड नहीं मिला, तो **MiniLM Embedding** से मैच करो।
+*   **Pre-Loaded Embeddings:** सर्वर स्टार्ट होते ही RAM में 19 Vectors लोड हो जाएंगे।
+
+### 4. The "Intent Card" (Identity Proof)
+हर प्रॉम्प्ट (Worker) के ऊपर एक "ID Card" लगा होगा।
+```text
+### INTENT CARD ###
+ID: booking_confirm
+PURPOSE: Only trigger when user explicitly agrees to a time.
+EXIT CRITERIA: If user asks a question instead, GO BACK.
+```
+*   **Fayda:** अगर AI कन्फ्यूज भी हो, तो यह कार्ड उसे याद दिलाएगा कि उसका **मकसद (Mission)** क्या है।
+
+### 5. Performance Rule (No Loops)
+*   **Max Hops = 2:** राउटर सिर्फ एक बार Phase चुन सकता है। अगर दूसरी बार भी कॉन्फिडेंस कम है, तो "Fallback Message" दिखाओ। लूप में मत फसो।
+
+---
+
+## 💰 MODULE 2: THE 0.1x ECONOMIC ENGINE (Audio & Billing)
+*Quality First, par Cost Control ke sath.*
+
+### 1. What (यह क्या है?)
+एक "Hybrid Audio System" जो बेहतरीन आवाज (Edge TTS) देता है, लेकिन मुश्किल वक्त के लिए तैयार है।
+
+### 2. Why (क्यों चाहिए?)
+*   **Edge TTS:** अभी 100% सही काम कर रहा है और क्वालिटी प्रीमियम है।
+*   **Backup:** अगर कल Edge TTS का फ्री कोटा बंद हो जाए या सर्वर डाउन हो, तो सिस्टम रुकना नहीं चाहिए।
+
+### 3. How it Works (मैकेनिज्म)
+1.  **Primary (First Choice):** हम हमेशा **Edge TTS** (Server Side) का इस्तेमाल करेंगे। यह क्वालिटी में बेस्ट है।
+2.  **Fallback (Safety Net):** अगर सर्वर 3 सेकंड तक ऑडियो नहीं भेजता (Timeout), तो ऑटोमैटिकली **Browser Native TTS** चल पड़ेगा।
+
+### 4. The Code Logic (बिना कोड लिखे लॉजिक)
+*   **Backend:** Edge TTS se audio generate karo -> Frontend ko bhejo.
+*   **Frontend Watchdog:** 
+    1.  Request bheja -> Timer Start kiya.
+    2.  Agar 3s mein Audio URL nahi aaya -> `window.speechSynthesis.speak()`.
+    3.  User ko pata bhi nahi chalega ki switch hua.
+
+### 5. The Edge Case (डर और समाधान)
+*   **Risk:** AI लंबा पैराग्राफ बोल रहा है, और यूजर ने बीच में टोक दिया। AI फिर भी बोलता जा रहा है।
+*   **Fix (The 'Shut Up' Command):**
+    *   Frontend पर `Global Listener` लगाओ।
+    *   जैसे ही यूजर 'Mic' बटन दबाए या कीबोर्ड छुए -> तुरंत `speechSynthesis.cancel()` फायर करो।
+    *   AI को तुरंत चुप कराओ।
+
+---
+
+## 📞 PILLAR 1: THE COMMUNICATION ENGINE (Calling & Screen Share)
+*WhatsApp style seamless HD Calling. Web & Mobile Unified.*
+
+### 1. What (यह क्या है?)
+एक WhatsApp-जैसा Calling System जो Web और Mobile दोनों पर चलता है।
+*   **Trigger:** Chat Header में "Call Icon" दबाओ या Right Click करो -> HD Call शुरू।
+*   **Feature:** सिर्फ Audio Call और Screen Share (Camera Video नहीं)।
+
+### 2. Why (क्यों चाहिए?)
+*   **Unified Experience:** यूजर ऑफिस में Web पर है और एजेंट बस में Mobile पर। दोनों की बात होनी चाहिए।
+*   **Bandwidth:** वीडियो (Chehra) नहीं दिखा रहे, तो 2G नेट पर भी आवाज टूटेगी नहीं (HD Audio)।
+*   **Utility:** स्क्रीन शेयर करके प्रॉब्लम समझाना आसान है, चेहरे दिखाने से ज्यादा।
+
+### 3. How it Works (मैकेनिज्म)
+हम **WebRTC (Peer-to-Peer)** का इस्तेमाल करेंगे ताकि सर्वर पर लोड न पड़े।
+*   **Web to Web:** Simple WebRTC.
+*   **Web to Mobile:** `react-native-webrtc` (Mobile) + Standard WebRTC (Web) एक ब्रिज (Socket.io) के जरिये बात करेंगे।
+
+### 4. The Code Logic (Backend & Frontend)
+*   **UI:** Chat Header में 📞 Icon और Right Click menu add करो.
+*   **Signaling (Backend):** क्लाइंट A "Offer" भेजेगा -> सर्वर उसे क्लाइंट B को देगा -> B "Answer" देगा।
+*   **Streams:**
+    *   Start: `Audio Only` stream.
+    *   Action: User clicks "Share Screen".
+    *   Logic: `Audio Track` + `Display Media Track` (Screen) replace kar do.
+    *   Result: आवाज़ चलती रहेगी, और दूसरे को स्क्रीन दिखने लगेगी.
+
+### 5. The Edge Case (Mobile Specific)
+*   **Risk:** मोबाइल ऐप बैकग्राउंड में है और कॉल आयी।
+*   **Fix (CallKeep / ConnectionService):**
+    *   हम `React Native CallKeep` यूज़ करेंगे।
+    *   भले ही ऐप बंद हो, फोन की "Native Calling Screen" (जैसे असली फोन आता है) बजेगी।
+    *   User हरे बटन से उठाएगा, और WebRTC कनेक्ट हो जाएगा।
+
+---
+
+## 📅 PILLAR 2: IN-CHAT SCHEDULING (The "No-Link" Booking)
+*Strict Rule: "No Login = No Booking". Valid Verified User hi Business de sakta hai.*
+
+### 1. The Trigger (Kaise Book Hoga?)
+Booking 2 tarike se shuru ho sakti hai:
+1.  **AI Voice/Text:** User ne bola *"Kal 4 baje book kar do"*.
+2.  **Right Click/Menu:** Chat mein kisi msg par Right Click kiya -> **"Book Appointment"** select kiya.
+
+### 2. The Gatekeeper (Auth Check)
+Booking Process start hone se pehle System check karega:
+*   **Is User Logged In?** (Saved `user_id` in LocalStorage).
+    *   "Sir, naam aur phone bata dijiye taki confirm kar sakun."
+    *   **Guest Form:** Enter Name & Phone -> **Shadow Account** Created -> Booking Confirmed.
+
+### 3. The Engine (Python vs Gemini)
+*   **Gemini (The Talker):** Ye sirf user se baat karega ("Time suit kar raha hai?"). Iske paas DB ka access nahi hai.
+*   **Python Engine (The Doer):**
+    *   Jab User time final karega, AI Python ko bolega: `SHOW_SLOT_PICKER`.
+    *   User ko Chat mein **Interactive Calendar Popup** dikhega (Available Slots Green mein).
+    *   User click karega -> Python DB mein Slot Lock karega.
+
+### 4. Confirmation & Recovery (App Nudge)
+*   **Success:** Booking hote hi User ko **App Notification** confirmation jayega.
+*   **The Nudge:** Confirmation card ke niche likha hoga:
+    *   *"Don't miss this meeting. Download **Cluaiz App** for guaranteed reminders."* (Link to App Store).
+
+
+### 4. Reminder System
+*   सर्वर पर एक **Cron Job** (घड़ी) चलेगी जो मीटिंग से 15 मिनट पहले यूजर और एजेंट दोनों को पिंग करेगी।
+
+### 🚨 EDGE CASE (The "Booking Rigidity")
+*   **Risk:** AI ने कहा "Kal 4 baje?" पर यूजर को 5 बजे चाहिए।
+*   **Fix (Hybrid Booking Card):**
+    *   चैट में AI बोलेगा: *"Maine kal 4 PM ka slot socha hai."*
+    *   नीचे दो बटन होंगे: **[Confirm]** और **[Pick Another Time 📅]**
+    *   **[Pick Another Time]** दबाते ही चैट के अंदर एक छोटा सा कैलेंडर खुलेगा।
+
+### 6. The "Token Death" Fix (Silent Refresh)
+*   **Risk:** Token 1 घंटे में एक्सपायर हो जाता है। यूजर को 401 Error आता है और वो लॉगआउट हो जाता है।
+*   **Fix:** दो टोकन बनाओ: `Access` (15 min) और `Refresh` (7 days)। App को कोड करो कि 401 आते ही चुपके से नया टोकन ले ले।
+
+### 7. Data Sync: Last Write Wins (Conflict Fix)
+*   **Risk:** Offline Phone पर नाम बदला "Aryan K". Online Laptop पर बदला "Aryan Kushwaha". सिंक होने पर कौन जीतेगा?
+*   **Fix:** Timestamp देखो। `if (incoming.time > db.time) { Update } else { Ignore }`.
+
+---
+
+## 🔔 PILLAR 3: THE "TAGADA" NOTIFICATION SYSTEM (Reliable & Own)
+*Concept: "Zero Cost, 100% Reach". No Email/SMS bills.*
+
+### 1. The Channels (Kahan Bejhenge?)
+Notifications sirf 3 jagah jayengi:
+1.  **Cluaiz Mobile App:** (Best reliability).
+2.  **Browser Push (Service Worker):** (Agar app nahi hai).
+3.  **Manual WhatsApp (Agent Controlled):**
+    *   Booking confirm hote hi Agent ke dashboard par ek button aayega: **[Share on WhatsApp 🟢]**.
+    *   Agent click karega -> Pre-filled message open hoga -> Send karega.
+    *   *Fayda:* Business owner ka personal touch rahega aur API cost zero.
+
+### 2. The Logic (Priority Queue)
+*   **Step 1:** Check [UserDevice](file:///c:/Users/Aryan/my/cluaiz/Backend/src/models/UserDevice.ts#3-11) table via `user_id`.
+*   **Step 2:**
+    *   IF `App_Installed`: Send FCM Push.
+    *   ELSE: Send VAPID Web Push.
+*   **Step 3:** Show Flash Alert on Agent Dashboard to send Manual WhatsApp.
+
+### 🚨 EDGE CASE (The "Identity Crisis")
+*   **Risk:** यूजर ने Cache क्लियर कर दिया, तो Service Worker मर जाएगा।
+*   **Fix (The App Force):**
+    *   Booking confirm hone ke baad, agar `App_Installed == False`, to UI par bada popup dikhao:
+    *   *"Meeting reminders will NOT come on Email. Install App to ensure you don't miss out."*
+
+## 🔄 PILLAR 4: THE RECOVERY LOOP (Wapas Bulao Architecture)
+*Concept: "Online Trigger -> Notification Blast"*
+
+### 1. State Change
+*   एजेंट ने डैशबोर्ड में बटन दबाया: **🔴 Offline** ➡️ **🟢 Online**।
+
+### 2. The Database Scan
+*   सर्वर तुरंत "Missed Calls" वाले टेबल को स्कैन करेगा।
+
+### 3. The Filter (Online vs Offline)
+*   **Group A (On Website):** उन्हें सॉकेट से तुरंत **Popup** दिखेगा ("Agent is back! Call now?").
+*   **Group B (Website Closed):** उन्हें वो **Native Web Push** जाएगा।
+
+### 4. The Click Action (Deep Linking)
+*   जैसे ही यूजर नोटिफिकेशन पर क्लिक करेगा, वेबसाइट खुलेगी और **सीधा कॉल कनेक्ट** करने का ऑप्शन आएगा।
+
+### 🚨 EDGE CASE (The "Ghost Call")
+*   **Risk:** ब्राउज़र "Auto-play Policy" के कारण ऑडियो ब्लॉक कर सकता है।
+*   **Fix (The One-Tap Gateway):**
+    *   "Auto-Call" शुरू करने से पहले एक **Full Screen Overlay** दिखाओ।
+    *   **Button:** [ **JOIN CALL 📞** ]
+    *   टैप करते ही ऑडियो गेट खुल जाएगा।
+
+---
+
+---
+
+## 📱 MODULE 4: IDENTITY & MOBILE FOUNDATION (The User Passport)
+*Pahle Identity, Phir Call. Valid User = Business Asset (B2B/B2C).*
+
+### 1. What (यह क्या है?)
+एक Tiered Login System जो 3 तरह के यूजर्स को हैंडल करता है:
+1.  **Guest (70%):** Sirf Name/Phone diya (Limited Access).
+2.  **Verified (20%):** OTP/Email verified.
+3.  **Power User (10%):** App Installed + Biometrics.
+
+*   **Rule:** Friction hatao, lekin Identify karo. "Guest Call" allow hai, par naam/number lena zaroori hai.
+
+### 2. Login Flow (The 4-Way Entry Strategy)
+*Goal: Zero Friction. 100% Security. ₹0 Cost.*
+
+1.  **Google Login (Primary Gate 🟢):**
+    *   **Use Case:** 80% New Users.
+    *   **Pros:** 1-Click Login, Auto-verified. Zero effort.
+2.  **Passkeys / WebAuthn (Touch & Go 🟣):**
+    *   **Use Case:** Regular Users.
+    *   **Magic:** Fingerprint/FaceID via Browser. No Password. Chip-level Security.
+3.  **QR Session Sync (Magic Bridge 🟠):**
+    *   **Scenario:** Mobile App par logged in ho, Desktop par aaye.
+    *   **Action:** Desktop par "Login via App" -> QR Scan -> Instant Login.
+4.  **Email/Phone + Password (Classic Backup 🔵):**
+    *   **Use Case:** Old school users or untrusted devices.
+    *   **Backup:** Hamesha available rahega agar biometrics fail ho jaye.
+
+*Dev Note: Implement 'Silent Token Refresh' across all methods.*
+
+### 3. The "User Clone" Security (Why it's Unhackable)
+*   **Key Generation:** Browser do keys banata hai.
+    *   **Private Key:** User ke phone chip mein lock ho jati hai. (Google bhi ise nahi chura sakta).
+    *   **Public Key:** Cluaiz server par rehti hai.
+*   **The Match:** Login ke waqt Public aur Private key "hawa mein" kiss karte hain. Password kabhi travel hi nahi karta.
+*   **Phishing Proof:** Hackers password nahi chura sakte kyunki password hai hi nahi.
+
+### 4. Why Identify? (Business Memory)
+*   **Asset Building:** Verified User एक "Lead" है। अगर वो चला भी गया, तो हमारे पास उसका Contact है (Re-targeting).
+*   **Security:** Fake ID से कोई Spam Call नहीं कर पाएगा।
+*   **History Sync:** जैसे ही Login होगा, पुरानी सारी Chat और Call Logs वापस आ जाएंगी (Restore).
+
+### 5. The Code Logic (Auth & Sync)
+*   **User Table:** `user_id`, `phone_verified` (True/False), `device_tokens` [].
+*   **Call Gate:**
+    *   User clicks Call -> Check `is_verified?`
+    *   **If No:** Show "Login to Call" modal.
+    *   **If Yes:** Connect WebRTC.
+*   **Contact Form:** अगर यूजर Chat में "Email/Phone" देता है, तो उसे चुपके से `Leads` टेबल में डाल दो।
+
+### 6. The Edge Case (Offline Auth)
+*   **Risk:** मोबाइल में नेट नहीं है, यूजर ऐप खोलता है।
+*   **Fix:** **Local Auth (JWT Cache)**.
+    *   पुराना टोकन Local Storage में रहता है।
+    *   ऐप खुलेगा, हिस्ट्री दिखेगी, बस "नया मैसेज" नहीं जाएगा जब तक नेट न आए।
+
+---
+
+# 🛠️ SECTION B: USER CONTROL DASHBOARD
+*Business Owner को कोड नहीं, 'Control' चाहिए।*
+
+### 6.1 The Settings Panel (UI Controls)
+हम यूजर को 3 तरह के कंट्रोल्स देंगे जो डायनामिकली प्रॉम्प्ट को बदल देंगे:
+
+*   **Identity & Tone:**
+    *   Name Input (e.g., "Ramu Kaka").
+    *   Tone Slider: Professional ↔ Friendly ↔ Witty.
+*   **Permission Switches:**
+    *   [✅] **Allow Booking:** (OFF = Router बुकिंग फेज को लोड ही नहीं करेगा)।
+    *   [❌] **Allow Bargaining:** (OFF = Sales AI डिस्काउंट देने से मना कर देगा)।
+*   **Variable Injection:**
+    *   Refund Policy: "7 days" (Support Prompt में जाएगा)।
+    *   Office Hours: "9 AM - 6 PM" (Booking Prompt में जाएगा)।
+
+### 6.2 The Sandbox Route (Testing)
+*   **Route:** `/api/v1/brain/debug`
+*   **Use:** टेक्स्ट भेजो -> यह बताएगा कि Router ने कौन सा Phase चुना और क्यों (Confidence Score).
+
+### 6.3 "The Agent Cockpit" (Human Power)
+सिर्फ यूजर नहीं, एजेंट (मालिक) को भी पावर चाहिए।
+*   **Real-time Queue:** जैसे ही यूजर ऑनलाइन आए, एजेंट की स्क्रीन पर Sound Alert और Flash होना चाहिए।
+*   **Whisper Mode:** जब एजेंट बात कर रहा हो, तो AI उसे "Suggested Reply" (धीरे से) दिखाए, जिसे वो एक क्लिक में भेज सके।
+
+---
+
+# 🚀 SECTION C: FUTURE ROADMAP (AGLA SOCHO - FINE TUNING)
+*Prompt Engineering आज है, Fine-Tuning कल है।*
+
+### 7.1 Fine-Tuning Strategy (The Permanent Brain)
+हमेशा के लिए प्रॉम्प्ट्स पर निर्भर नहीं रहना है।
+*   **Goal:** 1000 Best Examples जमा करो और Gemini को ट्रेन कर दो।
+*   **Result:** ट्रेनिंग के बाद, `System Prompt` की जरूरत खत्म। AI "Natural Cluaiz" बन जाएगा।
+
+### 7.2 The Process (Vertex AI Magic)
+1.  **Data Collection (Phase 1):** अभी यूजर की अच्छी चैट और सही जवाबों को `Training_Data.jsonl` में सेव करते जाओ।
+2.  **Training (Phase 2):** यह डेटा Google Vertex AI पर डालो।
+3.  **The "Cluaiz-Gemini" Model:** तुम्हें मिलेगा `gemini-1.5-flash-cluaiz-v1`. यह मॉडल सिर्फ तुम्हारा होगा।
+
+### 7.3 Phase 17, 18, 19 (Capabilities)
+*   **Phase 17 (Hands):** Function Calling (Email, Calendar).
+*   **Phase 18 (Eyes):** Vision (Image Analysis).
+*   **Phase 19 (Reflexes):** Active Learning (Insight Engine).
+
+---
+---
+
+# 🦋 SECTION D: THE TRANSFORMATION BLUEPRINT (KYA BADLEGA?)
+*Plans se Reality tak ka safar. Code mein kya change hoga?*
+
+### 1. Old vs New (Tabahi vs Tarakki)
+
+| Feature          | **Old Code (Abhi Hai)** ❌             | **New Architecture (Jo Banega)** ✅                           |
+| :--------------- | :------------------------------------ | :----------------------------------------------------------- |
+| **Brain**        | Ek lamba `prompt.txt` file (Khichdi). | **19 Python Files**. Har kaam ke liye alag Specialist.       |
+| **Thinking**     | Keyword Match (Agar "Hi" bola to Hi). | **Semantic Routing** (Matlab samajh kar sahi file uthayega). |
+| **Calling**      | Simple Socket connection.             | **WebRTC Tunnel** (WhatsApp jaisa P2P Connection).           |
+| **Notification** | Simple Push (Bharoosa nahi).          | **Service Worker + VAPID** (Guarantee Delivery).             |
+| **Memory**       | Session khatam, baat khatam.          | **Global Context** (Baat yaad rahegi chahe mobile pe jao).   |
+
+### 2. Folder Structure Changes (Naya Naksha)
+
+Hum teeno folders mein changes karenge: **AI Engine, Backend, aur Frontend**.
+
+#### A. AI Engine (Python) - *The Brain Surgery*
+Purana single prompt hat jayega. Naya structure aisa dikhega:
+```text
+/ai_engine/src/brain/
+ ├── router.py               (New: Traffic Police jo decide karega kahan jana hai)
+ ├── phases/                 (New: 19 Folders/Files)
+ │   ├── phase_01_onboarding.py   (Identity & QR Sync)
+ │   ├── phase_03_booking.py      (Calendar Logic)
+ │   ├── phase_04_support.py      (Q&A Logic)
+ │   └── ... (Up to 19)
+ └── global_context.py       (New: Yaadadasht Manager)
+```
+
+#### B. Backend (Node.js) - *The Spinal Cord*
+Yahan naye database tables aur calling logic judega.
+```text
+/Backend/src/
+ ├── models/
+ │   ├── UserDevice.ts       (New: Mobile/Web Device tracking table)
+ │   ├── MissedInteraction.ts (New: Recovery Loop ke liye)
+ │   └── AuditLog.ts         (New: Fine-Tuning data save karne ke liye)
+ ├── socket/
+ │   └── signaling.ts        (New: WebRTC Call Broker logic)
+```
+
+#### C. Frontend (React/Next.js) - *The Face*
+Web aur Mobile ke liye naye components banenge.
+```text
+/Frontend/src/
+ ├── components/workspaces/
+ │   ├── CallOverlay.tsx     (New: "Join Call" Full Screen Button)
+ │   ├── TicketCard.tsx      (New: In-Chat Booking UI)
+ │   └── MiniCalendar.tsx    (New: "Pick Another Time" Popup)
+ ├── services/
+ │   ├── ServiceWorker.js    (New: Notification Listener)
+ │   └── WebRTC.ts           (New: P2P Connection Logic)
+```
+
+### 3. The 19 Departments Concept (Kaam ka Batwara)
+**Sawl:** 19 Files kyun? Ek kyu nahi?
+**Jawab:**
+Har file ek **ALAG DIMAG** hai.
+1.  **Onboarding AI:** Sirf naam/email lega. (Baaki duniya se matlab nahi).
+2.  **Discovery AI:** Pareshani samjhega.
+3.  **Booking AI:** Sirf calendar dekhega (Sales nahi karega).
+4.  **Sales AI:** Sirf pricing batayega (Support nahi karega).
+5.  **Support AI:** Sirf bugs fix karega.
+... aur aise hi 19 specialists.
+
+**Fayda:** Agar Booking mein bug aaya, to sirf `phase_03` fix karna padega. Baaki system chalta rahega.
+
+---
+
+# 🌍 SECTION E: THE GRAND UNIFIED FLOW MAP (KAUN KISSE BAAT KAREGA?)
+*Visual Architecture: Data kaise bahega?*
+
+### 1. The High-Level Map (Mermaid Diagram)
+
+```mermaid
+graph TD
+    User((User 👤))
+    
+    subgraph "FRONTEND (THE FACE)"
+        Web[Web Widget 💻]
+        Mobile[Mobile App 📱]
+        LocalLogic[Local JS Brain 🧠]
+    end
+
+    subgraph "BACKEND (THE SPINE - Node.js)"
+        Socket[Socket.io Gateway 🔌]
+        API[API Server 🛡️]
+        Redis[Redis / Bull Queue 📨]
+    end
+
+    subgraph "AI ENGINE (THE BRAIN - Python)"
+        Worker[Python Worker 👷]
+        Router[RAM Vector Router 🚦]
+        Phases[19 Specialist Files 📂]
+    end
+
+    subgraph "EXTERNAL GODS"
+        Gemini[Google Gemini API ✨]
+        DB[(Database / MongoDB 🗄️)]
+    end
+
+    %% FLOWS
+    User -->|Speaks/Types| Web
+    User -->|Taps| Mobile
+    
+    Web & Mobile -->|1. Send Message| Socket
+    Web & Mobile -->|Local Validation| LocalLogic
+    
+    Socket -->|2. Push Job| Redis
+    Redis -->|3. Pickup Job| Worker
+    
+    Worker -->|4. Check Context| Router
+    Router -->|5. Select Phase| Phases
+    
+    Phases -->|6. Generate Prompt| Gemini
+    Gemini -->|7. JSON Response| Worker
+    
+    Worker -->|8. Save Logs| DB
+    Worker -->|9. Send Reply| Socket
+    
+    Socket -->|10. Display/Speak| Web & Mobile
+```
+
+### 2. Step-by-Step Data Journey (Ye Naksha Kya Keh Raha Hai?)
+
+1.  **Entry Point:** यूजर ने Web या Mobile पर बोला "Meeting fix karo".
+2.  **The Spine (Node.js):** मैसेज Socket Server पर आया। इसने दिमाग नहीं लगाया, सीधे उसे **Redis Queue** में डाल दिया (ताकि अगर 1000 लोग एक साथ आएं तो सर्वर क्रैश न हो)।
+3.  **The Brain (Python):** Python Worker ने Queue से जॉब उठाया।
+4.  **The Router (RAM):**
+    *   Python ने देखा: "Meeting keyword hai."
+    *   Router ने 19 फाइल्स में से `phase_03_booking.py` को चुना।
+5.  **The Specialist:** Booking Phase ने अपना **Intent Card** और **Prompt** तैयार किया।
+6.  **The Magic (Gemini):** Prompt Gemini ke paas gaya.
+7.  **The Return:** Gemini ne JSON diya: `{"action": "check_slots", "reply": "Kab milna hai?"}`.
+8.  **Delivery:** Backend ne ye JSON Frontend ko bheja.
+9.  **Action:** Frontend ne Native TTS se "Kab milna hai?" bulwaya.
+
+**NOTE:** Database (DB) sabse last mein update hota hai (Logs ke liye), taaki speed fast rahe.
+
+
