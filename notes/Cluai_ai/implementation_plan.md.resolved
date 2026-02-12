@@ -1,0 +1,46 @@
+# Implementation Plan: Cluaiz Agentic Architecture (Vector SOPs)
+
+## Goal Description
+Transition Cluaiz from a traditional "Flow Builder" approach (fragile, manual) to an "Autonomous Agentic System" (anti-fragile, dynamic) powered by **Vector SOPs** and **Semantic Routing**.
+
+## User Review Required
+> [!IMPORTANT]
+> This is a fundamental architectural shift. The "Flow Builder" UI will be replaced/repurposed into a "Goal Setting" UI. Most logic will move from hard-coded JSON flows to Vector Database embeddings (SOPs).
+
+## Proposed Architecture
+
+### 1. Core Concept: "No-UI" Intelligence
+- **Old Way (Flow Builder):** User drags nodes (`If` -> `Then` -> `Action`). Hard to maintain.
+- **New Way (Vector SOP):** User writes "Rules/SOPs" in English. System uses Vector Search to find the right rule at runtime.
+
+### 2. The Agentic Stack
+#### Layer 1: The Knowledge Base (SOP Database)
+- **Storage:** Vector Database (e.g., MongoDB Atlas Vector Search / Pinecone).
+- **Content:** SOPs (Standard Operating Procedures) indexed by *Intent*.
+  - *Example:* "Handle Returns" -> Vector: `[0.1, 0.9, ...]`
+
+#### Layer 2: The Semantic Router (The Brain)
+- **Input:** User message (e.g., "Mera order kahan hai?").
+- **Process:**
+  1. Generate Embedding for input.
+  2. Vector Search against SOP Database.
+  3. Retrieve top matching SOP (e.g., "Check Order Status").
+- **Output:** Selected SOP + Tools required.
+
+#### Layer 3: The Agent Executor (The Worker)
+- **Role:** Executes the selected SOP using available Tools.
+- **Loop:**
+  1. Read SOP Step 1.
+  2. Select Tool (e.g., `shipping_api`).
+  3. Execute & Observation.
+  4. Repeat until Goal met.
+
+### 3. Integrated Tool Ecosystem
+- **Tools:** Small, specialized functions (Micro-Apps).
+  - `WhatsApp_Sender`, `Email_Reader`, `Inventory_Checker`, `CRM_Updater`.
+- **Orchestration:** The Agent dynamically picks tools based on the SOP.
+
+## Verification Plan
+### Manual Verification
+- **Scenario:** simulate a user asking for a refund.
+- **Expected:** System identifies "Refund" intent -> Retrives "Refund SOP" -> Asks for Order ID -> Checks Policy -> confirm/deny based on rules.
