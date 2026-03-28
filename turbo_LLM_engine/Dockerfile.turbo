@@ -1,0 +1,26 @@
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
+
+WORKDIR /app
+
+# Final Timeout Protection
+ENV PIP_DEFAULT_TIMEOUT=2000
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    git \
+    libssl-dev \
+    libsentencepiece-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python3 -m pip install --no-cache-dir --upgrade pip
+RUN python3 -m pip install --no-cache-dir transformers autoawq accelerate fastapi uvicorn loguru safetensors httpx huggingface_hub tokenizers protobuf sentencepiece tiktoken
+
+COPY src/ ./src/
+
+EXPOSE 8000
+
+CMD ["python3", "-m", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+
+

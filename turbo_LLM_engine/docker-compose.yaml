@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  turbo-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.turbo
+    container_name: turbo-engine
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../AI_Models:/app/models:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - MODEL_PATH=/app/models/Qwen3.5-2B-AWQ
+      - VLLM_USE_V1=1
+    restart: unless-stopped
