@@ -1,0 +1,172 @@
+﻿docker : 
+/usr/local/lib/python3.10/dist-packages/torch/cuda/__init__.py:61: 
+FutureWarning: The pynvml package is deprecated. Please install 
+nvidia-ml-py instead. If you did not install pynvml directly, please 
+report this to the maintainers of the package that installed pynvml for 
+you.
+At line:1 char:1
++ docker exec cluaiz-turbo-engine python3 run_bench.py > final_final_be 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (/usr/local/lib/...pynvml fo 
+   r you.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  import pynvml  # type: ignore[import]
+2026-03-29 03:42:40.035 | INFO     | __main__:run_benchmark:7 - ≡ƒÅÄ∩╕Å 
+Starting Benchmark for: /app/models/Qwen3-4B-AWQ
+2026-03-29 03:42:41.010 | INFO     | src.engine_core:load_model:23 - 
+≡ƒÜÇ Loading MistralRS Runner (Rocket Mode)...
+[2m2026-03-29T03:42:41.027064Z[0m [32m INFO[0m [2mmistralrs_core::utils::tokens[0m[2m:[0m Could not load token at "/root/.cache/huggingface/token", using no HF token.
+[2m2026-03-29T03:42:41.032462Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Using tokenizer.json at `/app/models/Qwen3-4B-AWQ/tokenizer.json`
+[2m2026-03-29T03:42:41.032497Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `config.json` at `/app/models/Qwen3-4B-AWQ`
+[2m2026-03-29T03:42:41.035863Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `config.json` locally at `/app/models/Qwen3-4B-AWQ/config.json`
+[2m2026-03-29T03:42:41.047758Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::paths[0m[2m:[0m Found model weight filenames ["model.safetensors"]
+[2m2026-03-29T03:42:41.050967Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::paths[0m[2m:[0m Loading `model.safetensors` locally at `/app/models/Qwen3-4B-AWQ/model.safetensors`
+[2m2026-03-29T03:42:41.056143Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `generation_config.json` at `/app/models/Qwen3-4B-AWQ`
+[2m2026-03-29T03:42:41.059070Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `generation_config.json` locally at `/app/models/Qwen3-4B-AWQ/generation_config.json`
+[2m2026-03-29T03:42:41.065615Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `tokenizer_config.json` at `/app/models/Qwen3-4B-AWQ`
+[2m2026-03-29T03:42:41.068209Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Loading `tokenizer_config.json` locally at `/app/models/Qwen3-4B-AWQ/tokenizer_config.json`
+[2m2026-03-29T03:42:41.076526Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Prompt chunk size is 1024.
+[2m2026-03-29T03:42:41.087338Z[0m [32m INFO[0m [2mmistralrs_core::utils::normal[0m[2m:[0m DType selected is F16.
+[2m2026-03-29T03:42:41.158709Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::loaders::auto_device_map[0m[2m:[0m Using automatic device mapping parameters: text[max_seq_len: 4096, max_batch_size: 1].
+[2m2026-03-29T03:42:41.160703Z[0m [32m INFO[0m [2mmistralrs_quant::utils::log[0m[2m:[0m Model has 36 repeating layers.
+[2m2026-03-29T03:42:41.161606Z[0m [32m INFO[0m [2mmistralrs_quant::utils::log[0m[2m:[0m Loading model according to the following repeating layer mappings:
+[2m2026-03-29T03:42:41.168652Z[0m [32m INFO[0m [2mmistralrs_quant::utils::log[0m[2m:[0m Layers 0-35: cpu (12 GB)
+[2m2026-03-29T03:42:41.175358Z[0m [32m INFO[0m [2mmistralrs_core::utils::normal[0m[2m:[0m DType selected is F16.
+[2m2026-03-29T03:42:41.175420Z[0m [33m WARN[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Device mapping contains a mix of GPU and CPU. There is no CPU support for PagedAttention, disabling PagedAttention.
+[2m2026-03-29T03:42:41.175432Z[0m [32m INFO[0m [2mmistralrs_core::pipeline::normal[0m[2m:[0m Model config: Config { vocab_size: 151936, hidden_size: 2560, intermediate_size: 9728, num_hidden_layers: 36, num_attention_heads: 32, num_key_value_heads: 8, max_position_embeddings: 40960, sliding_window: None, rope_theta: 1000000.0, rms_norm_eps: 1e-6, hidden_act: Silu, quantization_config: Some(GptqAwq { bits: 4, group_size: 128, checkpoint_format: None, is_awq: true }), tie_word_embeddings: true }
+[2m2026-03-29T03:42:41.188025Z[0m [32m INFO[0m [2mmistralrs_core::models::qwen2[0m[2m:[0m Using gptq quantization: 4 bits.
+2026-03-29 03:42:53.503 | ERROR    | src.engine_core:load_model:38 - Γ¥î 
+Rocket Load Failed: shape mismatch for 
+model.layers.0.self_attn.q_proj.qweight, expected: [2560, 320], got: 
+[2560, 512]
+2026-03-29 03:42:53.505 | ERROR    | src.engine_core:load_model:39 - 
+Traceback (most recent call last):
+  File "/app/src/engine_core.py", line 27, in load_model
+    self.mistralrs_runner = Runner(
+ValueError: shape mismatch for model.layers.0.self_attn.q_proj.qweight, 
+expected: [2560, 320], got: [2560, 512]
+
+/usr/local/lib/python3.10/dist-packages/awq/__init__.py:21: 
+DeprecationWarning: 
+I have left this message as the final dev message to help you transition.
+
+Important Notice:
+- AutoAWQ is officially deprecated and will no longer be maintained.
+- The last tested configuration used Torch 2.6.0 and Transformers 4.51.3.
+- If future versions of Transformers break AutoAWQ compatibility, please 
+report the issue to the Transformers project.
+
+Alternative:
+- AutoAWQ has been adopted by the vLLM Project: 
+https://github.com/vllm-project/llm-compressor
+
+For further inquiries, feel free to reach out:
+- X: https://x.com/casper_hansen_
+- LinkedIn: https://www.linkedin.com/in/casper-hansen-804005170/
+
+  warnings.warn(_FINAL_DEV_MESSAGE, category=DeprecationWarning, 
+stacklevel=1)
+/usr/local/lib/python3.10/dist-packages/torch/jit/_script.py:1488: 
+DeprecationWarning: `torch.jit.script` is deprecated. Please switch to 
+`torch.compile` or `torch.export`.
+  warnings.warn(
+2026-03-29 03:42:54.680 | INFO     | src.engine_core:load_model:43 - 
+ΓÜû∩╕Å Loading AutoAWQ Fallback (Stable Mode)...
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Replacing layers...:   0%|          | 0/36 [00:00<?, ?it/s]
+Replacing layers...:   3%|ΓûÄ         | 1/36 [00:00<00:06,  5.67it/s]
+Replacing layers...:   6%|Γûî         | 2/36 [00:00<00:05,  5.78it/s]
+Replacing layers...:   8%|Γûè         | 3/36 [00:00<00:05,  5.59it/s]
+Replacing layers...:  11%|Γûê         | 4/36 [00:00<00:05,  5.61it/s]
+Replacing layers...:  14%|ΓûêΓûì        | 5/36 [00:00<00:05,  5.59it/s]
+Replacing layers...:  17%|ΓûêΓûï        | 6/36 [00:01<00:05,  5.56it/s]
+Replacing layers...:  19%|ΓûêΓûë        | 7/36 [00:01<00:05,  5.49it/s]
+Replacing layers...:  22%|ΓûêΓûêΓûÅ       | 8/36 [00:01<00:05,  5.27it/s]
+Replacing layers...:  25%|ΓûêΓûêΓûî       | 9/36 [00:01<00:05,  5.25it/s]
+Replacing layers...:  28%|ΓûêΓûêΓûè       | 10/36 [00:01<00:05,  
+4.85it/s]
+Replacing layers...:  31%|ΓûêΓûêΓûê       | 11/36 [00:02<00:05,  
+4.56it/s]
+Replacing layers...:  33%|ΓûêΓûêΓûêΓûÄ      | 12/36 [00:02<00:04,  
+4.84it/s]
+Replacing layers...:  36%|ΓûêΓûêΓûêΓûî      | 13/36 [00:02<00:04,  
+5.11it/s]
+Replacing layers...:  39%|ΓûêΓûêΓûêΓûë      | 14/36 [00:02<00:04,  
+5.29it/s]
+Replacing layers...:  42%|ΓûêΓûêΓûêΓûêΓûÅ     | 15/36 [00:02<00:03,  
+5.31it/s]
+Replacing layers...:  44%|ΓûêΓûêΓûêΓûêΓûì     | 16/36 [00:03<00:03,  
+5.38it/s]
+Replacing layers...:  47%|ΓûêΓûêΓûêΓûêΓûï     | 17/36 [00:03<00:03,  
+5.42it/s]
+Replacing layers...:  50%|ΓûêΓûêΓûêΓûêΓûê     | 18/36 [00:03<00:03,  
+5.50it/s]
+Replacing layers...:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 19/36 [00:03<00:02,  
+5.68it/s]
+Replacing layers...:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 20/36 [00:03<00:02,  
+5.77it/s]
+Replacing layers...:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 21/36 [00:03<00:02,  
+5.76it/s]
+Replacing layers...:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 22/36 [00:04<00:02,  
+5.84it/s]
+Replacing layers...:  64%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 23/36 [00:04<00:02,  
+5.81it/s]
+Replacing layers...:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 24/36 [00:04<00:02,  
+5.90it/s]
+Replacing layers...:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 25/36 [00:04<00:01,  
+5.91it/s]
+Replacing layers...:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 26/36 
+[00:04<00:01,  6.05it/s]
+Replacing layers...:  75%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 27/36 
+[00:04<00:01,  6.10it/s]
+Replacing layers...:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 28/36 
+[00:05<00:01,  6.16it/s]
+Replacing layers...:  81%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê  | 29/36 
+[00:05<00:01,  6.12it/s]
+Replacing layers...:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 30/36 
+[00:05<00:00,  6.05it/s]
+Replacing layers...:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 31/36 
+[00:05<00:00,  6.06it/s]
+Replacing layers...:  89%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë | 32/36 
+[00:05<00:00,  5.95it/s]
+Replacing layers...:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 33/36 
+[00:05<00:00,  5.89it/s]
+Replacing layers...:  94%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 34/36 
+[00:06<00:00,  5.99it/s]
+Replacing layers...:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 35/36 
+[00:06<00:00,  6.04it/s]
+Replacing layers...: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 36/36 
+[00:06<00:00,  6.05it/s]
+Replacing layers...: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 36/36 
+[00:06<00:00,  5.64it/s]
+/usr/local/lib/python3.10/dist-packages/torch/jit/_script.py:365: 
+DeprecationWarning: `torch.jit.script_method` is deprecated. Please 
+switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+2026-03-29 03:43:32.683 | INFO     | src.engine_core:load_model:48 - ΓÜí 
+Torch Compile Activated.
+2026-03-29 03:43:32.684 | SUCCESS  | src.engine_core:load_model:51 - Γ£à 
+Fallback Loaded!
+2026-03-29 03:43:32.684 | INFO     | __main__:run_benchmark:15 - ≡ƒº¬ 
+Warming up engine...
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+2026-03-29 03:43:32.706 | INFO     | __main__:run_benchmark:18 - ≡ƒÜÇ 
+Running Performance Test...
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+
+==================================================
+≡ƒÜÇ ROCKET BENCHMARK RESULTS ≡ƒÜÇ
+==================================================
+Traceback (most recent call last):
+  File "/app/run_bench.py", line 46, in <module>
+    run_benchmark()
+  File "/app/run_bench.py", line 39, in run_benchmark
+    print(f"≡ƒö╣ Engine: {'Mistral-RS (Rocket)' if 
+engine.mistralrs_engine else 'AutoAWQ (Stable)'}")
+AttributeError: 'TurboEngineCore' object has no attribute 
+'mistralrs_engine'. Did you mean: 'mistralrs_runner'?
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ 
+attribute

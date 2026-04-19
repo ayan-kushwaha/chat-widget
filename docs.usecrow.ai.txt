@@ -1,0 +1,2824 @@
+Skip to main content
+
+Search...
+Ctrl K
+
+Ask AI
+Dashboard
+Discord
+Get Started
+
+Documentation
+Get Started
+Introduction
+Quickstart
+Crow Docs MCP
+Setup
+Embed Widget
+React Native
+Flutter
+Multi-Language Support
+Identity Verification
+Event Callbacks
+Deploy
+Agent
+Sandbox
+Actions
+User Suggestions
+Workflows
+Page Navigation
+Knowledge Base
+Knowledge Base
+Files
+Website
+Integration
+Integration
+Envoy CLI
+
+Server-Side Tools
+Multi-Subdomain Endpoints
+Client-Side Tools
+Tool Renderers
+External MCP Servers
+Monitor
+Activity
+
+On this page
+Core Features
+How it Works
+Guides
+Need Help?
+Get Started
+Introduction
+Turn your application AI-native with Crow’s agent
+
+Using Cursor? Install in one click:
+
+Cursor
+Add to Cursor
+Crow is an embeddable AI agent that answers questions, takes actions, and knows your product.
+Script Tag
+React SDK
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+></script>
+Quickstart
+Live in 5 minutes
+Identity Verification
+Authenticate your users
+Crow Docs MCP
+AI-assisted integration
+​
+Core Features
+Feature	What it does
+Knowledge Base	Agent learns from your docs, website, or Notion
+API Integration	Agent calls your API to take actions (check orders, cancel subscriptions)
+Identity Verification	Agent knows who the user is and can act on their behalf
+Workflows	Guided multi-step flows for complex tasks
+​
+How it Works
+Embed — Add the script tag to your site
+Configure — Set instructions and add knowledge in the Sandbox
+Integrate — Connect your API via OpenAPI spec or MCP
+Deploy — Monitor conversations in Activity
+​
+Guides
+Knowledge Base
+Files, websites, Notion
+API Integration
+Connect your REST API
+Actions
+Enable agent capabilities
+OpenAPI Auth
+API Key, Bearer, JWT Forward
+​
+Need Help?
+Running into issues or want our engineers to customize Crow for your use case? Book a demo.
+Quickstart
+Ask a question...
+
+website
+discord
+Powered by
+
+
+Get Started
+Quickstart
+Get your agent live in 5 minutes
+
+​
+1. Copy your script tag
+Go to app.usecrow.ai/deploy and copy your script tag.
+​
+2. Add to your site
+
+HTML
+
+React / Next.js
+
+Vue
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+></script>
+​
+3. Configure your agent
+In Sandbox, set your agent name and instructions. Test responses in the live preview.
+​
+4. Add knowledge (optional)
+In Knowledge Base, upload PDFs, crawl your website, or connect Notion.
+​
+5. Connect your API (optional)
+In Integration, upload your OpenAPI spec, configure auth, and select endpoints.
+​
+Next Steps
+Identity Verification
+Authenticate users for personalized experiences
+OpenAPI Authentication
+Configure API auth (JWT Forward for user actions)
+​
+Need Help?
+Running into issues or want our engineers to customize Crow for your use case? Book a demo.
+Introduction
+Crow Docs MCP
+Ask a question...
+
+website
+discord
+
+t Started
+Crow Docs MCP
+Connect your coding agent to Crow’s documentation using MCP
+
+Using Cursor? Install in one click:
+
+Cursor
+Add to Cursor
+The Model Context Protocol (MCP) allows you to connect AI coding agents to Crow’s documentation. Once connected, your agent can help you integrate Crow into your codebase with full context of our APIs and features.
+​
+Server URL
+https://docs.usecrow.ai/mcp
+Add this URL to your coding agent’s MCP configuration. Works with Cursor, Claude, Windsurf, and any MCP-compatible tool.
+​
+What you can do
+With Crow Docs MCP connected, your coding agent can:
+Help integrate the Crow widget into your website
+Set up identity verification for authenticated users
+Configure OpenAPI or MCP server integrations
+Understand how to use Crow’s features
+Need help? Learn more about MCP
+Quickstart
+Embed Widget
+Ask a question...
+
+website
+discord
+Embed Widget
+Add the Crow widget to your website
+
+​
+Installation
+Choose your preferred installation method:
+Script Tag
+React SDK
+Add the script before </body>:
+
+HTML
+
+Next.js
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+  data-agent-name="Your Agent Name"
+></script>
+Attribute	Required	Description
+data-api-url	Yes	https://api.usecrow.org
+data-product-id	Yes	Your product ID from dashboard
+data-agent-name	No	Display name (defaults to “Assistant”)
+data-variant	No	widget (default) or copilot
+data-subdomain	No	Subdomain key for multi-subdomain endpoints
+data-language	No	ISO 639-1 language code (e.g., es, fr, ja). See Multi-Language
+After the script loads, use window.crow() to pass functions and objects:
+Command	Description
+setIdentityTokenFetcher	Auto-refreshing JWT function. See Identity
+setContext	Page context object. See Context
+onToolResult	Callback on tool completion. See Callbacks
+registerToolRenderers	Custom inline visuals. See Renderers
+identify	Manual JWT token (alternative to fetcher)
+registerTools	Client-side tool handlers
+open	Programmatically open/expand the widget or copilot
+close	Programmatically close/collapse the widget or copilot
+​
+Find Your Product ID
+Go to app.usecrow.ai/deploy
+Copy your Product ID
+​
+User Identity
+Authenticate users for persistent conversations and user-specific actions.
+Script Tag
+React SDK
+Option A — Auto-refresh (recommended). Pass a function that fetches a JWT. The SDK calls it on mount and re-calls it automatically when the token expires (401):
+window.crow('setIdentityTokenFetcher', async () => {
+  const res = await fetch('/api/crow-token');
+  const { token } = await res.json();
+  return token;
+});
+Option B — Manual. Pass a static token (you handle refresh yourself):
+window.crow('identify', {
+  token: 'jwt-from-your-backend',  // Required
+  name: 'John Doe'                  // Optional
+})
+
+// On logout
+window.crow('resetUser')
+See Identity Verification for backend JWT setup.
+​
+Client-Side Tools
+Register tools the agent can call. The return value from your handler is sent back to the agent, so it can confirm success or handle errors intelligently.
+See Client-Side Tools for full setup.
+Script Tag
+React SDK
+window.crow('registerTools', {
+  navigateToPage: async ({ path }) => {
+    router.push(path)
+    return { success: true }  // Agent sees this result
+  },
+  
+  showUpgradeModal: async () => {
+    document.getElementById('upgrade-modal').showModal()
+    return { shown: true }
+  }
+})
+Return meaningful results from your tools. The agent uses these to provide accurate feedback like “Done! I’ve navigated you to Settings” or handle errors gracefully.
+​
+Page Context
+Give the AI context about the current page so it can perform page-aware actions.
+Script Tag
+React SDK
+window.crow('setContext', { itemId: 'abc-123', page: 'settings' });
+
+// Update on navigation:
+window.addEventListener('popstate', () => {
+  window.crow('setContext', { page: location.pathname });
+});
+​
+Tool Result Callbacks
+React to server-side tool completions — refresh data, show a diff UI, dispatch events, etc.
+Script Tag
+React SDK
+window.crow('onToolResult', (toolName, result) => {
+  if (toolName === 'propose_revision') {
+    showDiffUI(result);
+  }
+});
+​
+Tool Renderers
+Render custom visuals inline in the chat when a tool completes — data cards, tables, charts, and more.
+Your renderer receives { result, status } and returns one of:
+Return type	Use case
+HTML string	Data cards, tables, simple visuals
+HTMLElement	Charts via Chart.js, D3, ECharts, Plotly
+ReactNode	Full React components (React SDK only)
+Script Tag
+React SDK
+​
+Data Card
+Show key metrics with change indicators:
+window.crow('registerToolRenderers', {
+  query_analytics_chart: ({ result }) => {
+    const r = result || {};
+    const color = r.changePercent > 0 ? '#059669' : '#ef4444';
+    const arrow = r.changePercent > 0 ? '↑' : '↓';
+    return `<div style="padding:12px; border:1px solid #e2e8f0; border-radius:8px; background:#fff; font-family:system-ui,sans-serif;">
+      <div style="font-size:13px; font-weight:600; color:#0f172a;">${r.title || 'Metric'}</div>
+      <div style="font-size:24px; font-weight:700; color:#2563eb; margin-top:4px;">${r.currentValue || 'N/A'}</div>
+      ${r.changePercent != null
+        ? `<div style="font-size:12px; color:${color};">${arrow} ${Math.abs(r.changePercent).toFixed(1)}%</div>`
+        : ''}
+      ${r.dashboard_url
+        ? `<a href="${r.dashboard_url}" target="_blank" style="font-size:11px; color:#2563eb; text-decoration:none; margin-top:8px; display:inline-block;">View full chart ↗</a>`
+        : ''}
+    </div>`;
+  }
+});
+​
+Table
+Display structured data in rows and columns:
+window.crow('registerToolRenderers', {
+  query_data_table: ({ result }) => {
+    const r = result || {};
+    const headers = r.columns || [];
+    const rows = r.rows || [];
+    return `<div style="border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; font-family:system-ui,sans-serif;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            ${headers.map(h =>
+              '<th style="padding:8px 12px; text-align:left; font-weight:600; border-bottom:1px solid #e2e8f0;">' + h + '</th>'
+            ).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(row =>
+            '<tr style="border-bottom:1px solid #f1f5f9;">' +
+              row.map(cell =>
+                '<td style="padding:6px 12px; color:#334155;">' + cell + '</td>'
+              ).join('') +
+            '</tr>'
+          ).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }
+});
+​
+Chart (Chart.js, D3, ECharts)
+For interactive charts, return an HTMLElement instead of a string. The widget mounts it directly:
+<!-- Load Chart.js (or any charting library) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+window.crow('registerToolRenderers', {
+  query_analytics_chart: ({ result }) => {
+    const canvas = document.createElement('canvas');
+    canvas.style.width = '100%';
+    canvas.style.maxHeight = '200px';
+    new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: result.data.map(d => d.date),
+        datasets: [{
+          label: result.title,
+          data: result.data.map(d => d.value),
+          borderColor: '#2563eb',
+          tension: 0.3,
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+    return canvas;  // Return the DOM element
+  }
+});
+</script>
+Timing: window.crow() must be called after crow-widget.js has loaded. In plain HTML this happens naturally (scripts execute in order). In Next.js, use onLoad:
+<Script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-product-id="YOUR_PRODUCT_ID"
+  data-api-url="https://api.usecrow.org"
+  strategy="afterInteractive"
+  onLoad={() => {
+    window.crow('registerToolRenderers', { ... });
+  }}
+/>
+The widget uses Shadow DOM for CSS isolation. Use inline style attributes — Tailwind classes and external CSS won’t apply inside the widget.
+​
+Programmatic Open / Close
+Open or close the widget from your own code — useful for onboarding flows, feature tours, or reacting to in-app events.
+window.crow('open');   // expand the widget / sidebar
+window.crow('close');  // collapse it
+Works with both the floating widget and the copilot sidebar.
+window.crow('open') works from anywhere — event handlers, useEffect, timeouts, or third-party callbacks. No imports needed.
+​
+Quick Q&A
+Some users find it more intuitive to read setup instructions in Q&A format. Here’s everything above as quick answers:
+How do I add the chat to my app?
+
+How do I authenticate users?
+
+How do I give the AI context about the current page?
+
+How do I handle SPA navigation for links?
+
+How do I react when the AI calls a tool?
+
+What does the full setup look like?
+
+​
+Troubleshooting
+Issue	Solution
+Widget not appearing	Check Product ID, verify script/component is rendered
+Console errors	Check apiUrl is correct
+CORS errors	Contact support to whitelist your domain
+Crow Docs MCP
+React Native
+Ask a question...
+
+website
+discord
+Setup
+React Native
+Add Crow to your React Native app
+
+The @usecrow/react-native package adds Crow to any React Native app. Drop in <CrowWidget /> for a ready-made floating chat button and bottom sheet, or use the useChat hook to build a fully custom interface.
+​
+Installation
+npm install @usecrow/react-native @usecrow/client
+For conversation persistence across app restarts:
+npx expo install @react-native-async-storage/async-storage
+​
+Quick Start
+​
+Drop-in widget (fastest)
+Add <CrowWidget /> inside your <CrowProvider> for a floating chat button and bottom sheet — zero UI work required:
+import { CrowProvider, CrowWidget, createAsyncStorageAdapter } from '@usecrow/react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const storage = createAsyncStorageAdapter(AsyncStorage);
+await storage.preloadForProduct('YOUR_PRODUCT_ID');
+
+export default function App() {
+  return (
+    <CrowProvider productId="YOUR_PRODUCT_ID" storage={storage}>
+      <YourApp />
+      <CrowWidget />
+    </CrowProvider>
+  );
+}
+CrowWidget renders a floating action button that opens a slide-up chat sheet. It handles messages, streaming, conversation history, and user auth out of the box.
+​
+Custom UI (headless)
+Use useChat to build your own interface:
+import { CrowProvider, useChat } from '@usecrow/react-native';
+
+function ChatScreen() {
+  const { messages, sendMessage, isLoading } = useChat();
+
+  return (
+    <FlatList
+      data={messages}
+      renderItem={({ item }) => <Text>{item.content}</Text>}
+    />
+  );
+}
+​
+CrowProvider Props
+Prop	Required	Description
+productId	Yes	Your product ID from the dashboard
+apiUrl	No	API URL (defaults to https://api.usecrow.org)
+storage	No	Storage adapter for persistence. Defaults to in-memory
+identityToken	No	JWT token for authenticated users
+userName	No	Display name for identified users
+model	No	Default model to use
+​
+useChat Hook
+The main hook for chat functionality:
+const {
+  messages,        // Message[] — current chat messages
+  isLoading,       // boolean — agent is responding
+  sendMessage,     // (text: string) => Promise<void>
+  stop,            // () => void — stop current response
+  clear,           // () => void — clear messages, start new conversation
+  suggestedActions,// SuggestedAction[] — quick reply suggestions
+  identify,        // (options: IdentifyOptions) => void
+  resetUser,       // () => void — logout
+  isIdentified,    // boolean — has identity token
+  isVerified,      // boolean — server confirmed identity
+} = useChat();
+​
+Message Type
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+  thinking?: string;  // Agent's reasoning (if extended thinking enabled)
+}
+​
+Event Callbacks
+const { messages } = useChat({
+  onStreamEvent: (event) => {
+    // Handle individual stream events
+  },
+  onError: (error) => {
+    // Handle errors
+  },
+  onVerificationStatus: (isVerified) => {
+    // Server confirmed user identity
+  },
+});
+​
+Conversation Persistence
+By default, conversations are lost when the app closes. Use createAsyncStorageAdapter for persistence:
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createAsyncStorageAdapter } from '@usecrow/react-native';
+
+const storage = createAsyncStorageAdapter(AsyncStorage);
+
+// Preload before rendering (call once at app startup)
+await storage.preloadForProduct('YOUR_PRODUCT_ID');
+
+// Then pass to provider
+<CrowProvider productId="YOUR_PRODUCT_ID" storage={storage}>
+The storage adapter must preload data before the provider mounts. Call preloadForProduct() during your app’s initialization phase.
+​
+useConversations Hook
+Manage conversation history for authenticated users:
+import { useConversations } from '@usecrow/react-native';
+
+function ConversationList() {
+  const {
+    conversations,  // Conversation[] — list of past conversations
+    currentId,      // string | null — active conversation ID
+    isLoading,      // boolean
+    refresh,        // () => Promise<void> — fetch latest list
+    switchTo,       // (id: string) => Promise<void> — load a conversation
+    startNew,       // () => void — start fresh conversation
+  } = useConversations();
+
+  return (
+    <FlatList
+      data={conversations}
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => switchTo(item.id)}>
+          <Text>{item.name}</Text>
+        </TouchableOpacity>
+      )}
+    />
+  );
+}
+Conversation history requires an authenticated user. Call identify() with a valid JWT token first.
+​
+User Identity
+Identify users to enable conversation history and personalized responses:
+function LoginButton() {
+  const { identify, resetUser, isVerified } = useChat();
+
+  const handleLogin = async () => {
+    const token = await fetchTokenFromYourBackend();
+    identify({ token, name: 'Jane Doe' });
+  };
+
+  return (
+    <View>
+      <Button title="Login" onPress={handleLogin} />
+      {isVerified && <Text>✓ Verified</Text>}
+    </View>
+  );
+}
+Or pass the token via props:
+<CrowProvider
+  productId="YOUR_PRODUCT_ID"
+  identityToken={userToken}
+  userName={user.name}
+>
+See Identity Verification for generating tokens on your backend.
+​
+Client-Side Tools
+Register tools that run natively in your app:
+import { useCrowClient } from '@usecrow/react-native';
+
+function App() {
+  const client = useCrowClient();
+
+  useEffect(() => {
+    client.registerTools({
+      navigateToPage: async ({ page }) => {
+        navigation.navigate(page);
+        return { status: 'success', data: { navigated_to: page } };
+      },
+      addToCart: async ({ productId, quantity }) => {
+        await cartStore.add(productId, quantity);
+        return { status: 'success', data: { added: productId } };
+      },
+    });
+  }, [client]);
+}
+Upload tool definitions on the Actions page so the agent knows they exist.
+​
+Page Context
+Send app state with messages so the agent knows context:
+const client = useCrowClient();
+
+// Update when screen changes
+useEffect(() => {
+  client.setContext({
+    currentScreen: 'ProductDetail',
+    productId: '123',
+    cartItems: cart.length,
+  });
+}, [route, cart]);
+​
+Full Example
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  View, Text, FlatList, TextInput,
+  TouchableOpacity, StyleSheet, SafeAreaView,
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  CrowProvider,
+  useChat,
+  createAsyncStorageAdapter,
+} from '@usecrow/react-native';
+
+const PRODUCT_ID = 'YOUR_PRODUCT_ID';
+const storage = createAsyncStorageAdapter(AsyncStorage);
+
+function ChatScreen() {
+  const { messages, sendMessage, isLoading, stop } = useChat();
+  const [input, setInput] = useState('');
+  const listRef = useRef<FlatList>(null);
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 100);
+    }
+  }, [messages]);
+
+  const handleSend = async () => {
+    const text = input.trim();
+    if (!text || isLoading) return;
+    setInput('');
+    await sendMessage(text);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        ref={listRef}
+        data={messages}
+        keyExtractor={(m) => m.id}
+        style={styles.list}
+        contentContainerStyle={{ padding: 16 }}
+        renderItem={({ item }) => (
+          <View style={[
+            styles.bubble,
+            item.role === 'user' ? styles.userBubble : styles.botBubble,
+          ]}>
+            <Text style={{ color: item.role === 'user' ? '#000' : '#fff' }}>
+              {item.content || (isLoading ? 'Thinking...' : '')}
+            </Text>
+          </View>
+        )}
+      />
+      <View style={styles.inputRow}>
+        <TextInput
+          style={styles.input}
+          value={input}
+          onChangeText={setInput}
+          placeholder="Type a message..."
+          onSubmitEditing={handleSend}
+          returnKeyType="send"
+        />
+        <TouchableOpacity
+          onPress={isLoading ? stop : handleSend}
+          style={[styles.sendBtn, { backgroundColor: isLoading ? '#ef4444' : '#000' }]}
+        >
+          <Text style={{ color: '#fff', fontWeight: '600' }}>
+            {isLoading ? '■' : '↑'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+export default function App() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    storage.preloadForProduct(PRODUCT_ID).then(() => setReady(true));
+  }, []);
+
+  if (!ready) return null;
+
+  return (
+    <CrowProvider productId={PRODUCT_ID} storage={storage}>
+      <ChatScreen />
+    </CrowProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#fff' },
+  list: { flex: 1 },
+  bubble: { maxWidth: '80%', padding: 12, borderRadius: 16, marginBottom: 12 },
+  userBubble: { alignSelf: 'flex-end', backgroundColor: '#f3f4f6' },
+  botBubble: { alignSelf: 'flex-start', backgroundColor: '#000' },
+  inputRow: { flexDirection: 'row', padding: 12, borderTopWidth: 1, borderTopColor: '#e5e7eb' },
+  input: { flex: 1, height: 44, borderWidth: 1, borderColor: '#d1d5db', borderRadius: 22, paddingHorizontal: 16, marginRight: 8 },
+  sendBtn: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+});
+​
+Differences from Web SDK
+Web (@usecrow/ui)	React Native (@usecrow/react-native)
+UI	Pre-built widget/copilot	You build your own native UI
+Streaming	Automatic	Handled internally by SDK
+Storage	localStorage (automatic)	AsyncStorage adapter
+Browser tools	whatsOnScreen, refresh	Register your own native tools
+Provider	CrowProvider from @usecrow/ui	CrowProvider from @usecrow/react-native
+Identity Verification
+Generate JWT tokens on your backend
+Client-Side Tools
+Register tools the agent can call
+Embed Widget
+Web widget installation guide
+Callbacks
+Subscribe to lifecycle events
+Embed Widget
+Flutter
+Ask a question...
+
+website
+discord
+
+Setup
+Flutter
+Add Crow to your Flutter app
+
+The crow_flutter package adds Crow to any Flutter app. Use CrowWidget for a floating chat button that overlays your existing app, drop in CrowChatView for a full-screen chat experience, or use CrowChatNotifier directly to build a fully custom interface.
+​
+Installation
+flutter pub add crow_flutter
+​
+Quick Start
+​
+Floating widget (recommended)
+Add CrowWidget inside a Stack to get a floating chat button that slides up a chat sheet — zero extra UI work:
+import 'package:crow_flutter/crow_flutter.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(
+  const CrowScope(
+    productId: 'YOUR_PRODUCT_ID',
+    child: MyApp(),
+  ),
+);
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // builder wraps every route — CrowWidget appears on all pages
+      builder: (context, child) => Stack(
+        children: [child!, const CrowWidget()],
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+Placing CrowWidget in MaterialApp.builder means it automatically appears on every page and route in your app — no need to add it to each screen individually. Tapping the button slides up a chat sheet at 85% screen height.
+​
+Full-screen chat
+Wrap your app with CrowScope and drop in CrowChatView as the full body:
+import 'package:crow_flutter/crow_flutter.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(
+  const CrowScope(
+    productId: 'YOUR_PRODUCT_ID',
+    child: MyApp(),
+  ),
+);
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Scaffold(body: CrowChatView()),
+    );
+  }
+}
+CrowChatView includes message bubbles, streaming, conversation history, suggested actions, and a “Powered by Crow” footer — no additional setup required.
+​
+CrowScope Props
+CrowScope is an InheritedWidget that provides the client and state down the widget tree.
+Prop	Required	Description
+productId	Yes	Your product ID from the dashboard
+apiUrl	No	API URL (defaults to https://api.usecrow.org)
+model	No	Override the default model
+identityToken	No	JWT token for authenticated users
+storage	No	Custom storage adapter. Defaults to SharedPreferences
+​
+CrowWidget Props
+Prop	Required	Description
+theme	No	CrowTheme instance to customize the chat sheet appearance
+​
+CrowChatView Props
+Prop	Required	Description
+theme	No	CrowTheme instance to customize appearance
+​
+Theming
+Customize colors and styles via CrowTheme:
+CrowChatView(
+  theme: CrowTheme(
+    backgroundColor: Colors.white,
+    userBubbleColor: Colors.white,
+    userBubbleTextColor: const Color(0xFF111827),
+    assistantBubbleColor: Colors.black,
+    assistantBubbleTextColor: Colors.white,
+    inputBorderColor: const Color(0xFFE5E7EB),
+    sendButtonColor: Colors.black,
+    bubbleBorderRadius: 18.0,
+    poweredByColor: const Color(0xFF9CA3AF),
+  ),
+)
+​
+Theme Properties
+Property	Description
+backgroundColor	Chat background color
+userBubbleColor	User message bubble background
+userBubbleTextColor	User message text color
+assistantBubbleColor	Assistant bubble background
+assistantBubbleTextColor	Assistant message text color
+sendButtonColor	Send button color
+bubbleBorderRadius	Corner radius for message bubbles
+inputBorderColor	Input bar border color
+inputBorderLoadingColor	Input border color while streaming
+poweredByColor	”Powered by Crow” text color
+headerBorderColor	Bottom border of the header
+messageTextStyle	Full TextStyle override for message text
+inputDecoration	Full InputDecoration override for the text field
+​
+Custom UI (Headless)
+Access CrowChatNotifier directly via CrowScope.chatOf(context) to build your own UI:
+class MyChatScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final notifier = CrowScope.chatOf(context);
+
+    return ListenableBuilder(
+      listenable: notifier,
+      builder: (context, _) {
+        final state = notifier.state;
+
+        return Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: state.messages.length,
+                itemBuilder: (context, i) => Text(state.messages[i].content),
+              ),
+            ),
+            if (state.isLoading) const CircularProgressIndicator(),
+          ],
+        );
+      },
+    );
+  }
+}
+​
+CrowChatState
+Property	Type	Description
+messages	List<Message>	All messages in the current conversation
+isLoading	bool	Agent is currently streaming a response
+suggestedActions	List<SuggestedAction>	Quick reply suggestions from the agent
+isIdentified	bool	A token has been set for this user
+isVerified	bool	Server confirmed the user’s identity
+​
+CrowChatNotifier Methods
+Method	Description
+sendMessage(String)	Send a message and stream the response
+stop()	Cancel the current streaming response
+clear()	Clear messages and start a new conversation
+identify(IdentifyOptions)	Set a user identity token
+resetUser()	Log out the current user
+​
+Message Type
+class Message {
+  final String id;
+  final MessageRole role;   // MessageRole.user or MessageRole.assistant
+  final String content;
+  final DateTime timestamp;
+  final bool isStreaming;
+  final List<Citation> citations;
+}
+​
+User Identity
+Identify users to enable conversation history and personalized responses:
+final notifier = CrowScope.chatOf(context);
+
+// From a login handler
+final token = await fetchTokenFromYourBackend();
+notifier.identify(IdentifyOptions(token: token));
+
+// Or pass via CrowScope props (auto-updates when token changes)
+CrowScope(
+  productId: 'YOUR_PRODUCT_ID',
+  identityToken: userToken,
+  child: MyApp(),
+)
+
+// Logout
+notifier.resetUser();
+See Identity Verification for generating tokens on your backend.
+​
+Client-Side Tools
+Register tools that run natively in your Flutter app:
+final client = CrowScope.clientOf(context);
+
+client.registerTool('navigateToScreen', (params) async {
+  final screen = params['screen'] as String;
+  Navigator.pushNamed(context, '/$screen');
+  return ToolResult.success({'navigated_to': screen});
+});
+
+client.registerTool('addToCart', (params) async {
+  final productId = params['product_id'] as String;
+  await cartController.add(productId);
+  return ToolResult.success({'added': productId});
+});
+Upload tool definitions on the Actions page so the agent knows when to call them.
+​
+Platform Support
+Platform	Support
+iOS	✅
+Android	✅
+macOS	✅
+Web	✅
+​
+iOS / macOS
+No additional configuration needed. For macOS apps, add the outbound networking entitlement — required for all network calls, including production:
+<!-- macos/Runner/DebugProfile.entitlements -->
+<key>com.apple.security.network.client</key>
+<true/>
+​
+Differences from Other SDKs
+Web (@usecrow/ui)	React Native	Flutter
+Language	TypeScript	TypeScript	Dart
+Drop-in UI	<CrowWidget />	<CrowWidget />	CrowWidget
+State	useChat() hook	useChat() hook	CrowChatNotifier
+Storage	localStorage	AsyncStorage adapter	SharedPreferences (built-in)
+Provider	<CrowProvider>	<CrowProvider>	CrowScope
+Identity Verification
+Generate JWT tokens on your backend
+Client-Side Tools
+Register tools the agent can call
+React Native
+React Native SDK guide
+Embed Widget
+Web widget installation guide
+React Native
+Multi-Language Support
+Ask a question...
+
+website
+discord
+Setup
+Multi-Language Support
+Make the AI respond in your user’s language
+
+Pass a language prop to the widget and Crow handles the rest — the AI responds in that language and the welcome message is translated automatically.
+Example: Your platform has users who speak Spanish, Japanese, and French. Set language="es" for Spanish users and the entire experience adapts — no prompt engineering needed.
+​
+How It Works
+1. You pass a language code (ISO 639-1) when embedding the widget
+2. Crow translates the welcome message on the fly
+3. A language instruction is injected into the AI's system prompt
+4. The AI responds in the specified language for the entire conversation
+When no language is passed (or language="en"), behavior is unchanged — fully backward compatible.
+​
+Pass Language to Widget
+Script Tag
+React SDK
+Add data-language to the script tag:
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+  data-language="es"
+></script>
+Attribute	Required	Description
+data-language	No	ISO 639-1 language code (e.g., es, fr, ja)
+You can set language dynamically based on the logged-in user’s locale, browser settings, or any other runtime value. For example:
+const language = user.locale || navigator.language.split('-')[0];
+
+<CrowWidget language={language} ... />
+​
+What Gets Translated
+Element	Behavior
+Welcome message	Translated automatically when the widget loads (uses a fast LLM call)
+AI responses	All replies are in the specified language for the entire conversation
+Error messages from the AI	Also in the specified language
+Widget UI chrome	Not translated (buttons, placeholders remain in English)
+​
+Supported Languages
+Crow supports the following ISO 639-1 codes:
+Code	Language	Code	Language	Code	Language
+af	Afrikaans	hr	Croatian	nl	Dutch
+am	Amharic	hu	Hungarian	no	Norwegian
+ar	Arabic	hy	Armenian	pa	Punjabi
+az	Azerbaijani	id	Indonesian	pl	Polish
+be	Belarusian	is	Icelandic	pt	Portuguese
+bg	Bulgarian	it	Italian	ro	Romanian
+bn	Bengali	ja	Japanese	ru	Russian
+bs	Bosnian	ka	Georgian	si	Sinhala
+ca	Catalan	kk	Kazakh	sk	Slovak
+cs	Czech	km	Khmer	sl	Slovenian
+cy	Welsh	kn	Kannada	sq	Albanian
+da	Danish	ko	Korean	sr	Serbian
+de	German	lo	Lao	sv	Swedish
+el	Greek	lt	Lithuanian	sw	Swahili
+en	English	lv	Latvian	ta	Tamil
+es	Spanish	mk	Macedonian	te	Telugu
+et	Estonian	ml	Malayalam	th	Thai
+fa	Persian	mn	Mongolian	tl	Filipino
+fi	Finnish	mr	Marathi	tr	Turkish
+fr	French	ms	Malay	uk	Ukrainian
+ga	Irish	my	Burmese	ur	Urdu
+gl	Galician	ne	Nepali	uz	Uzbek
+gu	Gujarati			vi	Vietnamese
+he	Hebrew			zh	Chinese
+hi	Hindi			zu	Zulu
+Passing an unsupported code returns a 422 validation error.
+​
+Behavior Details
+Scenario	Behavior
+language not passed	English (default) — no changes to current behavior
+language="en"	English — no translation or prompt injection
+language="es"	Welcome message translated to Spanish, AI responds in Spanish
+Unsupported language code	422 error returned by the API
+Welcome message is null	The SDK default (“Hi! How can I help you today?”) is translated
+Translation fails	Falls back to the original English text silently
+​
+Troubleshooting
+Issue	Solution
+422 error on chat	Check the language code is a valid ISO 639-1 code from the table above
+Welcome message still in English	Verify data-language / language prop is set and not "en"
+AI responds in wrong language	Check the language code is correct — zh for Chinese, pt for Portuguese, etc.
+Mixed languages in response	This can happen if the user writes in a different language. The AI prioritizes the configured language but may adapt to user input
+Flutter
+Identity Verification
+Ask a question...
+
+website
+discord
+Setup
+Identity Verification
+Authenticate users in your widget
+
+Identity verification lets your agent know who the user is—enabling personalized support and persistent conversations.
+​
+What You Get
+Feature	Anonymous	Verified
+Chat	✅	✅
+Conversation history	❌	✅
+Personalized by name	❌	✅
+User-specific actions	❌	✅
+​
+How It Works
+1. User logs into YOUR app
+2. Your backend mints a Crow identity token (JWT signed with your Crow secret)
+3. Your frontend calls window.crow('identify', { token })
+4. Widget now knows who the user is
+This is not your app’s session JWT. It’s a separate Crow-scoped identity token that your backend mints specifically for Crow. Your app JWT stays private.
+​
+1. Get Your Secret
+app.usecrow.ai/deploy → copy Verification Secret
+Add to your backend environment:
+CROW_VERIFICATION_SECRET=your_secret_here
+Never expose this secret in frontend code.
+​
+2. Create Backend Endpoint
+
+Node.js (Express)
+
+Python (FastAPI)
+
+Python (Flask)
+const jwt = require('jsonwebtoken')
+
+app.get('/api/crow-token', authMiddleware, (req, res) => {
+  const token = jwt.sign(
+    {
+      user_id: String(req.user.id),  // Required
+      exp: Math.floor(Date.now() / 1000) + 3600,  // Required: 1 hour
+      email: req.user.email,  // Optional
+      name: req.user.name,  // Optional
+    },
+    process.env.CROW_VERIFICATION_SECRET,
+    { algorithm: 'HS256' }
+  )
+  res.json({ token })
+})
+​
+JWT Payload
+Field	Type	Required	Description
+user_id	string	Yes	Unique user identifier
+exp	number	Yes	Expiration (Unix timestamp)
+email	string	No	User’s email
+name	string	No	Display name
+​
+3. Identify in Frontend
+React SDK (Recommended)
+Script Tag
+Pass getIdentityToken to CrowWidget or CrowCopilot. The SDK calls it on mount and auto-refreshes when the token expires — no manual polling needed.
+import { CrowWidget } from '@usecrow/ui';
+
+function App() {
+  return (
+    <CrowWidget
+      productId="YOUR_PRODUCT_ID"
+      apiUrl="https://api.usecrow.org"
+      getIdentityToken={async () => {
+        const res = await fetch('/api/crow-token');
+        const { token } = await res.json();
+        return token;
+      }}
+    />
+  );
+}
+That’s it. No useEffect, no setInterval, no window.crow('identify') calls.
+​
+4. Handle Logout
+React SDK
+Script Tag
+Logout is handled automatically — when the component unmounts or the user navigates away, the session is cleared.
+​
+Troubleshooting
+Issue	Solution
+User not identified	Check secret matches dashboard, user_id is string
+Token invalid	Check exp is in future, algorithm is HS256
+History not persisting	Call identify() on page load, not just after login
+Multi-Language Support
+Event Callbacks
+Ask a question...
+
+website
+discord
+Setup
+Event Callbacks
+Listen to agent events — messages, tool calls, errors, and more
+
+Hook into the agent’s lifecycle to build custom experiences on top of Crow.
+​
+Available Callbacks
+Callback	Fires when
+onMessage	A new message (user or assistant) is added
+onMessageUpdate	A message is updated (e.g. during streaming)
+onToolCall	A tool starts, completes, or a client tool is invoked
+onWorkflow	A workflow starts, progresses, or ends
+onVerificationStatus	Identity verification status changes
+onError	An error occurs
+​
+React SDK
+Pass callbacks via the client.on() method:
+import { CrowClient } from '@usecrow/client';
+
+const client = new CrowClient({
+  productId: 'YOUR_PRODUCT_ID',
+  apiUrl: 'https://api.usecrow.org',
+});
+
+client.on({
+  onMessage: (message) => {
+    console.log(`[${message.role}] ${message.content}`);
+  },
+
+  onToolCall: (event) => {
+    if (event.type === 'tool_call_start') {
+      console.log(`Tool started: ${event.toolName}`);
+    }
+    if (event.type === 'tool_call_complete') {
+      console.log(`Tool done: ${event.toolName}`, event.success);
+    }
+  },
+
+  onError: (error) => {
+    myErrorTracker.capture(error);
+  },
+});
+​
+Callback Reference
+​
+onMessage
+onMessage?: (message: Message) => void
+Fired when a new message is added to the conversation.
+interface Message {
+  id: string;
+  content: string;
+  role: 'user' | 'assistant';
+  timestamp: Date;
+  citations?: Citation[];
+  thinking?: string;
+}
+​
+onMessageUpdate
+onMessageUpdate?: (messageId: string, updates: Partial<Message>) => void
+Fired when a message is updated — typically during streaming as the assistant’s response accumulates.
+​
+onToolCall
+onToolCall?: (event: ToolCallEvent) => void
+Fired on tool lifecycle events:
+event.type	Description
+tool_call_start	Server-side tool invocation began
+tool_call_complete	Server-side tool finished (event.success)
+client_tool_call	Client-side tool was invoked in the browser
+​
+onWorkflow
+onWorkflow?: (event: WorkflowEvent) => void
+event.type	Description
+workflow_started	Workflow began (event.name, event.todos)
+workflow_todo_updated	A step completed (event.todoId, event.status)
+workflow_ended	Workflow finished
+workflow_complete_prompt	Workflow requests user confirmation
+​
+onVerificationStatus
+onVerificationStatus?: (isVerified: boolean) => void
+Fired when the user’s identity verification status changes — useful for gating features behind verified users.
+​
+onError
+onError?: (error: Error) => void
+Fired on any error during streaming or tool execution.
+​
+Use Cases
+Analytics — Track which tools are used and how often:
+client.on({
+  onToolCall: (event) => {
+    if (event.type === 'tool_call_complete') {
+      analytics.track('crow_tool_used', {
+        tool: event.toolName,
+        success: event.success,
+      });
+    }
+  },
+});
+Custom loading states — Show your own UI while tools run:
+client.on({
+  onToolCall: (event) => {
+    if (event.type === 'tool_call_start') {
+      showToolSpinner(event.toolName);
+    }
+    if (event.type === 'tool_call_complete') {
+      hideToolSpinner();
+    }
+  },
+});
+Error reporting — Pipe errors to your observability stack:
+client.on({
+  onError: (error) => {
+    Sentry.captureException(error);
+  },
+});
+Client Side Tools
+Register browser-side tool handlers
+Embed Widget
+Install the widget
+Identity Verification
+Deploy
+Ask a question...
+
+website
+discord
+Setup
+Deploy
+Go live with your agent
+
+​
+Get Your Embed Code
+app.usecrow.ai/deploy
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+></script>
+​
+Get Your Security Key
+Same page—click the eye icon to reveal. Use this to sign JWTs for Identity Verification.
+Keep your security key secret. Never expose in client-side code.
+​
+Pre-launch Checklist
+Agent
+ Name and instructions configured
+ Tested in Sandbox
+Knowledge Base
+ Docs uploaded / website crawled / Notion connected
+ Agent answers common questions correctly
+Integrations (if applicable)
+ OpenAPI spec uploaded
+ Auth configured
+ Tools enabled in Actions
+Identity (if applicable)
+ JWT endpoint implemented
+ identify() called in frontend
+ resetUser() called on logout
+​
+Test in Production
+Visit your site—widget should appear
+Test as anonymous user
+Test as authenticated user (if applicable)
+Try common questions
+Verify tool actions work
+​
+Monitor
+Use Activity to track conversations and spot issues.
+Event Callbacks
+Sandbox
+Ask a question...
+
+website
+discordAgent
+Sandbox
+Configure and test your agent
+
+The Sandbox is where you configure your agent and test responses in real-time.
+​
+Configuration
+Field	Description
+Agent Name	Displayed in widget header
+System Prompt	Instructions that define agent behavior
+​
+Writing a System Prompt
+
+Basic
+
+With boundaries
+
+With product context
+You are a support agent for [Company Name].
+Help users with questions about [your product].
+Be friendly and concise.
+​
+Live Preview
+The right panel shows a live widget preview. Changes apply immediately—test different scenarios before deploying.
+​
+Tips
+Be specific about your product, not generic
+Set boundaries for what the agent should/shouldn’t discuss
+Include key info like pricing, features, common solutions
+Test edge cases in the preview before going live
+Deploy
+Actions
+Ask a question...
+
+website
+discord
+gent
+Actions
+Configure what your agent can do
+
+Actions are capabilities you enable for your agent. Go to Actions to manage them.
+​
+Types
+Type	Source	Example
+API Tools	Your OpenAPI spec	getOrderStatus, createTicket
+MCP Tools	Connected MCP servers	Notion search, database queries
+Workflows	You define them	Onboarding flow, return request
+​
+Enabling Actions
+API Tools — Check/uncheck individual endpoints from your OpenAPI spec
+MCP Tools — Toggle entire servers or individual tools
+Workflows — Enable/disable specific flows
+​
+How the Agent Decides
+The agent automatically chooses tools based on:
+The user’s question
+Tool names and descriptions
+Required parameters
+Good tool descriptions → better tool selection.
+​
+Best Practices
+Start small — Enable only what’s needed, expand later
+Test in Sandbox — Verify tools work before deploying
+Clear descriptions — Help the agent understand when to use each tool
+OpenAPI
+Set up API tools
+Workflows
+Create guided flows
+Sandbox
+User Suggestions
+Ask a question...
+
+website
+discord
+Agent
+User Suggestions
+Show quick action buttons in the chat widget
+
+User suggestions are clickable buttons that appear above the chat input, giving users one-tap access to common actions.
+​
+Two Types
+Type	Set By	Persists
+Page-level	Host app via window.crow()	Yes — reappears after each response
+Agent-driven	Agent via suggest_actions tool	No — clears when user sends a message
+​
+Page-Level Suggestions
+Use window.crow('setSuggestedActions', [...]) to set persistent buttons for the current page. These reappear after every agent response.
+// Show different buttons per page
+window.crow('setSuggestedActions', [
+  { label: 'Enrich contacts', message: 'Enrich owner contacts for these leads' },
+  { label: 'Export', message: 'Export this list to CSV' },
+]);
+
+// Clear suggestions
+window.crow('setSuggestedActions', []);
+Each suggestion has:
+label — Button text shown to the user
+message — Text sent to the agent when clicked
+​
+Per-Page Example (Next.js)
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+function CrowSetup() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const setSuggestions = () => {
+      if (!window.crow) {
+        setTimeout(setSuggestions, 200);
+        return;
+      }
+
+      if (router.pathname === '/leads') {
+        window.crow('setSuggestedActions', [
+          { label: 'Enrich contacts', message: 'Enrich owner contacts' },
+          { label: 'Add to list', message: 'Add these results to a new list' },
+        ]);
+      } else if (router.pathname.startsWith('/myList')) {
+        window.crow('setSuggestedActions', [
+          { label: 'Export', message: 'Export this list to CSV' },
+        ]);
+      }
+    };
+
+    setSuggestions();
+  }, [router.pathname]);
+
+  return null;
+}
+​
+Agent-Driven Suggestions
+The agent can show buttons on demand by calling the suggest_actions tool. Add instructions to your agent’s system prompt telling it when to offer buttons:
+Before running any enrichment, confirm the cost with suggest_actions buttons:
+- "Yes, proceed (3 credits)"
+- "Cancel"
+The agent calls suggest_actions with an array of { label, message } objects. These buttons clear automatically when the user sends their next message.
+​
+Dashboard Config
+You can also set initial suggestions (shown before the user types anything) from the dashboard under Agent > Suggestions. These are stored in your product config and appear on widget load.
+Actions
+Workflows
+Ask a question...
+
+website
+discord
+Agent
+Workflows
+Create guided multi-step flows
+
+Workflows guide users through complex tasks with a structured sequence of steps.
+​
+Examples
+Onboarding — Walk new users through setup
+Returns — Collect order number, reason, process request
+Troubleshooting — Diagnostic steps for common issues
+​
+Create a Workflow
+Go to Actions
+Click Create Journey
+Fill in:
+Field	Description
+Name	Short name (e.g., “Return Request”)
+Description	When to trigger (e.g., “Use when customer wants to return a product”)
+Add steps:
+Step text (what to ask/tell user)
+Tool (optional—action to execute)
+Save
+​
+Example: Return Request
+Step 1: "What's the order number for the item you'd like to return?"
+Step 2: "Which item would you like to return?" [Tool: getOrderDetails]
+Step 3: "What's the reason for the return?"
+Step 4: "Done! You'll receive a return label within 24 hours." [Tool: createReturn]
+​
+How It Works
+User question matches workflow description
+Agent starts the flow
+User responds to each step
+Optional tools execute at configured steps
+Workflow completes
+Users can exit anytime by asking something else.
+​
+Tips
+Write clear descriptions so agent knows when to trigger
+Keep steps conversational, not robotic
+End with confirmation of what happened
+Test in Sandbox before deploying
+User Suggestions
+Page Navigation
+Ask a question...
+
+website
+discord
+Agent
+Page Navigation
+Let your AI agent navigate users between pages
+
+Page Navigation enables your AI agent to navigate users to different pages in your application. Define your routes on the dashboard and the agent handles the rest — no code required.
+​
+Setup
+Go to Page Navigation in your dashboard
+Enable the Page Navigation toggle
+Add your application’s routes
+Click Save
+​
+Defining Routes
+Each route has:
+Field	Required	Description
+Name	Yes	A unique identifier (e.g. user_profile, dashboard)
+Path	Yes	The URL path pattern (e.g. /users/:userId)
+Description	No	What this page shows — helps the AI decide when to navigate
+Parameters	Auto-detected	Descriptions for dynamic URL segments
+​
+Static Routes
+For pages with fixed URLs, just provide the name, path, and description:
+Name	Path	Description
+dashboard	/dashboard	Main dashboard
+settings	/settings/general	App settings
+​
+Dynamic Routes
+Use :paramName syntax for URL segments that change. The AI fills in parameter values from conversation context.
+Name	Path	Parameters
+user_profile	/users/:userId	userId — The user’s unique ID
+order_detail	/orders/:orderId	orderId — The order number
+project_task	/projects/:projectId/tasks/:taskId	projectId, taskId
+​
+How the AI Gets Dynamic Parameters
+The AI resolves parameter values from context — you don’t need to hardcode IDs:
+From conversation — “Go to John’s profile” after the user mentioned John earlier
+From API results — A previous tool call returned a list of users with their IDs
+From user input — “Navigate to order #ORD-4521”
+From screen context — If Screen Context is enabled, the AI can read IDs from the current page
+​
+How Navigation Works
+By default, when the AI calls navigateToPage, the SDK resolves the route name to a URL path and navigates using window.location.href. This works universally with any framework but triggers a full page load.
+For single-page applications (React, Next.js, Vue, etc.), you can pass a navigate prop to use your framework’s router instead — giving you instant SPA navigation with no page reloads.
+​
+SPA Navigation
+Pass your framework’s router function via the navigate prop. The SDK handles route resolution — your function just receives the final path.
+
+React Router
+
+Next.js
+
+Vue Router
+import { useNavigate } from 'react-router-dom';
+import { CrowWidget } from '@usecrow/ui';
+
+function App() {
+  const navigate = useNavigate();
+
+  return (
+    <CrowWidget
+      productId="your-product-id"
+      navigate={(path) => navigate(path)}
+    />
+  );
+}
+The navigate prop only controls how navigation executes. Your route definitions on the dashboard still power the AI’s awareness of what pages exist and how to resolve dynamic parameters.
+​
+Best Practices
+Write clear descriptions — “User profile page showing account details and activity” is better than “Profile”
+Describe parameters — Help the AI understand what values are expected (e.g. “The user’s UUID from the users API”)
+Start with key pages — Add your most-navigated pages first, expand later
+Test in Sandbox — Try asking the agent to navigate and verify it works before deploying
+Actions
+Configure what your agent can do
+Screen Context
+Let the AI see what’s on screen
+Workflows
+Knowledge Base
+Ask a question...
+
+website
+discord
+Knowledge Base
+Knowledge Base
+Give your agent product knowledge
+
+Add content your agent can reference when answering questions.
+​
+Sources
+Source	Best for	Updates
+Files	PDFs, manuals, docs	Manual re-upload
+Website	Public docs, help centers	Manual re-crawl
+Notion	Internal wikis, frequently updated content	Live (always current)
+​
+How it Works
+User asks a question
+Crow searches your knowledge base for relevant content
+Agent uses that content to formulate an accurate answer
+This is called RAG (Retrieval-Augmented Generation).
+​
+Combining Sources
+Use multiple sources together:
+Files for product manuals
+Website for your public documentation
+Notion for internal procedures
+Files
+Upload documents
+Website
+Crawl your site
+Notion
+Connect workspace
+Page Navigation
+Files
+Ask a question...
+
+website
+discord
+Knowledge Base
+Files
+Upload documents to your knowledge base
+
+Upload documents for your agent to reference.
+​
+Supported Formats
+Format	Extensions
+PDF	.pdf
+Word	.docx
+Text	.txt, .md
+Excel	.xlsx, .xls, .csv
+​
+Upload
+Drag and drop files or click to browse. Multiple files supported.
+​
+Visual Processing
+Enable Visual Processing checkbox before uploading PDFs with:
+Screenshots or diagrams
+Complex tables
+Scanned documents
+Visual processing is slower but extracts content from images.
+​
+Upload Status
+Status	Meaning
+Queued	Waiting to process
+Processing	Being indexed
+Complete	Ready to use
+Failed	Check error message
+​
+Managing Files
+View all uploaded files in the document list. Click delete to remove a file (cannot be undone).
+​
+Tips
+Keep files under 50MB for fastest processing
+Use descriptive filenames
+Remove unnecessary pages before upload
+Test in Sandbox after adding content
+Knowledge Base
+Website
+Ask a question...
+
+website
+discord
+Knowledge Base
+Website
+Crawl and index your website
+
+Automatically crawl your website so your agent can reference its content.
+​
+Setup
+Enter your website URL (e.g., https://docs.yourcompany.com)
+Click Ingest
+Crow crawls linked pages on the same domain
+​
+What Gets Crawled
+Included:
+Publicly accessible pages
+Pages linked from starting URL
+Same domain only
+Not included:
+Password-protected pages
+Pages blocked by robots.txt
+External domains
+JavaScript-rendered content
+​
+Re-indexing
+When content changes:
+Go to Knowledge Base
+Enter URL again
+Click Ingest
+Re-indexing replaces previous content.
+​
+Tips
+Use your docs subdomain for focused content (docs.yourcompany.com)
+Re-index after major content updates
+Test in Sandbox to verify content is accessible
+Files
+Integration
+Ask a question...
+
+website
+discordIntegration
+Integration
+Connect your agent to APIs and services
+
+Integrations let your agent take actions—not just answer questions.
+​
+Server-Side Tools
+These are tools that run on a server. The agent calls them, they execute, and results come back.
+Type	Best for	Setup
+Envoy CLI	Any backend — auto-generates and hosts an MCP server	npx @usecrow/envoy
+Connect Your MCP Server	You already have an MCP server deployed	Enter URL in dashboard
+OpenAPI	You have an OpenAPI/Swagger spec	Upload spec file
+Start with Envoy if you don’t have an MCP server yet. It reads your code and generates one for you.
+​
+Client-Side Tools
+Tools that run in the user’s browser. The agent calls them, the widget executes them locally.
+Type	Best for
+Client-Side Tools	Browser actions (navigation, UI updates, local data)
+Tool Renderers	Custom UI for tool results (charts, tables)
+​
+External MCP Servers
+Third-party MCP servers that you connect to (not your own backend).
+Type	Best for
+MCP Servers	Third-party services (Notion, databases, etc.)
+​
+Example Actions
+Server-Side (OpenAPI or MCP):
+Check order status
+Create support tickets
+Look up customer info
+Process refunds
+Client-Side:
+Navigate to a page
+Open a modal
+Copy text to clipboard
+External MCP:
+Search Notion pages
+Query external databases
+Envoy CLI
+Auto-generate an MCP server from your code
+OpenAPI
+Connect your REST API via spec file
+Connect Your MCP Server
+Point Crow at your existing MCP server
+Client-Side Tools
+Browser-side tool handlers
+External MCP Servers
+Third-party MCP integrations
+Website
+Envoy CLI
+Ask a question...
+
+website
+discord
+ntegration
+Envoy CLI
+Auto-generate an MCP server from your backend codebase
+
+Envoy reads your backend code, generates a complete MCP server, and deploys it to Crow — so your agent can call your API without you writing any MCP code.
+No MCP knowledge required. Envoy analyzes your routes, schemas, and auth patterns, then builds and deploys a production-ready MCP server for you.
+​
+Quick Start
+export CROW_API_KEY=ck_...
+npx @usecrow/envoy
+Run this from the root directory that contains your project folders (backend, frontend, etc.). Envoy will ask which directories are relevant before it starts.
+​
+Get Your API Key
+Go to app.usecrow.com → Tools
+Click Generate Envoy Key
+Copy the ck_... key
+​
+Commands
+
+Generate (default)
+
+Fix / Iterate
+
+Deploy
+npx @usecrow/envoy
+Command	What it does
+generate	Reads your codebase, generates an MCP server from scratch
+fix	Loads your existing MCP server and iterates on it (add tools, fix bugs)
+deploy	Deploys the latest saved version to production
+​
+Options
+Flag	Description
+--api-key <key>	Crow API key (alternative to CROW_API_KEY env var)
+--ci	CI mode — structured JSON output on stdout
+--dirs <a,b,c>	Comma-separated directories to scan (CI mode, skips interactive prompt)
+--help, -h	Show help
+--version, -v	Show version
+​
+How It Works
+1. npx @usecrow/envoy
+2. Envoy scans your project directories
+3. AI agent analyzes routes, schemas, auth patterns
+4. Generates a complete MCP server (server.py + requirements.txt)
+5. Saves to Crow with versioning
+6. Deploy when ready → your agent can now call your API
+​
+What Envoy Generates
+Envoy produces a FastMCP server that wraps your API endpoints as MCP tools. For example, if your backend has:
+@app.get("/api/orders/{order_id}")
+async def get_order(order_id: str):
+    ...
+
+@app.post("/api/orders/{order_id}/cancel")
+async def cancel_order(order_id: str):
+    ...
+Envoy generates:
+from fastmcp import FastMCP
+
+mcp = FastMCP("My Backend")
+
+@mcp.tool()
+async def get_order(order_id: str) -> dict:
+    """Look up an order by ID. Returns order details including status and total."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"{API_BASE_URL}/api/orders/{order_id}", ...)
+        return response.json()
+
+@mcp.tool()
+async def cancel_order(order_id: str) -> dict:
+    """Cancel a pending order."""
+    async with httpx.AsyncClient() as client:
+        response = await client.post(f"{API_BASE_URL}/api/orders/{order_id}/cancel", ...)
+        return response.json()
+​
+Workflow
+​
+First Time: Generate
+export CROW_API_KEY=ck_...
+npx @usecrow/envoy
+Select which directories to scan
+Envoy reads your code and generates an MCP server
+Review the generated tools in a conversation loop
+When satisfied, the server is saved to Crow
+​
+Iterate: Fix
+npx @usecrow/envoy fix
+Loads your existing MCP server and lets you make changes:
+“Add a tool for the /api/users endpoint”
+“Fix the auth header on the cancel_order tool”
+“Remove the get_all_orders tool”
+​
+Ship: Deploy
+npx @usecrow/envoy deploy
+Deploys the latest saved version. Your Crow agent immediately starts using the new tools.
+​
+CI Mode
+For automated pipelines, use --ci for structured JSON output:
+CROW_API_KEY=ck_... npx @usecrow/envoy --ci --dirs backend,shared
+This skips interactive prompts and outputs JSON to stdout.
+​
+Environment Variables
+Variable	Required	Description
+CROW_API_KEY	Yes	Your Crow Envoy API key (ck_...)
+CROW_API_URL	No	Override API URL (for development only)
+​
+Envoy vs Manual MCP Setup
+Envoy	Manual (Server-Side MCP)
+Setup time	Minutes	Hours
+MCP knowledge needed	None	Yes
+Hosting	Crow hosts it for you	You host your own server
+Updating	npx @usecrow/envoy fix	Edit code, redeploy
+Best for	Getting started fast, standard REST APIs	Custom logic, complex auth, full control
+Start with Envoy to get tools working quickly. If you need more control later, you can always switch to a self-hosted MCP server.
+Server-Side MCP
+Self-hosted MCP server setup (manual approach)
+MCP Authentication
+Auth patterns for MCP servers
+Integration
+OpenAPI
+Ask a question...
+
+website
+discord
+
+erver-Side Tools
+OpenAPI Authentication
+Configure API authentication for your agent
+
+How Crow authenticates when calling your API.
+​
+Auth Types
+Type	Use Case	Header Sent
+API Key	Static server-to-server auth	X-API-Key: your-key
+Bearer Token	OAuth/static token	Authorization: Bearer token
+JWT Forward	Per-user actions	Authorization: Bearer <user-jwt>
+​
+API Key
+Your agent sends a static key in a custom header.
+OpenAPI spec:
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+security:
+  - ApiKeyAuth: []
+Dashboard config:
+Select API Key
+Enter header name (X-API-Key)
+Enter your key
+​
+Bearer Token
+Your agent sends a static token in the Authorization header.
+OpenAPI spec:
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+security:
+  - BearerAuth: []
+Dashboard config:
+Select Bearer Token
+Enter your token
+​
+JWT Forward
+Your agent forwards the user’s Crow identity token to your API. This enables user-specific actions like “check my orders” or “cancel my subscription.”
+This is not your app’s session JWT. It’s a Crow-scoped identity token your backend mints with CROW_VERIFICATION_SECRET. See Identity Verification.
+How it works:
+1. Your backend mints a Crow identity token (JWT signed with Crow secret)
+2. Frontend passes it to widget: window.crow('identify', { token })
+3. When calling your API, Crow forwards that same token
+4. Your API verifies it (same secret) and identifies the user
+OpenAPI spec:
+components:
+  securitySchemes:
+    UserJWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - UserJWT: []
+
+paths:
+  /my/orders:
+    get:
+      operationId: getMyOrders
+      summary: Get user's orders
+Dashboard config:
+Select JWT Forward
+No additional config—token comes from widget user
+Your API must verify the token:
+
+Node.js
+
+Python
+const jwt = require('jsonwebtoken')
+
+function authMiddleware(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1]
+  
+  try {
+    const payload = jwt.verify(token, process.env.CROW_VERIFICATION_SECRET)
+    req.user = { id: payload.user_id, email: payload.email }
+    next()
+  } catch {
+    res.status(401).json({ error: 'Invalid token' })
+  }
+}
+
+app.get('/my/orders', authMiddleware, async (req, res) => {
+  const orders = await db.orders.findMany({ where: { userId: req.user.id } })
+  res.json(orders)
+})
+JWT Forward only works for authenticated widget users. Anonymous users won’t have a token to forward.
+​
+Which to Use?
+Scenario	Auth Type
+All requests use same credentials	API Key or Bearer
+User-specific actions (my orders, my account)	JWT Forward
+Public API, no auth needed	None
+​
+Troubleshooting
+Issue	Solution
+401 errors	Check secret matches, verify token not expired
+Tools not showing for users	JWT Forward requires authenticated users
+Double path prefix (/api/api/)	Put prefix in Base URL OR paths, not both
+Multi-Subdomain Endpoints
+Route API calls to different subdomains with separate credentials
+OpenAPI
+Connect Your MCP Server
+Ask a question...
+
+website
+discord
+Server-Side Tools
+Connect Your MCP Server
+Point Crow at an MCP server you already have running
+
+If you already have an MCP server deployed, connect it to Crow so your agent can use its tools.
+Don’t have an MCP server yet? Use Envoy to auto-generate one from your codebase in minutes — no MCP knowledge needed.
+​
+Connect in Dashboard
+Go to Integration → Server-Side Tools
+Enter your server details:
+Field	Description	Example
+Name	Display name	my-backend
+URL	Your MCP server endpoint	https://mcp.yourapp.com/mcp
+Transport	Streamable HTTP (recommended) or SSE	Streamable HTTP
+Headers	Optional auth headers	Authorization: Bearer sk-...
+Click Test Connection — Crow will connect and discover your tools
+Click Save
+Go to Actions to enable the tools you want the agent to use
+​
+Identity Headers
+Forward end-user identity to your MCP server so tools can return user-specific data.
+Under Header Mappings, add mappings like:
+Header	Source	What gets sent
+X-User-ID	identity.user_id	The logged-in user’s ID
+X-Tenant-ID	identity.tenant_id	Custom claim from your identity JWT
+Crow resolves these from the user’s identity token and sends them as HTTP headers on every request to your MCP server.
+Identity headers only work for authenticated users. Set up Identity Verification first.
+For the full auth chain (service keys, identity forwarding, backend middleware), see Server-Side MCP Authentication.
+​
+Managing Your Server
+Sync Tools — Re-discover tools after updating your server
+Enable/Disable Tools — Toggle individual tools in Actions
+Edit — Change URL, transport, or headers
+Delete — Remove the connection entirely
+​
+Troubleshooting
+Issue	Solution
+Connection failed	Verify URL is reachable, check transport type matches your server
+Tools not appearing	Click Sync Tools, check server logs
+Agent not using tools	Enable tools in Actions, make sure tool descriptions are clear
+401 errors	Check auth headers, see Authentication guide
+Timeout	Ensure your MCP server responds within 10 seconds
+Envoy CLI
+Auto-generate an MCP server from your code
+Authentication
+Service keys, identity headers, and the full auth chain
+OpenAPI Authentication
+Server-Side MCP Authentication
+Ask a question...
+
+website
+discord
+
+Server-Side Tools
+Server-Side MCP Authentication
+Service keys, identity headers, and how the full auth chain works
+
+This page explains exactly how authentication works when Crow calls your MCP server, and how your MCP server authenticates with your own backend API. Every header, every token, every hop.
+​
+The Auth Chain
+There are three hops in the full chain. Here’s what happens at each one:
+┌─────────┐         ┌──────────────┐         ┌────────────┐         ┌──────────────┐
+│  Widget  │───(1)──→│ Crow Backend │───(2)──→│ MCP Server │───(3)──→│ Your Backend │
+│ (browser)│         │              │         │  (yours)   │         │    API       │
+└─────────┘         └──────────────┘         └────────────┘         └──────────────┘
+​
+Hop 1: Widget → Crow Backend
+The widget sends the user’s identity token (a JWT your backend minted) with every chat message.
+What	Value
+Token	Identity JWT (signed with your Crow verification secret)
+Sent as	identity_token field in the chat request body
+Validated by	Crow backend using your product’s verification secret
+Purpose	Proves who the end user is
+This is the standard Identity Verification flow. If you haven’t set it up, users are treated as anonymous and identity headers won’t be available.
+​
+Hop 2: Crow Backend → Your MCP Server
+When Crow connects to your MCP server to execute tools, it sends three types of headers:
+Header	Source	Example Value
+X-Service-Key	Auto-injected from your product’s service key	HCF8nVjR8Y...
+Static headers	Whatever you configured in the dashboard	Authorization: Bearer sk-...
+Identity headers	Resolved from header mappings (see below)	X-User-ID: user_456
+Your MCP server automatically receives the service key — Crow reads it from your product config and injects it into every request. You don’t need to configure anything for this to happen.
+​
+Hop 3: Your MCP Server → Your Backend API
+Your MCP server wraps your existing backend API. When a tool executes, it calls your API endpoints to actually do the work (query your database, create records, etc.).
+Your backend API already has auth — Clerk, Auth0, Firebase, API keys, whatever you use. The MCP server can’t use those because it’s not a user. It’s a service acting on behalf of users.
+The solution: your backend adds a second auth path that accepts the service key. When the service key is present and valid, your backend trusts the request and reads scoping context (user ID, tenant ID) from headers instead of from a user JWT.
+What	Value
+Header	X-Service-Key
+Value	The same service key from hop 2, forwarded by your MCP server
+Validated by	Your backend’s auth middleware
+Purpose	Proves the request is from a trusted service (your MCP server, called by Crow)
+Your existing user auth (Clerk, Auth0, Firebase, etc.) stays completely unchanged. The service key adds a second auth path alongside it — it doesn’t replace anything.
+​
+Service Keys
+A service key is a shared secret that lets your MCP server authenticate with your backend API. Think of it like a Stripe secret key — Crow generates it, you copy it to your backend.
+​
+How It Works
+Crow dashboard (Deploy → API Keys)
+    │
+    ▼
+Crow generates and stores the service key
+    │
+    ├──→ Crow auto-injects it as X-Service-Key header
+    │    when calling your MCP server (Hop 2)
+    │
+    └──→ You copy it from the dashboard and add it to
+         your backend's .env file (for Hop 3 validation)
+The key lives in two places:
+Where	Env Var	Purpose
+Your MCP server	Received automatically via X-Service-Key header from Crow	Forwarded to your backend API
+Your backend API	MCP_SERVICE_KEY in .env	Validates incoming requests from the MCP server
+Crow is the source of truth. You never generate the key yourself.
+​
+Where to Find Your Service Key
+Go to Deploy → API Keys in the Crow dashboard
+Copy the Service Key
+Add it to your backend’s .env:
+MCP_SERVICE_KEY=HCF8nVjR8YON5eBzlMHuTqO8IwD3c0DSynVnTKq5/80=
+​
+Adding Service Key Auth to Your Backend
+Add a ~15-line middleware alongside your existing auth. This does not replace your current auth — it adds a second path.
+
+Python (FastAPI)
+
+Node.js (Express)
+import os, hmac
+from fastapi import Request, HTTPException
+
+SERVICE_KEY = os.environ.get("MCP_SERVICE_KEY", "")
+
+async def verify_auth(request: Request):
+    """Dual-path auth: service key (MCP server) OR user JWT (browsers).
+
+    Path 1: Service key present → trusted service, read user from headers
+    Path 2: No service key → normal user auth (Clerk, Auth0, etc.)
+    """
+    # Path 1: Service key (from MCP server via Crow)
+    service_key = request.headers.get("x-service-key")
+    if service_key and SERVICE_KEY:
+        if hmac.compare_digest(service_key, SERVICE_KEY):
+            # Trusted — read user context from headers
+            request.state.user_id = request.headers.get("x-user-id")
+            request.state.tenant_id = request.headers.get("x-tenant-id")
+            request.state.auth_type = "service_key"
+            return
+
+    # Path 2: Normal user auth (your existing flow, unchanged)
+    authorization = request.headers.get("authorization", "")
+    if authorization.startswith("Bearer "):
+        token = authorization.removeprefix("Bearer ")
+        claims = await verify_user_jwt(token)  # your existing function
+        request.state.user_id = claims.get("user_id")
+        request.state.tenant_id = claims.get("tenant_id")
+        request.state.auth_type = "user_jwt"
+        return
+
+    raise HTTPException(status_code=401, detail="Unauthorized")
+Key detail: When the service key is present, your backend trusts the scoping headers (X-User-ID, X-Tenant-ID, etc.) because the caller has proven it’s a trusted service. Without the service key, those headers are ignored and normal user auth applies.
+Always use constant-time comparison (hmac.compare_digest in Python, crypto.timingSafeEqual in Node) to prevent timing attacks. Never use == to compare secrets.
+​
+Your MCP Server — Forwarding the Key
+Your MCP server receives X-Service-Key from Crow automatically. It just needs to include it when calling your backend:
+import os
+import httpx
+from fastmcp import FastMCP
+from fastmcp.dependencies import Depends, CurrentHeaders
+
+mcp = FastMCP("My Backend")
+
+# Your backend API (not Crow's)
+API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
+
+async def get_api_client(headers: dict = CurrentHeaders()) -> httpx.AsyncClient:
+    """HTTP client that forwards the service key to your backend."""
+    key = headers.get("x-service-key", "")
+    return httpx.AsyncClient(
+        base_url=API_BASE,
+        headers={
+            "Content-Type": "application/json",
+            "X-Service-Key": key,          # Forward to your backend
+            "X-User-ID": headers.get("x-user-id", ""),    # Forward user context
+            "X-Tenant-ID": headers.get("x-tenant-id", ""),
+        },
+        timeout=30.0,
+    )
+
+@mcp.tool()
+async def get_order(
+    order_id: str,
+    client: httpx.AsyncClient = Depends(get_api_client),
+) -> dict:
+    """Look up an order."""
+    resp = await client.get(f"/api/orders/{order_id}")
+    resp.raise_for_status()
+    return resp.json()
+For local development, you can also set SERVICE_KEY as an env var on the MCP server as a fallback:
+key = os.environ.get("SERVICE_KEY", "") or headers.get("x-service-key", "")
+In production, the header from Crow is the primary source.
+​
+Identity Headers
+Identity headers let your MCP server (and your backend) know who the end user is. Crow extracts claims from the user’s identity token and sends them as HTTP headers.
+​
+How Identity Flows Through the Chain
+1. Your backend mints an identity JWT for the widget:
+   { "user_id": "user_456", "email": "alice@example.com", "tenant_id": "t_789" }
+
+2. Widget sends it to Crow with every chat message
+
+3. Crow decodes the JWT and has the claims available
+
+4. For each header mapping you configured, Crow resolves the value:
+   identity.user_id    → "user_456"
+   identity.email      → "alice@example.com"
+   identity.tenant_id  → "t_789"
+
+5. Crow sends these as HTTP headers to your MCP server:
+   X-User-ID: user_456
+   X-Email: alice@example.com
+   X-Tenant-ID: t_789
+
+6. Your MCP server forwards them to your backend API
+​
+Configuring Header Mappings
+In the dashboard, under Integration → Server-Side MCP → Header Mappings, add mappings:
+Header Name	Source	What It Sends
+X-User-ID	identity.user_id	The logged-in user’s ID
+X-Email	identity.email	The user’s email
+X-Tenant-ID	identity.tenant_id	Custom claim from your JWT
+X-Product-ID	product.id	The Crow product ID
+​
+Available Sources
+identity.* — Any claim from the user’s identity JWT:
+Source	Value
+identity.user_id	User ID (from user_id claim)
+identity.email	Email (from email claim)
+identity.name	Name (from name claim)
+identity.<custom>	Any custom claim you include when minting the JWT
+Identity claims are only available for authenticated users. If the user hasn’t been identified via Identity Verification, identity headers won’t be sent.
+product.* — Fields from the Crow product configuration:
+Source	Value
+product.id	The product ID
+product.name	The product display name
+product.organization_id	The org that owns this product
+​
+Reading Identity Headers in Your MCP Server
+
+Python (FastMCP)
+
+Node.js
+from fastmcp.dependencies import Depends, CurrentHeaders
+
+async def get_user_id(headers: dict = CurrentHeaders()) -> str:
+    """Read user ID forwarded by Crow."""
+    return headers.get("x-user-id", "")
+
+@mcp.tool()
+async def get_my_orders(
+    user_id: str = Depends(get_user_id),
+) -> dict:
+    """Get orders for the current user."""
+    if not user_id:
+        return {"error": "User not authenticated"}
+    return await db.orders.find_by_user(user_id)
+​
+Putting It All Together
+Here’s the complete picture: Crow calls your MCP server, which calls your backend API, which serves user-specific data.
+Dashboard configuration:
+Server-Side MCP:
+  Name: my-backend
+  URL: https://mcp.yourapp.com/mcp
+  Transport: Streamable HTTP
+
+Header Mappings:
+  X-User-ID    ← identity.user_id
+  X-Tenant-ID  ← identity.tenant_id
+Your backend .env:
+MCP_SERVICE_KEY=HCF8nVjR8YON5eBzlMHuTqO8IwD3c0DSynVnTKq5/80=
+Your MCP server:
+import os
+import httpx
+from fastmcp import FastMCP
+from fastmcp.dependencies import Depends, CurrentHeaders
+
+mcp = FastMCP("My Backend")
+API_BASE = os.environ.get("API_BASE_URL", "https://api.yourapp.com")
+
+async def get_api_client(headers: dict = CurrentHeaders()) -> httpx.AsyncClient:
+    return httpx.AsyncClient(
+        base_url=API_BASE,
+        headers={
+            "Content-Type": "application/json",
+            "X-Service-Key": headers.get("x-service-key", ""),
+            "X-User-ID": headers.get("x-user-id", ""),
+            "X-Tenant-ID": headers.get("x-tenant-id", ""),
+        },
+        timeout=30.0,
+    )
+
+@mcp.tool()
+async def get_my_orders(
+    client: httpx.AsyncClient = Depends(get_api_client),
+) -> dict:
+    """Get the current user's recent orders."""
+    resp = await client.get("/api/orders/mine")
+    resp.raise_for_status()
+    return resp.json()
+Your backend middleware (see Adding Service Key Auth above).
+What happens when a user asks “show me my orders”:
+1. Widget → Crow:       identity_token (JWT with user_id: "user_456")
+2. Crow validates JWT, extracts user_id
+3. Crow → MCP server:   X-Service-Key: HCF8n..., X-User-ID: user_456
+4. MCP server → Your backend: X-Service-Key: HCF8n..., X-User-ID: user_456
+5. Your backend validates service key ✓, reads X-User-ID
+6. Your backend queries orders for user_456
+7. Returns orders → MCP server → Crow → Widget → User sees their order list
+​
+Edge Cases
+Scenario	What Happens
+Anonymous user (no identity token)	Identity headers are not sent. Your MCP server receives the service key but no user context. Tools still work for non-user-specific actions.
+Service key not set on product	X-Service-Key header is not sent. Your MCP server won’t be able to authenticate with your backend.
+Identity claim doesn’t exist	If a header mapping references a claim not in the JWT (e.g., identity.tenant_id but you didn’t include tenant_id when minting), that header is simply not sent. No error.
+MCP server is down	Crow surfaces an error to the user: “Could not connect to the MCP server.” The agent continues without those tools.
+​
+Security Checklist
+Never expose your service key client-side. It’s a server-to-server secret between your MCP server and your backend.
+Always validate the service key in your backend middleware.
+Use constant-time comparison for secret validation — never ==.
+Set up Identity Verification if your tools need to know who the user is.
+Use HTTPS in production for your MCP server URL.
+​
+Troubleshooting
+Issue	Cause	Fix
+Your backend returns 401	Service key mismatch or not set	Copy the service key from Crow dashboard → Deploy → API Keys and add to your backend’s .env
+Identity headers are empty	User not authenticated in the widget	Set up Identity Verification, ensure frontend calls identify()
+X-Service-Key header missing	No service key on the product	Check Deploy → API Keys in dashboard
+MCP server not receiving headers	Wrong transport	Use Streamable HTTP (not SSE) for header support
+Custom claims not forwarded	Claim not in JWT	Ensure your backend includes the claim when minting the identity token
+Connect Your MCP Server
+Multi-Subdomain Endpoints
+Ask a question...
+
+website
+discord
+
+
+ntegration
+Multi-Subdomain Endpoints
+Route API calls to different subdomains with separate credentials
+
+Use multi-subdomain endpoints when your backend serves multiple workspaces at different subdomains — each with its own base URL and auth token — but shares the same OpenAPI spec.
+Example: A customer has workspace1.app.com, workspace2.app.com, and workspace3.app.com. Each subdomain has its own bearer token, but the API shape is identical.
+​
+How It Works
+1. You configure subdomain → base URL + auth mappings
+2. When embedding the widget, pass a `subdomain` identifier
+3. Crow routes API calls to the matching base URL with the matching credentials
+If no subdomain is passed, Crow falls back to the default base URL and auth config — fully backward compatible.
+​
+Configure via Dashboard
+In Integration → OpenAPI, scroll to Multi-Subdomain Endpoints:
+Click Configure (or Show if configs already exist)
+Enter a subdomain key (e.g., workspace1)
+Enter the base URL (e.g., https://workspace1.app.com/api)
+Select the auth type and enter credentials
+Click Save
+Repeat for each subdomain
+​
+Configure via API
+For bulk setup, use the API to send all subdomain configs at once.
+​
+Bulk Merge (Recommended)
+Adds new subdomains and updates existing ones without removing any.
+curl -X PATCH https://api.usecrow.org/api/products/YOUR_PRODUCT_ID/endpoint-configs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "configs": {
+      "workspace1": {
+        "api_base_url": "https://workspace1.app.com/api",
+        "api_auth_config": {
+          "auth_type": "bearer",
+          "token": "token-for-ws1"
+        }
+      },
+      "workspace2": {
+        "api_base_url": "https://workspace2.app.com/api",
+        "api_auth_config": {
+          "auth_type": "bearer",
+          "token": "token-for-ws2"
+        }
+      }
+    }
+  }'
+Response:
+{
+  "success": true,
+  "added": 2,
+  "updated": 0,
+  "total": 2
+}
+​
+Replace All
+Replaces the entire config set. Any subdomain not included will be removed.
+curl -X PUT https://api.usecrow.org/api/products/YOUR_PRODUCT_ID/endpoint-configs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "configs": {
+      "workspace1": {
+        "api_base_url": "https://workspace1.app.com/api",
+        "api_auth_config": { "auth_type": "bearer", "token": "token-for-ws1" }
+      }
+    }
+  }'
+​
+Upsert Single
+Add or update a single subdomain:
+curl -X PUT https://api.usecrow.org/api/products/YOUR_PRODUCT_ID/endpoint-configs/workspace1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "api_base_url": "https://workspace1.app.com/api",
+    "api_auth_config": { "auth_type": "bearer", "token": "token-for-ws1" }
+  }'
+​
+Delete Single
+curl -X DELETE https://api.usecrow.org/api/products/YOUR_PRODUCT_ID/endpoint-configs/workspace1
+​
+List All
+curl https://api.usecrow.org/api/products/YOUR_PRODUCT_ID/endpoint-configs
+Tokens are masked in list responses (only last 4 characters shown).
+​
+Pass Subdomain to Widget
+Tell the widget which subdomain to use so Crow routes API calls to the correct endpoint.
+Script Tag
+React SDK
+Add data-subdomain to the script tag:
+<script
+  src="https://api.usecrow.org/static/crow-widget.js"
+  data-api-url="https://api.usecrow.org"
+  data-product-id="YOUR_PRODUCT_ID"
+  data-subdomain="workspace1"
+></script>
+Attribute	Required	Description
+data-subdomain	No	Subdomain key matching a configured endpoint
+You can set subdomain dynamically based on the logged-in user’s workspace, the current URL, or any other runtime value.
+​
+Resolution Logic
+Scenario	Behavior
+subdomain passed and found in config	Uses that subdomain’s base URL + auth
+subdomain passed but not found	Returns an error (no guessing)
+No subdomain passed	Falls back to default base URL + auth
+Existing products that don’t use subdomains are unaffected — nothing changes unless you explicitly pass a subdomain.
+​
+Supported Auth Types
+Each subdomain config supports the same auth types as the main connection:
+Type	Config
+Bearer Token	{ "auth_type": "bearer", "token": "..." }
+API Key	{ "auth_type": "api_key", "header_name": "X-API-Key", "token": "..." }
+None	{ "auth_type": "none" }
+​
+Troubleshooting
+Issue	Solution
+”Subdomain not found” error	Check the subdomain key matches exactly (case-sensitive)
+API calls hitting wrong URL	Verify data-subdomain / subdomain prop is set
+Configs not showing in dashboard	Refresh the page — configs auto-load on mount
+PATCH not adding configs	Ensure body uses { "configs": { ... } } format
+Server-Side MCP Authentication
+Client-Side Tools
+Ask a question...
+
+website
+discord
+Integration
+Client-Side Tools
+Register tools that run in the user’s browser
+
+Client-side tools execute in the browser instead of on a server. You register handlers via window.crow('registerTools', {...}), and the agent calls them like any other tool — but the work happens client-side.
+​
+When to Use
+Use client-side tools for browser-only actions:
+CSV/file downloads
+Page navigation
+DOM manipulation
+Accessing client-side state (stores, localStorage)
+Use server-side tools (OpenAPI/MCP) for API calls, database queries, and anything that requires backend access.
+​
+Setup
+​
+1. Register Handlers
+In your app code, register functions the widget can call:
+window.crow('registerTools', {
+  exportListToCSV: async ({ fileName }) => {
+    // ... build CSV from app state
+    downloadCsv(data, fileName || 'export');
+    return { status: 'success', rows_exported: data.length };
+  }
+});
+​
+2. Upload Tool Definitions
+On the Actions page, upload a JSON definition so the agent knows the tool exists:
+[{
+  "name": "exportListToCSV",
+  "description": "Export the current list to a CSV file. Downloads directly to the user's browser.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "fileName": { "type": "string", "description": "Name for the CSV file" }
+    },
+    "required": []
+  }
+}]
+Good descriptions help the agent decide when to use the tool.
+​
+Handler Contract
+Each handler receives an args object matching the tool’s parameters schema and must return an object.
+Outcome	Return value
+Success	{ status: "success", ...data }
+Failure	{ status: "error", error: "message" }
+The returned object is sent back to the agent so it can incorporate the result into its response.
+​
+Showing a Loading State
+For tools that take a few seconds, call setToolStatus to show a spinning indicator with a status message inside the widget. Clear it when done.
+window.crow('registerTools', {
+  createAndPopulateList: async ({ listName }) => {
+    window.crow('setToolStatus', 'Creating list...');
+    await createList(listName);
+
+    window.crow('setToolStatus', 'Adding leads...');
+    await addLeads();
+
+    window.crow('setToolStatus', ''); // clear
+    return { status: 'success' };
+  }
+});
+The status appears above the input box with a spinner while non-empty, and disappears when set to ''.
+​
+How It Works
+
+
+
+
+
+
+
+Crow Backend
+CrowCopilot
+User
+Crow Backend
+CrowCopilot
+User
+Runs registered handler in browser
+"Export this list as CSV"
+POST /chat/message
+SSE tool_call (exportListToCSV)
+Tool result
+SSE assistant message
+"Done — exported 142 rows"
+User asks — The message is sent to the agent
+Agent picks the tool — Based on the tool definition
+Widget runs the handler — Executes your registered function client-side
+Result flows back — The agent sees the return value and responds
+Tool Renderers
+Render custom UI for tool results
+Embed Widget
+Full installation guide
+Multi-Subdomain Endpoints
+Tool Renderers
+Ask a question...
+
+website
+discord
+
+tegration
+Tool Renderers
+Render custom components inline when server-side tools complete
+
+Tool renderers let you display custom UI — like charts, tables, or cards — directly inside the chat when a server-side tool returns data.
+​
+How It Works
+
+
+
+
+
+
+
+Your API
+Crow Backend
+CrowCopilot
+User
+Your API
+Crow Backend
+CrowCopilot
+User
+toolRenderers["query_analytics_chart"]
+"Show me my mention rate chart"
+POST /chat/message
+POST /api/tools/analytics-chart
+{ chartType: "line", data: [...] }
+SSE tool_result
+Renders custom chart inline
+Agent calls a tool — The backend executes a server-side tool and returns structured data
+Result arrives via SSE — The tool_result event streams back with the tool name and result payload
+Widget checks toolRenderers — If a renderer exists for that tool name, it renders your component
+Custom component appears inline — Your chart/table/card renders directly below the tool call status
+​
+Setup
+​
+1. Define Your Renderers
+Create React components that accept { result, status } props:
+function MyChart({ result }: { result: unknown; status: string }) {
+  const data = result as { chartType: string; data: Array<{ date: string; value: number }> };
+  if (!data?.data) return null;
+  
+  return (
+    <div className="my-chart">
+      {/* Your chart component */}
+    </div>
+  );
+}
+​
+2. Pass to CrowCopilot
+import { CrowCopilot } from '@usecrow/ui';
+import '@usecrow/ui/styles.css';
+
+function App() {
+  return (
+    <CrowCopilot
+      productId="YOUR_PRODUCT_ID"
+      apiUrl="https://api.usecrow.org"
+      toolRenderers={{
+        query_analytics_chart: MyChart,
+        query_citation_chart: MyChart,
+        get_competitor_trends: MyChart,
+      }}
+    />
+  );
+}
+​
+Renderer Props
+Each renderer receives:
+Prop	Type	Description
+result	unknown	The full result payload from the tool execution
+status	string	Tool status: "complete" or "error"
+Renderers are only called when the tool completes successfully (status === "complete") and the result is not null. You don’t need to check for these conditions.
+​
+Example: Chart Renderer
+Here’s a full example rendering a Recharts line chart from analytics tool results:
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+
+function AnalyticsChart({ result }: { result: unknown; status: string }) {
+  const r = result as {
+    chartType: string;
+    title: string;
+    color: string;
+    data: Array<{ date: string; value: number }>;
+    currentValue: number | null;
+    unit: string;
+  } | null;
+
+  if (!r || r.chartType !== 'line' || !r.data?.length) return null;
+
+  return (
+    <div className="rounded-lg border p-3">
+      <h4 className="text-sm font-medium mb-2">{r.title}</h4>
+      {r.currentValue != null && (
+        <p className="text-xl font-bold">{r.currentValue}{r.unit}</p>
+      )}
+      <div style={{ height: 160 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={r.data}>
+            <XAxis dataKey="date" tick={{ fontSize: 10 }} />
+            <YAxis tick={{ fontSize: 10 }} />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke={r.color || '#6366f1'}
+              strokeWidth={2}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+}
+
+// Use the same renderer for multiple chart tools
+<CrowCopilot
+  productId="YOUR_PRODUCT_ID"
+  apiUrl="https://api.usecrow.org"
+  toolRenderers={{
+    query_analytics_chart: AnalyticsChart,
+    query_citation_chart: AnalyticsChart,
+    get_competitor_trends: AnalyticsChart,
+  }}
+/>
+​
+TypeScript
+Import the ToolRenderers type for type-safe renderer maps:
+import type { ToolRenderers } from '@usecrow/ui';
+
+const renderers: ToolRenderers = {
+  my_tool: ({ result, status }) => <MyComponent data={result} />,
+};
+​
+Without a Renderer
+When no toolRenderers entry exists for a tool, the widget shows the default behavior: a checkmark with the tool name and “done” status. Adding a renderer enhances this — it doesn’t replace the status indicator, it adds your component below it.
+Embed Widget
+Full installation guide
+Client-Side Tools
+Browser-side tool handlers
+Client-Side Tools
+External MCP Servers
+Ask a question...
+
+website
+discord
+
+ntegration
+External MCP Servers
+Connect third-party MCP servers to your agent
+
+Connect third-party MCP servers to give your agent access to external services like Notion, databases, and more.
+Looking to connect your own backend as an MCP server? See Server-Side MCP instead. This page is for connecting external MCP servers you don’t control.
+What are MCP tools? MCP is an open standard that lets AI agents connect to external services. By adding an MCP server, your Crow agent gains access to all tools that server exposes—no custom code required.
+Example use cases:
+Connect a database MCP server so your agent can query customer data
+Add a CRM server so your agent can look up and update contacts
+Integrate internal APIs that already have MCP endpoints
+​
+Add a Server
+Go to Integration
+Click Add Server
+Fill in:
+Field	Description
+Server Name	Friendly name (e.g., customer-api)
+Server URL	MCP endpoint URL
+Transport	Streamable HTTP (recommended) or SSE
+Headers	Optional auth headers (Key: Value)
+Click Test Connection
+Save
+​
+Managing Servers
+Enable/Disable — Toggle without removing
+View Tools — Expand to see available tools
+Edit — Change URL, transport, headers
+Delete — Remove entirely
+​
+Configuring Tools
+After connecting, go to Actions to enable or disable individual tools for your agent. Only enabled tools will be available when your agent responds to users.
+​
+Pre-built Integrations
+Notion — Connect via Knowledge Base → Notion (uses MCP under the hood)
+Coming soon: Slack, GitHub, Google Drive
+​
+Troubleshooting
+Issue	Solution
+Connection failed	Verify URL, check headers, try other transport
+Tools not appearing	Expand server to trigger discovery
+Agent not using tools	Enable in Actions, test in Sandbox
+Tool Renderers
+Activity
+Ask a question...
+
+website
+discord
+Monitor
+Activity
+Monitor conversations
+
+View all conversations your agent has with users at app.usecrow.ai/conversations.
+​
+Layout
+Left panel — Conversation list with filters
+Right panel — Selected conversation details
+​
+Filters
+Filter	Options
+Date range	Start/end date
+Status	Success, Error
+Message count	Number of messages
+Search	Text search
+​
+Conversation Details
+​
+Chat Tab
+Full conversation as users see it:
+User messages
+Agent responses
+Tool calls and results
+Timestamps
+​
+Details Tab
+Field	Description
+Conversation ID	Unique identifier
+Duration	Start to end time
+Messages	Total count
+Tokens	Usage
+Cost	Estimated (if enabled)
+​
+Traces Tab
+Raw debugging data—useful for complex issues.
+​
+Tool Calls
+🔧 Calling: getOrderStatus
+   Parameters: {"orderId": "ORD-12345"}
+
+✅ Result: {"status": "shipped"}
+​
+Use Activity To
+Identify gaps — Questions agent can’t answer → add to knowledge base
+Spot issues — Errors, tool failures
+Track volume — Conversation trends over time
+​
+Export
+Click download button to export conversation data.
+External MCP Servers
+Ask a question...
+
+website
+discord
+

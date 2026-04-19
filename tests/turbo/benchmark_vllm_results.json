@@ -1,0 +1,11 @@
+{
+    "QuantTrio/Qwen3.5-2B-AWQ": {
+        "status": "SUCCESS",
+        "startup_latency": 0.0,
+        "generation_time": 0.37,
+        "total_time": 0.37,
+        "tps": 0.0,
+        "tokens": 0,
+        "text_preview": "Thinking (Turbo Mode)......"
+    }
+}

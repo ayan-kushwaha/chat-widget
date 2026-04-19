@@ -1,0 +1,5 @@
+{
+  "name": "Neural Graph Explorer",
+  "description": "A high-performance 3D force-directed graph visualization for complex neural networks and data relationships.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,46 @@
+===========================================================
+  CLUAIZ AI STUDIO "BRAIN" MODULE - DEEP RESEARCH REPORT
+===========================================================
+Date: March 8, 2026
+Focus: /dashboard/ai-studio/brain (Crawling, OCR, Files, APIs, UI, DB, Qdrant)
+
+Here is the exact standing of the Knowledge Base (Brain) architecture.
+
+✅ 1. WHAT IS ALREADY DONE & WORKING PERFECTLY
+-----------------------------------------------------------
+- 🗃️ Unified Knowledge Controller (`backend/src/modules/dashboard/knowledge.controller.ts`):
+  - Fetches and combines Websites (Site), Files (KnowledgeDocument), APIs (ApiSource), and Knowledge Docs (custom_text) efficiently. 
+  - Dynamic "Brain IQ" and Plan Limits calculation is mapped flawlessly to MongoDB.
+- 🗑️ Robust Data Deletion: `deleteKnowledgeSource` elegantly cleans up MinIO buckets, Vectors in Qdrant (via AI Engine), reverse-votes tags in MongoDB, and deletes records cleanly.
+- 🤖 AI Metadata Engine: `autoFillMetadata` and `autoTagSite` are routing properly to the Python AI Engine to generate Tags, Intent, and Descriptions using LLMs.
+- 🌐 Crawl System: Submits pages to Redis `crawlQueue`. The Python `crawl_service.py` functions correctly handle scraping.
+- 🎨 UI SourceCard: Fixed UI spacing, text truncation, duplicate title bugs, and added new sorting filters. The Socket.io integration exists (`knowledge_status_update`) for real-time progress.
+
+⚠️ 2. WHAT IS PENDING / NEEDS UI OR BACKEND WIRING
+-----------------------------------------------------------
+- 📄 A. OCR & File Processing (The "Qwen3.5-VL" Integration)
+  - Issue: You recently updated `test_qwen3.5vl4b.py` to test the new Qwen VL model. However, the `process-document` worker in the Backend (which picks up File Uploads from `embedQueue`) needs to properly route images to this Vision model for OCR before vectorizing it into Qdrant.
+  - Fix: We need to check if Node.js `upload` endpoint correctly sends unstructured file content (PDFs/Images) to a Python parser endpoint that uses `Qwen 3.5 VL`. 
+
+- 🔌 B. API Sources (Live Tools Syncing)
+  - Issue: The DB schema for API Sources exists (`models/ApiSource.js`), and the UI has the "API Sources" tab. However, the actual worker that polls these APIs on a cron-schedule and updates their data into Qdrant vectors is missing or incomplete. 
+  - Fix: Create a background worker that fetches from the saved API endpoints and upserts dynamic vectors.
+
+- 🧩 C. Qdrant Chunking & Embeddings Optimization
+  - Issue: We shifted the main LLM to Gemini, but `bge-m3:latest` (running on local GCP Ollama) is our only Local Embedding model. 
+  - Fix: Ensure the `knowledge/vectors` Python endpoint is rigorously chunking text (e.g., 500-1000 tokens) and batching requests to `bge-m3` before sending to Qdrant. A large PDF will crash Ollama if not chunked properly.
+
+🚨 3. POTENTIAL BACKEND ERRORS TO FIX 
+-----------------------------------------------------------
+- 🔄 Redis Queue Stalling: Inside `knowledge.controller.ts -> triggerCrawl`, if the Python Worker fails (e.g., Playwright timeout), the job might get stuck. We need robust error catching via Socket.io emits (`socket.emit("brain:progress", { status: 'failed' })`) from the worker.
+- 🌐 Node.js IPv6 Resolution: I noticed the backend has `engineUrl = engineUrl.replace('localhost', '127.0.0.1')`. This is good, but we must ensure `docker-compose.yml` networking in GCP routes `AI_ENGINE_URL=http://ai_engine:5000` securely without localhost hacks.
+
+🎯 4. NEXT IMMEDIATE ACTION PLAN (What we do right now)
+-----------------------------------------------------------
+1. OCR & PDF Pipeline: You should point me to `upload.routes.ts` or the Python worker that handles file ingestion so we can wire the OCR logic.
+2. API Source Worker: Let's create `api_sync_worker.ts` or an AI script that hits user APIs and stores them.
+3. Verify "Syncing...": Make sure the Python AI engine emits the `knowledge_status_update` socket event when Qdrant embedding finishes, so the frontend UI turns from "Syncing" to "Active".
+
+CONCLUSION:
+The foundation is 90% complete. The data layers (MongoDB, UI, Routers, Models) are integrated. The final 10% is solidifying the actual "Processing Loop" (Raw file -> Python OCR/Chunking -> Local Ollama Embedding -> Qdrant -> Socket.io Success Event to UI). 
+

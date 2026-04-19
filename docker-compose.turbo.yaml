@@ -1,0 +1,28 @@
+services:
+  vllm-turbo:
+    image: vllm/vllm-openai:latest
+    container_name: vllm-turbo
+    restart: always
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - VLLM_OFFLINE=1
+      - VLLM_USE_V1=0
+    ports:
+      - "8085:8000"
+    volumes:
+      - ./AI_Models:/app/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: >
+      --model /app/models/Qwen3-4B-AWQ
+      --quantization awq
+      --gpu-memory-utilization 0.7
+      --max-model-len 512
+      --enforce-eager
+      --trust-remote-code

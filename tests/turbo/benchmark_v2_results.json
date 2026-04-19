@@ -1,0 +1,29 @@
+{
+    "qwen3.5:0.8b": {
+        "status": "SUCCESS",
+        "startup_latency": 0.04,
+        "generation_time": 8.86,
+        "total_time": 8.89,
+        "tps": 11.29,
+        "tokens": 100,
+        "text_preview": "Thinking Process:\n\n1.  **Analyze the Request:**\n  ..."
+    },
+    "qwen3:4b": {
+        "status": "SUCCESS",
+        "startup_latency": -0.44,
+        "generation_time": 14.23,
+        "total_time": 13.8,
+        "tps": 7.03,
+        "tokens": 100,
+        "text_preview": "Okay, the user wants me to analyze a specific text..."
+    },
+    "qwen3.5:4b": {
+        "status": "SUCCESS",
+        "startup_latency": -1.61,
+        "generation_time": 33.5,
+        "total_time": 31.89,
+        "tps": 2.99,
+        "tokens": 100,
+        "text_preview": "Thinking Process:\n\n1.  **Analyze the Request:**\n  ..."
+    }
+}

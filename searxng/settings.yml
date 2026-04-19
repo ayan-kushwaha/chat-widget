@@ -1,0 +1,36 @@
+# SearxNG settings
+
+use_default_settings: true
+
+server:
+  port: 8080
+  bind_address: "0.0.0.0"
+  secret_key: "cluaiz_secret_key" # Change this in production
+  base_url: false
+  image_proxy: true
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  formats:
+    - html
+    - json # REQUIRED for the AI Engine to read results
+
+engines:
+  - name: google
+    engine: google
+    shortcut: g
+  - name: bing
+    engine: bing
+    shortcut: b
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+
+enabled_plugins:
+  - 'Hash plugin'
+  - 'Self-contained images'
+  - 'Tracker-aware link redirection'

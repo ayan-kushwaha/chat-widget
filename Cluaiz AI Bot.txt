@@ -1,0 +1,40 @@
+Bhai Aryan, ye tera "Cluaiz AI Bot" (India’s First Personal Business Pet) ka official technical roadmap aur documentation hai. Isko tu save kar le, ye humari future hardware company ki pehli blueprint hai. 🇮🇳🤖
+
+📘 Project: Cluaiz AI Bot (The Business Companion)
+1. Vision & Concept
+The Goal: Ek desktop-sized, cute, mobile robot jo businessman ka "Physical Assistant" hoga.
+
+Role-Switching: Ye sirf ek robot nahi, balki 12 alag "AI Specialists" (jaise Shreya for Sales, Ali for Tech) ka avatar hai.
+
+Target: Indian SMBs aur Freelancers jo ek mehangi team afford nahi kar sakte, wo ₹30,000 - ₹40,000 mein ek "AI Workforce" ghar le jayenge.
+
+2. Hardware Architecture (The Body)
+The Brain (NVIDIA Jetson Nano): 128-core GPU power jo complex AI models aur real-time face tracking ko makkhan ki tarah chalayega.
+
+Senses (Human-Like):
+
+Vision: Wide-angle camera with AI vision (YOLO/MediaPipe) logon ko pehchanne ke liye.
+
+Hearing: 4-6 Mic array jo aawaz ki direction pehchan sake.
+
+Touch: Capacitive sensors sir aur body par "Petting" feel ke liye.
+
+Balance: 6-axis Gyroscope dashboard par ya window par baithne ke liye.
+
+Display (Eyes): 2 OLED screens jo Emo-like 3D expressions aur 3D Particle Matrix dikhayengi.
+
+3. Software & AI Stack (The Soul)
+Local LLM (BitNet): Hum BitNet b1.58 ya quantized Llama models use karenge jo Jetson Nano par locally (bina internet ke) baatein kar sakein.
+
+The Display Matrix: Ek dynamic 3D Particle system jo AI ke emotions aur tasks ke hisaab se shape badlega (e.g., Radar for searching, Heart for happy).
+
+Real-time Voice: Gemini Live API (Cloud) aur Faster-Whisper (Local) ka hybrid combination seamless conversation ke liye.
+
+Memory: Qdrant Vector Database jo robot ko user ki har purani baat aur business data yaad dilayega.
+
+4. Costing & Business Strategy
+Prototype Cost: ₹25,000 - ₹30,000 per unit (Jetson Nano, sensors, 3D body).
+
+Selling Price: ₹35,000 - ₹45,000 (Market price of Emo in India is high, but ours adds business value).
+
+Marketing Hook: "Make in India" Business Assistant jo car dashboard se lekar office desk tak sath rahega.

@@ -1,0 +1,151 @@
+﻿docker : 
+/usr/local/lib/python3.10/dist-packages/torch/cuda/__init__.py:61: 
+FutureWarning: The pynvml package is deprecated. Please install 
+nvidia-ml-py instead. If you did not install pynvml directly, please 
+report this to the maintainers of the package that installed pynvml for 
+you.
+At line:1 char:1
++ docker exec cluaiz-turbo-engine python3 run_bench.py > ultimate_bench 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (/usr/local/lib/...pynvml fo 
+   r you.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  import pynvml  # type: ignore[import]
+2026-03-29 03:44:10.314 | INFO     | __main__:run_benchmark:7 - ≡ƒÅÄ∩╕Å 
+Starting Benchmark for: /app/models/Qwen3-4B-AWQ
+2026-03-29 03:44:11.266 | INFO     | src.engine_core:load_model:23 - 
+≡ƒÜÇ Loading MistralRS Runner (VRAM Optimized)...
+2026-03-29 03:44:11.270 | ERROR    | src.engine_core:load_model:40 - Γ¥î 
+Rocket Load Failed: Runner.__new__() got an unexpected keyword argument 
+'pa_gpu_mem_mb'
+2026-03-29 03:44:11.272 | ERROR    | src.engine_core:load_model:41 - 
+Traceback (most recent call last):
+  File "/app/src/engine_core.py", line 27, in load_model
+    self.mistralrs_runner = Runner(
+TypeError: Runner.__new__() got an unexpected keyword argument 
+'pa_gpu_mem_mb'
+
+/usr/local/lib/python3.10/dist-packages/awq/__init__.py:21: 
+DeprecationWarning: 
+I have left this message as the final dev message to help you transition.
+
+Important Notice:
+- AutoAWQ is officially deprecated and will no longer be maintained.
+- The last tested configuration used Torch 2.6.0 and Transformers 4.51.3.
+- If future versions of Transformers break AutoAWQ compatibility, please 
+report the issue to the Transformers project.
+
+Alternative:
+- AutoAWQ has been adopted by the vLLM Project: 
+https://github.com/vllm-project/llm-compressor
+
+For further inquiries, feel free to reach out:
+- X: https://x.com/casper_hansen_
+- LinkedIn: https://www.linkedin.com/in/casper-hansen-804005170/
+
+  warnings.warn(_FINAL_DEV_MESSAGE, category=DeprecationWarning, 
+stacklevel=1)
+/usr/local/lib/python3.10/dist-packages/torch/jit/_script.py:1488: 
+DeprecationWarning: `torch.jit.script` is deprecated. Please switch to 
+`torch.compile` or `torch.export`.
+  warnings.warn(
+2026-03-29 03:44:12.256 | INFO     | src.engine_core:load_model:45 - 
+ΓÜû∩╕Å Loading AutoAWQ Fallback (Stable Mode)...
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Replacing layers...:   0%|          | 0/36 [00:00<?, ?it/s]
+Replacing layers...:   3%|ΓûÄ         | 1/36 [00:00<00:05,  6.00it/s]
+Replacing layers...:   6%|Γûî         | 2/36 [00:00<00:05,  6.14it/s]
+Replacing layers...:   8%|Γûè         | 3/36 [00:00<00:05,  6.16it/s]
+Replacing layers...:  11%|Γûê         | 4/36 [00:00<00:05,  6.11it/s]
+Replacing layers...:  14%|ΓûêΓûì        | 5/36 [00:00<00:05,  6.15it/s]
+Replacing layers...:  17%|ΓûêΓûï        | 6/36 [00:00<00:04,  6.10it/s]
+Replacing layers...:  19%|ΓûêΓûë        | 7/36 [00:01<00:04,  6.08it/s]
+Replacing layers...:  22%|ΓûêΓûêΓûÅ       | 8/36 [00:01<00:04,  6.08it/s]
+Replacing layers...:  25%|ΓûêΓûêΓûî       | 9/36 [00:01<00:04,  6.15it/s]
+Replacing layers...:  28%|ΓûêΓûêΓûè       | 10/36 [00:01<00:04,  
+6.15it/s]
+Replacing layers...:  31%|ΓûêΓûêΓûê       | 11/36 [00:01<00:04,  
+6.19it/s]
+Replacing layers...:  33%|ΓûêΓûêΓûêΓûÄ      | 12/36 [00:01<00:03,  
+6.19it/s]
+Replacing layers...:  36%|ΓûêΓûêΓûêΓûî      | 13/36 [00:02<00:03,  
+6.21it/s]
+Replacing layers...:  39%|ΓûêΓûêΓûêΓûë      | 14/36 [00:02<00:03,  
+6.09it/s]
+Replacing layers...:  42%|ΓûêΓûêΓûêΓûêΓûÅ     | 15/36 [00:02<00:03,  
+5.93it/s]
+Replacing layers...:  44%|ΓûêΓûêΓûêΓûêΓûì     | 16/36 [00:02<00:03,  
+5.79it/s]
+Replacing layers...:  47%|ΓûêΓûêΓûêΓûêΓûï     | 17/36 [00:02<00:03,  
+5.94it/s]
+Replacing layers...:  50%|ΓûêΓûêΓûêΓûêΓûê     | 18/36 [00:02<00:02,  
+6.04it/s]
+Replacing layers...:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 19/36 [00:03<00:02,  
+6.10it/s]
+Replacing layers...:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 20/36 [00:03<00:02,  
+6.13it/s]
+Replacing layers...:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 21/36 [00:03<00:02,  
+6.09it/s]
+Replacing layers...:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 22/36 [00:03<00:02,  
+6.12it/s]
+Replacing layers...:  64%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 23/36 [00:03<00:02,  
+6.12it/s]
+Replacing layers...:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 24/36 [00:03<00:01,  
+6.12it/s]
+Replacing layers...:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 25/36 [00:04<00:01,  
+6.19it/s]
+Replacing layers...:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 26/36 
+[00:04<00:01,  6.22it/s]
+Replacing layers...:  75%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 27/36 
+[00:04<00:01,  6.21it/s]
+Replacing layers...:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 28/36 
+[00:04<00:01,  6.13it/s]
+Replacing layers...:  81%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê  | 29/36 
+[00:04<00:01,  6.19it/s]
+Replacing layers...:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 30/36 
+[00:04<00:00,  6.18it/s]
+Replacing layers...:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 31/36 
+[00:05<00:00,  6.13it/s]
+Replacing layers...:  89%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë | 32/36 
+[00:05<00:00,  6.18it/s]
+Replacing layers...:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 33/36 
+[00:05<00:00,  6.21it/s]
+Replacing layers...:  94%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 34/36 
+[00:05<00:00,  6.23it/s]
+Replacing layers...:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 35/36 
+[00:05<00:00,  6.22it/s]
+Replacing layers...: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 36/36 
+[00:05<00:00,  6.22it/s]
+Replacing layers...: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 36/36 
+[00:05<00:00,  6.13it/s]
+/usr/local/lib/python3.10/dist-packages/torch/jit/_script.py:365: 
+DeprecationWarning: `torch.jit.script_method` is deprecated. Please 
+switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+2026-03-29 03:44:50.833 | INFO     | src.engine_core:load_model:51 - ΓÜí 
+Torch Compile Activated.
+2026-03-29 03:44:50.833 | SUCCESS  | src.engine_core:load_model:54 - Γ£à 
+Fallback Loaded!
+2026-03-29 03:44:50.833 | INFO     | __main__:run_benchmark:15 - ≡ƒº¬ 
+Warming up engine...
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+2026-03-29 03:44:52.966 | INFO     | __main__:run_benchmark:18 - ≡ƒÜÇ 
+Running Performance Test...
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+
+==================================================
+≡ƒÜÇ ROCKET BENCHMARK RESULTS ≡ƒÜÇ
+==================================================
+Traceback (most recent call last):
+  File "/app/run_bench.py", line 46, in <module>
+    run_benchmark()
+  File "/app/run_bench.py", line 39, in run_benchmark
+    print(f"≡ƒö╣ Engine: {'Mistral-RS (Rocket)' if 
+engine.mistralrs_engine else 'AutoAWQ (Stable)'}")
+AttributeError: 'TurboEngineCore' object has no attribute 
+'mistralrs_engine'. Did you mean: 'mistralrs_runner'?
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ 
+attribute

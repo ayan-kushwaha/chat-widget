@@ -1,0 +1,363 @@
+
+{
+  "name": "PKB",
+  "plan": "free_trial_2906",
+  "industry": "generic",
+  "industry_version": "0.0.0",
+  "industry_settings": {
+    "persona": "professional"
+  },
+  "installed_templates": [],
+  "users_access": [
+    {
+      "userId": "user_1768554735106",
+      "name": "aryan ai",
+      "email": "aryanaibot@gmail.com",
+      "googleId": "103059148932517817587",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIsOPYotkl7qBfv4zeEKMkwZx6Lfz34I6ak9LwaTN_6ABPfnNk=s96-c",
+      "role": "owner",
+      "permissions": [
+        "*"
+      ],
+      "isActive": true,
+      "_id": {
+        "$oid": "696a00efe595a3427ba19864"
+      }
+    }
+  ],
+  "is_deleted": false,
+  "hasUsedFreePlan": true,
+  "planStartDate": {
+    "$date": "2026-01-17T03:39:39.772Z"
+  },
+  "lead_schemas": [],
+  "created_at": {
+    "$date": "2026-01-16T09:12:15.114Z"
+  },
+  "createdAt": {
+    "$date": "2026-01-16T09:12:15.116Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-18T18:30:00.069Z"
+  },
+  "__v": 0,
+  "billing_info": {
+    "company_name": "PKB",
+    "address_line1": "3m3mdklmew",
+    "city": "Barkhan",
+    "state": "BA",
+    "state_name": "Balochistan",
+    "pincode": "432323",
+    "country": "PK",
+    "country_name": "Pakistan",
+    "phone": "+92 232323",
+    "tax_id": "edieojd"
+  },
+  "planEndDate": {
+    "$date": "2026-02-17T03:39:39.772Z"
+  },
+  "usage": {
+    "automationFlowsCreated": 0,
+    "chatbotsCreated": 0,
+    "filesUploaded": 0,
+    "lastResetDate": {
+      "$date": "2026-01-17T03:39:39.799Z"
+    },
+    "last_rollover_count": 0,
+    "leadFormsCreated": 0,
+    "rollover_expires_at": {
+      "$date": "2026-02-17T03:39:39.772Z"
+    },
+    "rollover_tokens": 0,
+    "storage_breakdown": {
+      "auto_learning_mb": 0,
+      "chat_history_mb": 0,
+      "documents_mb": 5.46,
+      "forms_mb": 0,
+      "total_mb": 5.46,
+      "training_mb": 0,
+      "websites_mb": 0
+    },
+    "storage_by_system": {
+      "chroma_mb": 0,
+      "minio_mb": 5.46,
+      "mongodb_mb": 0,
+      "total_mb": 5.46
+    },
+    "tokensUsed": 2976671,
+    "topup_balance": 4148617,
+    "websitePagesAdded": 0,
+    "words_limit": 299900,
+    "words_used": 25489,
+    "topup_limit": 4149000
+  },
+  "subscription": {
+    "plan_id": "free_trial_2906",
+    "token_capacity": 4448900,
+    "tokens_plan": 299900,
+    "tokens_rollover": 0,
+    "tokens_topup": 4149000,
+    "subscribed_at": {
+      "$date": "2026-01-17T03:39:39.791Z"
+    },
+    "expires_at": {
+      "$date": "2026-02-17T03:39:39.772Z"
+    },
+    "status": "expired",
+    "snapshot": {
+      "plan_name": "free_trial_2906",
+      "price_offer": 0,
+      "price_market": 4.050000000000001,
+      "currency": "USD",
+      "billing_cycle": "monthly",
+      "timestamp": "2026-01-17T03:39:39.772Z",
+      "features": [
+        {
+          "id": "cluaiz_ai_brain",
+          "name": "Cluaiz Ai Brain",
+          "icon": "Brain",
+          "color": "text-indigo-500",
+          "status": "active",
+          "category": "ai_core",
+          "description": "The \"Knowledge Base\" manager where you teach your AI. Import content from diverse sources like your company Website, PDF documentation, and product APIs. It handles the ingestion, specialized cleaning, and organization of this data.",
+          "enabled": true,
+          "value": true,
+          "includes": [
+            {
+              "id": "696a3ac780e010ad0384fc40",
+              "name": "Websites Crawling (Process)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.5,
+              "sellMultiplier": 1,
+              "costReason": "High CPU and Memory usage for running Headless Chrome instances (Puppeteer). Also includes costs for residential proxies if needed to bypass basic bot protection methods.",
+              "_id": {
+                "$oid": "696a3ac780e010ad0384fc40"
+              }
+            },
+            {
+              "id": "696a3ac780e010ad0384fc41",
+              "name": "API Connections",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.5,
+              "sellMultiplier": 1,
+              "costReason": "Server resources dedicated to polling external endpoints at regular intervals or maintaining listening webhooks. Consumes bandwidth and processing power to standardize incoming JSON data.",
+              "_id": {
+                "$oid": "696a3ac780e010ad0384fc41"
+              }
+            },
+            {
+              "id": "696a3ac780e010ad0384fc42",
+              "name": "Manual Training",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.2,
+              "sellMultiplier": 0.5,
+              "costReason": "Basic database CRUD (Create/Read/Update/Delete) operations. While low compute, it still engages logic for validation and immediate updating of the knowledge index.",
+              "_id": {
+                "$oid": "696a3ac780e010ad0384fc42"
+              }
+            },
+            {
+              "id": "696a3ac780e010ad0384fc43",
+              "name": "File Processing (OCR)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.5,
+              "sellMultiplier": 1,
+              "costReason": "Calls to Vision APIs (e.g., Google Vision or specialised PDF parsers). This is a compute-intensive process, especially for large documents with images or non-standard formatting.",
+              "_id": {
+                "$oid": "696a3ac780e010ad0384fc43"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "696b047b90519e2fc362b2f8"
+          }
+        },
+        {
+          "id": "cluaiz_chatbot_ai",
+          "name": "Cluaiz ChatBot AI",
+          "icon": "Bot",
+          "color": "text-cyan-500",
+          "status": "active",
+          "category": "core",
+          "description": "The frontend experience for your customers. This module powers the chat widget on your site, the auto-response engine, and the routing logic that decides when to escalate to a human.",
+          "enabled": true,
+          "value": true,
+          "includes": [
+            {
+              "id": "696a3cd480e010ad0384fc91",
+              "name": "Widget UI & Hosting",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0,
+              "sellMultiplier": 0,
+              "costReason": "Bandwidth fees for Content Delivery Networks (CDN) serving the JavaScript bundle and assets (icons, sounds). Ensures high availability and low latency globally.",
+              "_id": {
+                "$oid": "696a3cd480e010ad0384fc91"
+              }
+            },
+            {
+              "id": "696a3cd480e010ad0384fc92",
+              "name": "Human Handoff (Real-time)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0,
+              "sellMultiplier": 0.3,
+              "costReason": "Real-time notification services (Push/Socket events) and priority queue management in the backend. Ensures agents are alerted instantly (zero delay allowed).",
+              "_id": {
+                "$oid": "696a3cd480e010ad0384fc92"
+              }
+            },
+            {
+              "id": "696a3cd480e010ad0384fc93",
+              "name": " AI Conversation Processing (LLM)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.3,
+              "sellMultiplier": 1,
+              "costReason": "Server-side GPU compute usage for active neural inference. Costs are metered based on the total volume of semantic tokens processed during the cognitive analysis and generation cycle.",
+              "_id": {
+                "$oid": "696a3cd480e010ad0384fc93"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "696b047b90519e2fc362b2fd"
+          }
+        },
+        {
+          "id": "communication_logs",
+          "name": "Communication Logs",
+          "icon": "NetworkIcon",
+          "color": "text-cyan-500",
+          "status": "active",
+          "category": "communication",
+          "description": "Your complete transparency center. It archives every interaction—ChatBot conversations, Live Agent takeovers, and generic inquiries—into a searchable history. Essential for quality assurance, training, and compliance auditing.",
+          "enabled": true,
+          "value": true,
+          "includes": [
+            {
+              "id": "696a3dcc80e010ad0384fce1",
+              "name": "Chat Summary Generation (LLM)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 1.5,
+              "sellMultiplier": 2.5,
+              "costReason": "Requires a dedicated LLM inference call. The entire conversation text is sent as a prompt to the AI model to generate the summary, incurring token costs proportional to the chat length.",
+              "_id": {
+                "$oid": "696a3dcc80e010ad0384fce1"
+              }
+            },
+            {
+              "id": "696a3dcc80e010ad0384fce2",
+              "name": "Lead Management (CRM)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 1.5,
+              "sellMultiplier": 2.5,
+              "costReason": "Database complexity costs associated with relational mapping (Customer <-> Chats <-> Forms). Maintaining these links requires additional database read/write operations and schema management.",
+              "_id": {
+                "$oid": "696a3dcc80e010ad0384fce2"
+              }
+            },
+            {
+              "id": "696a3dcc80e010ad0384fce3",
+              "name": "Chat Search Embeddings (Generation)",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 1.5,
+              "sellMultiplier": 2.5,
+              "costReason": "API costs for an Embedding Model (like OpenAI text-embedding-3). Converts raw text into vector numbers so they can be compared mathematically in the vector database.",
+              "_id": {
+                "$oid": "696a3dcc80e010ad0384fce3"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "696b047b90519e2fc362b301"
+          }
+        },
+        {
+          "id": "_analytics__insights",
+          "name": " Analytics & Insights",
+          "icon": "BarChart",
+          "color": "text-emerald-500",
+          "status": "active",
+          "category": "productivity",
+          "description": "Provides a 360-degree view of your AI's performance and customer behavior. It tracks every interaction, token burn rate, and traffic source in real-time, allowing you to monitor the health of your bot and identify growth opportunities through advanced data visualization.",
+          "enabled": true,
+          "value": true,
+          "includes": [
+            {
+              "id": "696a5ec180e010ad03850201",
+              "name": "Performance & Usage Viewer",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0,
+              "sellMultiplier": 0,
+              "costReason": "Maintenance of the data aggregation pipeline. This is a core transparency feature provided to all users to ensure trust and visibility into their account activity. Standard infrastructure overhead is absorbed into the base subscription.\n",
+              "_id": {
+                "$oid": "696a5ec180e010ad03850201"
+              }
+            },
+            {
+              "id": "696a5ec180e010ad03850202",
+              "name": "AI Strategic Intelligence",
+              "value": null,
+              "unit": "TOKENS",
+              "baseMultiplier": 0.3,
+              "sellMultiplier": 1,
+              "costReason": "High-intensity neural inference cycles. Requires the AI to ingest and process large-scale datasets (Clicks, Leads, and Drop-offs) to formulate semantic reports and strategic suggestions for the end-user.",
+              "_id": {
+                "$oid": "696a5ec180e010ad03850202"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "696b047b90519e2fc362b305"
+          }
+        }
+      ],
+      "limits": {
+        "max_tokens": 299900,
+        "max_chats": -1,
+        "max_file_uploads": 2,
+        "max_website_pages": 5,
+        "max_kb_size_mb": 30,
+        "brain_capacity_mb": 30,
+        "max_bots": -1,
+        "max_team_members": 1,
+        "max_websites": 1,
+        "data_retention_days": 15,
+        "max_manual_qa": 5,
+        "max_forms": 1,
+        "rollover_percentage": 0,
+        "rollover_validity_days": 0,
+        "max_team_seats": 1
+      },
+      "order_summary": {
+        "subtotal": 0,
+        "duration_months": 1,
+        "duration_discount": 0,
+        "coupon_code": "OK",
+        "coupon_discount": 0,
+        "total_savings": 0,
+        "final_total": 0
+      }
+    }
+  },
+  "governance": {
+    "allow_user_delete": false,
+    "require_export_before_delete": true,
+    "retention_policy_days": -1
+  },
+  "available_ribbons": [
+    "man:urgent",
+    "female:warning",
+    "much:lead",
+    "New Lead:lead"
+  ]
+}

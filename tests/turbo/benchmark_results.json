@@ -1,0 +1,21 @@
+{
+    "qwen3.5:0.8b": {
+        "status": "SUCCESS",
+        "latency": 12.62,
+        "tps": 40.56,
+        "tokens": 512,
+        "output": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text snippet (\"The Cluaiz Neural OS..."
+    },
+    "qwen3:4b": {
+        "status": "SUCCESS",
+        "latency": 34.05,
+        "tps": 15.04,
+        "tokens": 512,
+        "output": "We are given a text: \"The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organi..."
+    },
+    "qwen3.5:4b": {
+        "status": "FAILED",
+        "latency": 0,
+        "tps": 0
+    }
+}
