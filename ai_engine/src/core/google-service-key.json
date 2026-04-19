@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "fluid-furnace-485116-q4",
+  "private_key_id": "d46453d00966919bdd07a266e73dc3b1b6cdc67b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBen5u+Wm4iGam\n+iZj1tPFSiBB+E9r7U1lnxaF4zbtDf607mydCJlzrn501bWO3lRbeEOhgZimzIhq\n/QBLPl5I1hR5XXRRbbYK0bwzv30M2f+XOu+seTnaPeT4QL5USLtVWsXvokKR3njJ\nhQuvEwBD/C9BFVAiH14Xq0qtHjPWa863JlGIEic1yDUBzUliNQgN2rzWOqZp7s/k\njWoEvOopNqXTWHzTN72PXl/h4KhASwRh1CaNImTdZH/3wEs6o61Ag3zlQF0D50zZ\nq+zrIvEjl4wAO+uGjtd+lzDkaPz5LSuSXPlvZK8mYvMNrTavDSMJ1W2X1GuFri+F\nsIKz41kBAgMBAAECggEACo1J8nb3UVldEdvANr87Zv3jMv3eJQJ472MlCRHKh9S0\n0LzVHx5eMh0w5+HU6FEPVDrDo34MK4KpqP4Z40CoRzwnuzPB2YQMgtwL8d2ObiJA\nioisFCG7aj/oajKrvrCFyQKtm2Nj0o1J1KHFMJvubobFM/071NSVnuBYbwcf6CB6\nRzOxB+T4eqL39xfkv50rMh0q+SxwVb3+HjoJFrMT8/TwOlrpK1J+ESP5zfpI3LWp\nWdcKkDIPTHwq6wAbVFiF0J7gkHu2vn+rpgzVo6v5cAI3LYRTNq29Il7XA9o5gazy\n6nIMgJU5LYrhM3ihBbPAfp9V2aOnhvej75DvN76obQKBgQDnUqyOD3NJxmVPWOFU\n+MVKPiVlpmEb89UpQT9FPZq+vvQolRCnbcDjo0cxIaCoExdpZ56L5WKoastDzZEU\n8C2oEYyHwl8KTGGEQl00L4jUg3sCvNJbbYMoB10CT5V/F3QvPF0KdCHNvAYmOMlZ\nNHV4KYM+4L5XoV2eOow1IID9jQKBgQDWHk4FUp/OHi/gRAhGdLkdiKHDYqxBoBDj\nFxv8FDTMdTU+WtSbj8g5MJPPsS9OVgZ128JedOxgNh1w3hnF5jLlyMMf8PTlVSv+\nOJ9fuO0Gp/qlG7JsVu6DJBMHsafCALPylbYX8M5UnuBRr5GNan5Md7op6xENWPWY\nR6jSY3WKRQKBgC+hEDJ37+8C0J1T2aGbT1QIE78oUNpmjD9gVdy14ITh4HfyqWkv\n6gV0+xWcrO2ucKWdVkHLy1KOGqgtTXAYO+5dHqhdVyBRtcp7t6ElIHFRWSSpKE72\n74hwa7AsHsX6WEvZi/a5DrTDwChijOK3MHC7a3Co6cg1S4dm2rOdq7GJAoGACYYR\njFUPfJiFIqGECLY6YaDpKQqjhMu81Iz7lqvDaXCxLJPXrw+nJTwO5wcHhqF26hkb\nPR5QQTtG9fU7Cj1h+CyE2U/bZLP0H/uewyAzkr83+84OkpkPRM/+9LGnN47WcizM\ni6YPV141tgxsGfEpqvcMVb755DEXw200ih8YZE0CgYEAqHC4N7Re0JPgMII1YLbO\nuEAAkLZkMmN6LjFh1CoNkAIm3ydciVO6bIVdvfDhxRho3M6yphBIUh+sGz53vNPD\nc+sVp5ILBp+ljv9JOskOpnO+BHfa9JuT5WvDIcYhCRtN+q/wFtDzqCUOPbZxC+qY\nY3atHMMdDKs1p6hU1AfsynY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cluaiz@fluid-furnace-485116-q4.iam.gserviceaccount.com",
+  "client_id": "117226984555947072676",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cluaiz%40fluid-furnace-485116-q4.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    ⚖️ CLUAIZ NEURAL OS — BALANCED MODE BENCHMARK (LIGHT THINK)  ║
+║                       MODEL: QWEN 3.5 (0.8B) | LOCAL INFERENCE               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+SYSTEM ANALYTICS (EXACT DATA):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Load Profile    : 50 High-Speed Neural Nodes (Light Thinking Mode)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BALANCED NODE RECORDS (LIGHT REASONING):
+--------------------------------------------------------------------------------
+NODE [001] | ⚖️ BALANCED | Latency: 14.209s | Status: PARTIAL VALID (Regex)
+         ↳ RAW AI OUT : Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Input Text: "The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay."
+    *   Task: Briefly analyze in 2 bullet points, then provide JSON output.
+    *   JSON Pattern: `{ "title": "3 words", "summary": "1 sentence" }`
+    *   Constraint: "BALANCED RESPONSE". This usually implies a balance between the text analysis and the JSON output, or ensuring the JSON is included within the response structure.
+
+2.  **Analyze the Input Text:**
+    *   Subject: Cluaiz Neural OS (AI/Neural).
+    *   Architecture: Hybrid vector-graph.
+    *   Function: Map organizational knowledge.
+    *   Mechanism: Metabolic decay (implies degradation, loss of information over time or usage).
+
+3.  **Draft Bullet Points:**
+    *   Point 1: Focus on the architecture and its purpose. The text mentions a hybrid vector-graph architecture designed to map organizational knowledge.
+    *   Point 2: Focus on the mechanism and outcome. It uses metabolic decay to manage this mapping process, suggesting a dynamic system that loses information over time or usage.
+
+4.  **Draft JSON Output:**
+    *   Title needs to be 3 words.
+    *   Summary needs to be 1 sentence.
+
+5.  **Balance Check:**
+    *   The prompt asks for "BALANCED RESPONSE". This could mean:
+        *   A balanced mix of text and JSON (not just one side).
+        *   Ensure the JSON is clearly labeled or formatted correctly.
+        *   Ensure the analysis is concise.
+
+6.  **Refine Content:**
+    *   Bullet 1: The Cluaiz Neural OS employs a hybrid vector-graph architecture to map organizational knowledge dynamically.
+    *   Bullet 2: This system utilizes metabolic decay to manage information loss and efficiency during processing.
+
+7.  **Format JSON:**
+    *   `{ "title": "3 words", "summary": "1 sentence" }`
+    *   Wait, the instruction says "provide JSON output". It doesn't explicitly say where the JSON goes in the text flow, but usually, it means a separate block or just at the end. Given the constraint "BALANCED RESPONSE", I should probably ensure the JSON is prominent and
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [002] | ⚖️ BALANCED | Latency: 9.592s | Status: PARTIAL VALID (Regex)
+         ↳ RAW AI OUT : Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Input Text: "GraphSAGE is an inductive learning framework that generates embeddings for previously unseen nodes by aggregating neighbor features."
+    *   Task: Briefly analyze in 2 bullet points, then provide JSON output.
+    *   JSON Pattern: `{ "title": "3 words", "summary": "1 sentence" }`
+    *   Constraint: "BALANCED RESPONSE" (This likely means the response should be balanced between text and JSON, or the content should be structured well).
+
+2.  **Analyze the Input Text:**
+    *   Subject: GraphSAGE.
+    *   Type: Inductive learning framework.
+    *   Function: Generates embeddings for unseen nodes.
+    *   Mechanism: Aggregates neighbor features.
+
+3.  **Drafting Bullet Points:**
+    *   Bullet 1: Focus on what it is (framework) and how it works (aggregating neighbors).
+    *   Bullet 2: Focus on the output/result (embeddings for unseen nodes).
+    *   Draft 1: GraphSAGE is a framework that creates embeddings by combining neighbor features. It helps predict new data without training.
+    *   Refinement: Ensure it's accurate based on the text provided.
+    *   Draft 2: GraphSAGE is an inductive learning method that uses neighbor features to generate embeddings for unseen nodes. It aggregates information from connected components to improve model performance.
+
+4.  **Drafting JSON:**
+    *   Title needs to be 3 words.
+    *   Summary needs to be 1 sentence.
+    *   Draft Title: GraphSAGE
+    *   Draft Summary: This framework creates embeddings for unseen nodes by aggregating neighbor features.
+
+5.  **Reviewing Constraints & "Balanced Response":**
+    *   The prompt asks for a "BALANCED RESPONSE". Usually, this means text + JSON or just the content. However, looking at the instruction "JSON Pattern: { ... }", it implies the output should contain both text and JSON.
+    *   Wait, the instruction says "Briefly analyze in 2 bullet points, then provide JSON output."
+    *   Does "BALANCED RESPONSE" mean I need to balance the length of the text vs the JSON? Or does it mean I shouldn't just dump JSON?
+    *   Let
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------

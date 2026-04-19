@@ -15,6 +15,7 @@ Qwen3VL4B_fine_tune_data/
 # Temporary & Discussion Folders
 other/
 notes/
+MDFile/
 *.log
 build_err.log
 

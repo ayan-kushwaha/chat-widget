@@ -1,0 +1,64 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+motor
+redis
+python-multipart
+requests
+aiohttp
+# AI & LLM
+langchain
+langchain-community
+langchain-openai
+groq
+dateparser
+textblob
+# Document Processing
+unstructured[all-docs]
+pdf2image
+# Web Crawling
+playwright
+beautifulsoup4
+# Utilities
+python-dotenv
+tiktoken
+loguru
+minio
+Pillow
+rake-nltk
+httpx
+langdetect
+numpy
+arq
+# Enterprise Skill Hub
+spacy>=3.7.0
+# run: python -m spacy download xx_sent_ud_sm
+reportlab
+duckduckgo-search
+psutil
+PyPDF2
+twilio
+thefuzz
+vaderSentiment
+matplotlib
+pandas
+openpyxl
+qdrant-client
+ShopifyAPI
+WooCommerce
+scikit-learn
+
+# Local AI Infrastructure (Pillar A & F Client)
+ollama
+fast-autocomplete
+
+# Neural OS — New Components
+neo4j==5.27.0         # Graph DB driver (Bolt protocol for Neural Mind Map)
+PyMuPDF               # PDF parsing for neural_indexer.py (fast + handles tables)
+PyYAML                # YAML Tree format for Page Index (30% fewer tokens than JSON)
+celery[redis]         # Background task queue for brain_janitor.py
+
+# Cloud TTS Fallback (Handled in Frontend)
+
+

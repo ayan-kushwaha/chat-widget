@@ -1,0 +1,291 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    ⚡ CLUAIZ NEURAL OS — FAST MODE BENCHMARK (NO THINK)        ║
+║                       MODEL: QWEN 3.5 (0.8B) | LOCAL INFERENCE               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+SYSTEM ANALYTICS (EXACT DATA):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Load Profile    : 50 High-Speed Neural Nodes (Direct Output)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FAST NODE RECORDS (NO REASONING):
+--------------------------------------------------------------------------------
+NODE [001] | ⚡ FAST | Latency: 12.449s | Status: VALID
+         ↳ RAW AI OUT : { "title": "3 words", "summary": "1 sentence" }
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [002] | ⚡ FAST | Latency: 1.106s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [003] | ⚡ FAST | Latency: 1.298s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "Three Words Rule", "summary": "LLMs should prioritize three distinct keywords in the final response."
+}
+         ↳ PARSED TITL: Three Words Rule
+         ↳ PARSED SYNO: LLMs should prioritize three distinct keywords in the final response.
+--------------------------------------------------------------------------------
+NODE [004] | ⚡ FAST | Latency: 1.186s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [005] | ⚡ FAST | Latency: 1.031s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [006] | ⚡ FAST | Latency: 0.982s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [007] | ⚡ FAST | Latency: 1.251s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "3 words", 
+  "summary": "GraphSAGE uses neighbor aggregation to generate embeddings"
+}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: GraphSAGE uses neighbor aggregation to generate embeddings
+--------------------------------------------------------------------------------
+NODE [008] | ⚡ FAST | Latency: 1.21s | Status: VALID
+         ↳ RAW AI OUT : {"title": "Large Language Models use multi-head attention", "summary": "Captures long-range dependencies in natural language through multi-head architectures"}
+         ↳ PARSED TITL: Large Language Models use multi-head attention
+         ↳ PARSED SYNO: Captures long-range dependencies in natural language through multi-head architectures
+--------------------------------------------------------------------------------
+NODE [009] | ⚡ FAST | Latency: 1.291s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "3 words", 
+  "summary": "Proven consensus"
+}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: Proven consensus
+--------------------------------------------------------------------------------
+NODE [010] | ⚡ FAST | Latency: 1.022s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [011] | ⚡ FAST | Latency: 1.216s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay."}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay.
+--------------------------------------------------------------------------------
+NODE [012] | ⚡ FAST | Latency: 1.3s | Status: VALID
+         ↳ RAW AI OUT : {"title": "GraphSAGE", "summary": "graphSAGE is an inductive learning framework that generates embeddings for previously unseen nodes by aggregating neighbor features\n"}
+         ↳ PARSED TITL: GraphSAGE
+         ↳ PARSED SYNO: graphSAGE is an inductive learning framework that generates embeddings for previously unseen nodes by aggregating neighbor features
+
+--------------------------------------------------------------------------------
+NODE [013] | ⚡ FAST | Latency: 0.861s | Status: VALID
+         ↳ RAW AI OUT : {"key": "key-value"}
+         ↳ PARSED TITL: Fast Neural Node
+         ↳ PARSED SYNO: No summary provided.
+--------------------------------------------------------------------------------
+NODE [014] | ⚡ FAST | Latency: 1.024s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "3 words",
+  "summary": null
+}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: None
+--------------------------------------------------------------------------------
+NODE [015] | ⚡ FAST | Latency: 0.967s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [016] | ⚡ FAST | Latency: 1.579s | Status: VALID
+         ↳ RAW AI OUT : {"title": "Cluaiz Neural OS", "summary": "The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay, defining 3 words and 1 sentence structure within the context of an AI model."}
+         ↳ PARSED TITL: Cluaiz Neural OS
+         ↳ PARSED SYNO: The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay, defining 3 words and 1 sentence structure within the context of an AI model.
+--------------------------------------------------------------------------------
+NODE [017] | ⚡ FAST | Latency: 1.005s | Status: VALID
+         ↳ RAW AI OUT : { "title": 3, "summary": 2 }
+         ↳ PARSED TITL: 3
+         ↳ PARSED SYNO: 2
+--------------------------------------------------------------------------------
+NODE [018] | ⚡ FAST | Latency: 0.99s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [019] | ⚡ FAST | Latency: 0.975s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [020] | ⚡ FAST | Latency: 0.982s | Status: VALID
+         ↳ RAW AI OUT : {"title": 3, "summary": "1 sentence"}
+         ↳ PARSED TITL: 3
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [021] | ⚡ FAST | Latency: 1.41s | Status: VALID
+         ↳ RAW AI OUT : {"title": "The Cluaiz Neural OS", "summary": "5 words", "summary": "The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay."}
+         ↳ PARSED TITL: The Cluaiz Neural OS
+         ↳ PARSED SYNO: The Cluaiz Neural OS utilizes a hybrid vector-graph architecture to map organizational knowledge with metabolic decay.
+--------------------------------------------------------------------------------
+NODE [022] | ⚡ FAST | Latency: 1.244s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "GraphSAGE is a graph representation learning framework that generates embeddings for previously unseen graph nodes through neighbor aggregation."}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: GraphSAGE is a graph representation learning framework that generates embeddings for previously unseen graph nodes through neighbor aggregation.
+--------------------------------------------------------------------------------
+NODE [023] | ⚡ FAST | Latency: 0.952s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [024] | ⚡ FAST | Latency: 0.898s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [025] | ⚡ FAST | Latency: 0.933s | Status: VALID
+         ↳ RAW AI OUT : { "title": "3 words", "summary": "1 sentence" }
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [026] | ⚡ FAST | Latency: 0.935s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [027] | ⚡ FAST | Latency: 0.96s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "3 words"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 3 words
+--------------------------------------------------------------------------------
+NODE [028] | ⚡ FAST | Latency: 0.953s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [029] | ⚡ FAST | Latency: 0.971s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [030] | ⚡ FAST | Latency: 0.955s | Status: VALID
+         ↳ RAW AI OUT : { "title": "3 words", "summary": "1 sentence" }
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [031] | ⚡ FAST | Latency: 0.951s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [032] | ⚡ FAST | Latency: 0.936s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [033] | ⚡ FAST | Latency: 0.925s | Status: VALID
+         ↳ RAW AI OUT : { "title": "3 words", "summary": "1 sentence" }
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [034] | ⚡ FAST | Latency: 1.15s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "1",
+  "summary": "PoS provides secure, energy-efficient validation for decentralized networks."
+}
+         ↳ PARSED TITL: 1
+         ↳ PARSED SYNO: PoS provides secure, energy-efficient validation for decentralized networks.
+--------------------------------------------------------------------------------
+NODE [035] | ⚡ FAST | Latency: 0.928s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 phrases", "summary": "3 words"}
+         ↳ PARSED TITL: 3 phrases
+         ↳ PARSED SYNO: 3 words
+--------------------------------------------------------------------------------
+NODE [036] | ⚡ FAST | Latency: 0.907s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [037] | ⚡ FAST | Latency: 1.31s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "GraphSAGE is an inductive learning framework that generates embeddings for recently unseen nodes by aggregating neighboring features."}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: GraphSAGE is an inductive learning framework that generates embeddings for recently unseen nodes by aggregating neighboring features.
+--------------------------------------------------------------------------------
+NODE [038] | ⚡ FAST | Latency: 0.871s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: No summary provided.
+--------------------------------------------------------------------------------
+NODE [039] | ⚡ FAST | Latency: 1.106s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "Proof of Stake provides energy-efficient, secure validation for decentralized networks."}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: Proof of Stake provides energy-efficient, secure validation for decentralized networks.
+--------------------------------------------------------------------------------
+NODE [040] | ⚡ FAST | Latency: 1.004s | Status: VALID
+         ↳ RAW AI OUT : { "title": "3 words", "summary": "1 sentence" }
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [041] | ⚡ FAST | Latency: 0.908s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [042] | ⚡ FAST | Latency: 0.881s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [043] | ⚡ FAST | Latency: 1.3s | Status: VALID
+         ↳ RAW AI OUT : {
+"title": "Multi-Head Attention",
+"summary": "State-of-the-art Large Language Models (LLMs) use multi-head attention to capture long-range dependencies in natural language."
+}
+         ↳ PARSED TITL: Multi-Head Attention
+         ↳ PARSED SYNO: State-of-the-art Large Language Models (LLMs) use multi-head attention to capture long-range dependencies in natural language.
+--------------------------------------------------------------------------------
+NODE [044] | ⚡ FAST | Latency: 1.011s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 Words", "summary": "PoS is secure, energy-efficient blockchain consensus"}
+         ↳ PARSED TITL: 3 Words
+         ↳ PARSED SYNO: PoS is secure, energy-efficient blockchain consensus
+--------------------------------------------------------------------------------
+NODE [045] | ⚡ FAST | Latency: 1.037s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "3 words",
+  "summary": "Reasoning..."
+}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: Reasoning...
+--------------------------------------------------------------------------------
+NODE [046] | ⚡ FAST | Latency: 0.955s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [047] | ⚡ FAST | Latency: 1.127s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [048] | ⚡ FAST | Latency: 1.318s | Status: VALID
+         ↳ RAW AI OUT : {"title": "State-of-the-art Large Language Models (LLMs) use multi-head attention to capture long-range dependencies in natural language.", "summary": "1 sentence"}
+         ↳ PARSED TITL: State-of-the-art Large Language Models (LLMs) use multi-head attention to capture long-range dependencies in natural language.
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+NODE [049] | ⚡ FAST | Latency: 1.303s | Status: VALID
+         ↳ RAW AI OUT : {
+  "title": "3 words", 
+  "summary": "Blockchain consensus mechanisms like Proof of Stake (PoS) provide secure and energy-efficient validation for decentralized networks."
+}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: Blockchain consensus mechanisms like Proof of Stake (PoS) provide secure and energy-efficient validation for decentralized networks.
+--------------------------------------------------------------------------------
+NODE [050] | ⚡ FAST | Latency: 0.925s | Status: VALID
+         ↳ RAW AI OUT : {"title": "3 words", "summary": "1 sentence"}
+         ↳ PARSED TITL: 3 words
+         ↳ PARSED SYNO: 1 sentence
+--------------------------------------------------------------------------------
+
+FINAL PERFORMANCE SUMMARY:
+⏱️  Total Duration   : 64.83s
+🔥 Fast Mode Power  : 16.32 Tokens/Sec (TPS)
+📊 APPRAISAL: HIGH-SPEED INDEXING CONFIRMED.

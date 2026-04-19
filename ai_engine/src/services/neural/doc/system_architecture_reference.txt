@@ -1,0 +1,84 @@
+================================================================================
+                     CLUAIZ NEURAL OS - SYSTEM ARCHITECTURE REFERENCE
+================================================================================
+Version: 1.0 (Phase 12.11 Stable)
+Purpose: Source of Truth for system components, data flow, and neural pillars.
+
+--------------------------------------------------------------------------------
+1. CORE ARCHITECTURE PILLARS
+--------------------------------------------------------------------------------
+
+[PILLAR C] COGNITION (Active Memory & Intelligence)
+- Primary Engine: Neo4j (Neural Brain)
+- Vector Index: Qdrant (Semantic Intelligence)
+- Role: Stores real-time interactions, entities, and cognitive links.
+- Components: 
+    * EpisodeNeuron: Individual chat turns with emotional weights.
+    * NeuralTopic: High-level subjects derived from interactions.
+    * Topic Matrix: Structured YAML vectorized in Qdrant for 6-parameter matching.
+
+[PILLAR V] VAULT (Historical Analytical Memory)
+- Primary Engine: ClickHouse (Analytical Vault)
+- Role: Cold storage for "Shredded" memories to ensure Neo4j remains lean.
+- Path: Metabolism -> MemoryArchiver -> ClickHouse.
+- Search: Full-text search across historical summaries via VaultSearch.
+
+[PILLAR S] SUBCONSCIOUS (Lifecycle & Patterns)
+- Trigger: Neural Metabolism.
+- Role: Handles aging (TTL), decay, and skeletonization.
+- Components:
+    * MetabolismManager: Judges survival based on Priority and Pillar.
+    * MasterOverseer: Extracts cross-org pattern wisdom.
+    * Dreamer: Synthesizes background patterns (In-Progress).
+
+[PILLAR P] PSYCHOLOGY (Emotional MRI)
+- Feature: Psychology MRI Mapping.
+- Parameters: P1 to P8 cognitive/emotional state tracking.
+- Sync: Every interaction updates the stateful 'PsychologyMap' neuron.
+
+--------------------------------------------------------------------------------
+2. DATA FLOW & LIFECYCLE
+--------------------------------------------------------------------------------
+
+INTERACTION FLOW:
+1. User Message -> Orchestrator.
+2. Emotional Analysis (Sentiment + Weight).
+3. Psychology Sync (MRI Update).
+4. Topic Detection (Matrix Extraction).
+5. Graph Sync (Create Episode/Topic nodes + Links).
+6. Qdrant Upsert (Vectorize YAML).
+
+METABOLISM CYCLE:
+1. Interaction Weight < 0 -> TTL = 7 Days (Junk).
+2. Interaction Weight > 2 -> TTL = Permanent.
+3. Node Expiry Reached -> Metabolism Judges survival.
+4. Strategy 'SKELETON_ARCHIVE':
+   - Archive Title/Summary to ClickHouse Vault.
+   - Delete 'Flesh' (Episodes) from Neo4j.
+   - Set summary to '[ARCHIVED_IN_CLICKHOUSE]'.
+   - Clear Qdrant Vectors.
+
+--------------------------------------------------------------------------------
+3. TECHNICAL STACK
+--------------------------------------------------------------------------------
+- AI Engine: Python (FastAPI, Pydantic, Loguru).
+- Backend: Node.js (Express, TypeScript).
+- Frontend: Next.js (Tailwind, Framer Motion).
+- Databases:
+    * Neo4j: Graph Database (Port 7474/7687).
+    * ClickHouse: Analytical Database (Port 8123).
+    * Qdrant: Vector Database (Port 6333).
+    * MongoDB: Traditional Source persistence (Port 27017).
+
+--------------------------------------------------------------------------------
+4. ACCESS & CREDENTIALS
+--------------------------------------------------------------------------------
+CLICKHOUSE:
+- User: cluaiz_engine
+- Pass: vault_pass_2026
+- DB: cluaiz
+
+NEO4J:
+- User: neo4j
+- Pass: cluaiz_neural_os
+================================================================================

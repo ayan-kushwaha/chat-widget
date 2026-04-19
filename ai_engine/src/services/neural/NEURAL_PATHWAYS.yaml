@@ -1,0 +1,139 @@
+# ==============================================================================
+# 🧬  CLUAIZ NEURAL OS — MASTER PATHWAY REGISTRY (THE RULES OF PHYSICS)
+# ==============================================================================
+# V10.7 | neurons -> pathways -> logic
+# This file defines the VALID links between the 40+ specialized neurons.
+# ==============================================================================
+
+version: "10.7"
+name: "Neural Brain Connectivity Logic"
+
+# ── LEVEL 1: INTENT & MEMORY (Input Layer) ──
+memory_paths:
+  - from: "User"
+    to: "FocusSummary"
+    relation: "IN_FOCUS"
+    description: "Connects a human user to their active thought thread."
+
+  - from: "Episode"
+    to: "FocusSummary"
+    relation: "BELONGS_TO_CHAIN"
+    description: "Links a specific message (Episode) to a thematic summary (Focus)."
+
+  - from: "Episode"
+    to: "Mood"
+    relation: "EMOTIONAL_TONE"
+    description: "Captures the user's emotional state during a specific interaction."
+
+  - from: "HistoryAnchor"
+    to: "Episode"
+    relation: "TEMPORAL_MARKER"
+    description: "Provides a chronological timeline for chat episodes."
+
+# ── LEVEL 2: COGNITION & KNOWLEDGE (Library Layer) ──
+
+knowledge_paths:
+  - from: "Page"
+    to: "Chunk"
+    relation: "HAS_CONTENT"
+    description: "Hierarchical link between a document page and its data fragments."
+
+  - from: "Insight"
+    to: "Chunk"
+    relation: "EVIDENCE_FROM"
+    description: "Links an autonomous deduction back to its factual source."
+
+  - from: "ConflictNode"
+    to: "Chunk"
+    relation: "CONTRADICTS"
+    description: "Flags factual inconsistencies between different document pieces."
+
+  - from: "SourceIndex"
+    to: "Page"
+    relation: "INDEXES"
+    description: "Primary mapping of external files to internal neural pages."
+
+# ── LEVEL 3: WORKFORCE & EXECUTION (Operational Layer) ──
+workforce_paths:
+  - from: "Agent"
+    to: "Skill"
+    relation: "HAS_SKILL"
+    description: "Assigns a functional ability to a specific AI worker."
+
+  - from: "Skill"
+    to: "Tool"
+    relation: "USES_TOOL"
+    description: "Enables a skill to perform an action via an API or tool."
+
+  - from: "Agent"
+    to: "Boss"
+    relation: "REPORTS_TO"
+    description: "Organizational hierarchy linking agents to the Shadow Boss."
+
+  - from: "HandoverReflex"
+    to: "Agent"
+    relation: "TRANSFERS_TO"
+    description: "Logic for task delivery from one agent to another."
+
+# ── LEVEL 4: IDENTITY & ESSENCE (Goal Layer) ──
+essence_paths:
+  - from: "Department"
+    to: "Agent"
+    relation: "RECRUITED_FOR"
+    description: "Links workforce agents to their specific business depts."
+
+  - from: "Vision"
+    to: "Goal"
+    relation: "GUIDES_MISSION"
+    description: "The primary intent behind all business directives."
+
+  - from: "Culture"
+    to: "Agent"
+    relation: "ENFORCES_TONE"
+    description: "Ensures agents act according to company values."
+
+# ── LEVEL 5: METABOLISM & LEARNING (Self-Healing Layer) ──
+learning_paths:
+  - from: "Success"
+    to: "Skill"
+    relation: "REINFORCES"
+    description: "Positive feedback loop for winning task patterns."
+
+  - from: "TrustScorer"
+    to: "Agent"
+    relation: "EVALUATES"
+    description: "Tracks agent reliability based on success/failure history."
+
+  - from: "ArchiveNeuron"
+    to: "FocusSummary"
+    relation: "COMPRESSES"
+    description: "Pruning logic that summarizes old threads into archives."
+
+# ── SPECIAL PROTECTIONS ──
+vault_paths:
+  - from: "GoldenVault"
+    to: "AnyNode"
+    relation: "PROTECTS"
+    description: "Indestructible immunity marker for critical nodes."
+
+# ── LEVEL 6: CODE IMPACT & BUSINESS LOGIC (Proactive Brain) ──
+code_paths:
+  - from: "Developer"
+    to: "Repo"
+    relation: "COMMITS_TO"
+    description: "Tracks which developer pushed code to which repository."
+
+  - from: "CodeChunk"
+    to: "Repo"
+    relation: "BELONGS_TO_REPO"
+    description: "Links a fresh piece of code to its parent repository."
+
+  - from: "CodeChunk"
+    to: "LiveServer"
+    relation: "DEPLOYS_TO"
+    description: "Connects code changes to the live product environment."
+
+  - from: "LiveServer"
+    to: "Goal"
+    relation: "IMPACTS_BUSINESS"
+    description: "Direct topological link from server code to business metrics (e.g., Revenue/Sales)."

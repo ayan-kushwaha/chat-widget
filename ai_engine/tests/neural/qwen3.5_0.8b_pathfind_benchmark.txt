@@ -1,0 +1,321 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║            🧭 CLUAIZ NEURAL OS — 30-SCENARIO DEEP LOGIC AUDIT             ║
+║                       MODEL: QWEN 3.5 (0.8B) | LOCAL INFERENCE               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+SCENARIO [01] | Logical Challenge: How do I delete an AI agent from the workforce?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_c              | PICKED: none
+TIME  : 4.63s              | TIME  : 11.46s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : The node titled 'AI Workforce Management' explicitly mentions the ability to hire, configure, and remove AI agents from your team, which directly addresses the query about deleting an AI agent.
+💡 WHY (THINKING) : JSON Parsing Failed.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [02] | Logical Challenge: What is the technical implementation of metabolic decay in the graph?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_b              | PICKED: node_b
+TIME  : 5.52s              | TIME  : 5.79s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : Metabolic decay refers to the gradual reduction of node relevance or activity over time, which is a concept in neural networks and machine learning where nodes (or neurons) lose their influence or heat as they process data, and this is implemented through background jobs that manage decay rates.
+💡 WHY (THINKING) : Metabolic decay refers to the gradual reduction of node heat and relevance over time, which is a concept in neural networks where connections or weights are updated or decayed to prevent overfitting. This is implemented through background jobs that periodically adjust the weights or scores of nodes based on decay rates, ensuring the model remains effective without becoming too specialized on recent data.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [03] | Logical Challenge: Where are the Redis connection string settings located?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_b              | PICKED: none
+TIME  : 4.04s              | TIME  : 13.75s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Node_b is labeled as Infrastructure Config, which typically contains global settings for databases like Redis, MongoDB, and Neo4j, making it the logical location for Redis connection string settings.
+💡 WHY (THINKING) : The question asks about Redis connection string settings. Looking at the options, node_b is explicitly labeled as 'Infrastructure Config - Global settings for Redis, MongoDB, and Neo4j connections.' This directly matches the requirement for Redis connection strings, which are typically part of infrastructure configuration. The other options are unrelated: node_a is about frontend state management, node_c and node_d are about assets, and node_e is about testing. Therefore, node_b is the correct choice.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [04] | Logical Challenge: How does the system handle concurrent crawling of 100+ sites?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_c              | PICKED: none
+TIME  : 4.23s              | TIME  : 9.87s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : BullMQ Queue Architecture handles concurrent crawling by distributing tasks asynchronously using Redis, ensuring efficient management of 100+ sites without overloading the system.
+💡 WHY (THINKING) : No reason provided.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [05] | Logical Challenge: How do I fix a '401 Unauthorized' error on the API?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.98s              | TIME  : 13.72s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : A 401 Unauthorized error typically occurs when authentication fails, which is directly addressed by JWT Auth Middleware for token validation and protected routes.
+💡 WHY (THINKING) : JSON Parsing Failed.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [06] | Logical Challenge: Which worker handles the conversion of PDF to plain text?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_b              | PICKED: none
+TIME  : 3.90s              | TIME  : 17.93s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : The Embed Worker is specifically designed to parse documents like PDF and TXT, which includes converting PDF to plain text as part of its function.
+💡 WHY (THINKING) : The task is to convert PDF to plain text. Let's analyze each option:
+
+- node_a: Crawl Worker - Fetches HTML from URLs. This is for web crawling, not PDF conversion.
+- node_b: Embed Worker - Parses documents (PDF/TXT) and generates embeddings. This directly mentions parsing PDF/TXT, which includes converting PDF to text.
+- node_c: Summarize Worker - Creates node synopses. This is for summarization, not text conversion.
+- node_d: Analysis Worker - Deep graph analytics. This is for graph analysis, not text conversion.
+- node_e: Analytics Worker - User behavior tracking. This is for tracking user behavior, not text conversion.
+
+Therefore, node_b is the correct choice because it explicitly handles parsing PDF/TXT documents, which includes converting PDF to plain text.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [07] | Logical Challenge: Where is the logic for node-to-node edge creation in the map?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.27s              | TIME  : 28.43s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Neo4j Service is responsible for handling graph database relationships, which includes creating edges between nodes in the map.
+💡 WHY (THINKING) : The question is about where the logic for creating edges between nodes in a map is implemented. Let's analyze each option:
+
+- node_a: Neo4j Service - This is a graph database service that handles relationships (edges) between nodes. Creating edges in a graph database is a core function of such a service.
+- node_b: MongoDB Schema - This stores document chunks, which are typically not structured as graph edges but as flat documents. MongoDB is a document database, not a graph database.
+- node_c: Redux Store - This is a client-side state management tool for the UI. It doesn't handle the creation of graph edges; it's for managing the state of the map display.
+- node_d: Fastify Router - This is an HTTP server framework for API endpoints. While it might handle requests to create edges, it's not the logic itself but rather the interface for it.
+- node_e: Ollama Client - This is for local LLM inference, which is unrelated to graph edge creation.
+
+The key here is that the question is about the 'logic' for creating edges. In a graph database context, the logic for creating edges would be implemented in the service that interacts with the graph database. Neo4j is a graph database, so its service would handle the creation of edges between nodes. The other options are either for different purposes (MongoDB for documents, Redux for UI state, Fastify for API endpoints, Ollama for LLMs) or not directly related to graph edge creation.
+
+Therefore, the best answer is node_a: Neo4j Service.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [08] | Logical Challenge: How is a 'Knowledge Gap' identified in the Neural Mesh?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 3.06s              | TIME  : 3.43s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : The Learning Broker specifically analyzes missing connections and knowledge in user chats, which directly relates to identifying knowledge gaps.
+💡 WHY (THINKING) : The Learning Broker specifically analyzes missing connections and knowledge gaps in user chats, which directly relates to identifying knowledge gaps in the Neural Mesh.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [09] | Logical Challenge: What triggers the 'Refinement' of a rough title?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 4.20s              | TIME  : 3.67s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : The 'Refinement' of a rough title is triggered by the Post-process Job, which runs after initial indexing to refine titles using Thinking mode.
+💡 WHY (THINKING) : The 'Refinement' of a rough title is a post-processing step that occurs after initial indexing, specifically triggered by a Post-process Job to run Thinking mode refinement.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [10] | Logical Challenge: Where is the 'Shadow Boss' (Navigation Agent) logic defined?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 4.60s              | TIME  : 3.66s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : The 'Shadow Boss' (Navigation Agent) is defined as the master logic for traversing the Page Index graph nodes, which aligns with the description of node_a as the Router Agent.
+💡 WHY (THINKING) : The Shadow Boss (Navigation Agent) is responsible for traversing the Page Index graph nodes, which aligns with the Router Agent's role as the master logic for navigation.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [11] | Logical Challenge: How do we prevent 'Prompt Injection' in the Neural Chat?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.98s              | TIME  : 9.64s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Shield Layer is designed to clean and sanitize prompts, directly addressing the risk of prompt injection by filtering malicious or unintended inputs before they reach the LLM.
+💡 WHY (THINKING) : No reason provided.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [12] | Logical Challenge: Which database stores the actual 'Vectors' (Float Arrays)?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: error
+TIME  : 4.09s              | TIME  : 32.29s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Qdrant and Milvus are dedicated vector databases designed for efficient similarity search operations on float arrays, making them the optimal choice for storing actual vectors.
+💡 WHY (THINKING) : Error: Expecting ',' delimiter: line 43 column 6 (char 2100)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [13] | Logical Challenge: How is 'Metabolic Heat' calculated for a node?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 3.68s              | TIME  : 3.42s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : Metabolic Heat is calculated based on access frequency, as it reflects how often a node is visited, which directly correlates with its activity level.
+💡 WHY (THINKING) : Metabolic Heat is calculated based on access frequency, as it reflects how often a node is visited, which directly correlates with its activity level in the graph.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [14] | Logical Challenge: Where is the 'Ollama' server URL configured?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.49s              | TIME  : 11.61s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : The .env file is used to store environment variables, including OLLAMA_HOST, which configures the Ollama server URL.
+💡 WHY (THINKING) : The Ollama server URL is typically configured in a .env file for environment variables, which is a common practice for storing sensitive or configuration data. The other options are unrelated: package.json is for dependencies, .gitignore is for version control, index.css is for styling, and main.js is the entry point for the frontend code.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [15] | Logical Challenge: What happens when a node's heat reaches 0.0?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 4.49s              | TIME  : 4.43s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : When a node's heat reaches 0.0, it indicates cold data that should be archived for long-term storage, moving it to 'Cold Storage' as per standard data management practices.
+💡 WHY (THINKING) : When a node's heat reaches 0.0, it signifies that the data is no longer active or needed, so moving it to 'Cold Storage' and hiding it from active navigation is the standard practice for archiving inactive data.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [16] | Logical Challenge: Which service handles the induction of new knowledge from chat gaps?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 4.00s              | TIME  : 3.71s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : The Broker Agent is responsible for orchestrating knowledge discovery and induction from user interactions, which directly addresses the query about handling induction from chat gaps.
+💡 WHY (THINKING) : The Broker Agent is responsible for orchestrating knowledge discovery and induction from user interactions, which directly addresses the query about handling induction from chat gaps.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [17] | Logical Challenge: How are 3D Map interactions (drag/pin) stabilized?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 3.42s              | TIME  : 3.75s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : Physics Engine Config adjusts forces to stabilize map interactions by controlling friction and repulsion, preventing erratic movements during drag or pin operations.
+💡 WHY (THINKING) : Physics engine configuration directly controls the behavior of objects in a 3D space, including how they respond to drag and pin interactions through friction, repulsion, and spring forces.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [18] | Logical Challenge: What logic ensures the 'Shadow Boss' doesn't loop forever?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.83s              | TIME  : 11.78s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Loop-Detection & Max-Hops ensures the Shadow Boss terminates navigation after a finite number of jumps, preventing infinite loops.
+💡 WHY (THINKING) : JSON Parsing Failed.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [19] | Logical Challenge: Where do we store the 'Relationship Types' for Neo4j nodes?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.37s              | TIME  : 18.44s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Relationship types in Neo4j are defined as constants within the schema, typically stored in a node that represents schema definitions.
+💡 WHY (THINKING) : The 'Relationship Types' for Neo4j nodes are defined as constants in the schema, which is typically stored in a schema definition file. Among the options, node_a directly describes this purpose.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [20] | Logical Challenge: How is a 'Page Index' entry updated when a file is modified?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 3.29s              | TIME  : 3.18s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : Smart Diff Engine efficiently updates the page index by comparing changes between versions, minimizing unnecessary re-indexing and optimizing performance.
+💡 WHY (THINKING) : A Smart Diff Engine efficiently updates the page index by comparing changes between versions, minimizing unnecessary re-indexing and optimizing performance.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [21] | Logical Challenge: Which technology powers the 3D Neural Map visualization?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 4.01s              | TIME  : 14.77s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : React Three Fiber is a modern library for creating 3D web applications using React and Three.js, which is essential for complex 3D visualizations like a Neural Map.
+💡 WHY (THINKING) : No reason provided.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [22] | Logical Challenge: How do we handle BullMQ 'Dead Letter' jobs (Failed jobs)?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: error
+TIME  : 3.67s              | TIME  : 17.44s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Automatic retries with exponential backoff and admin failure logs provide a balanced approach to handling failed jobs, ensuring reliability while allowing for manual intervention when needed.
+💡 WHY (THINKING) : Error: Expecting ',' delimiter: line 23 column 6 (char 691)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [23] | Logical Challenge: What is the role of the 'Neural Mesh' in Cluaiz?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: node_a
+TIME  : 4.03s              | TIME  : 4.02s
+STATUS: ✅ CORRECT           | STATUS: ✅ CORRECT
+💡 WHY (FAST)     : The Neural Mesh in Cluaiz is designed to integrate information from various sources into a cohesive knowledge graph, which aligns with the description of Cross-Document Connectivity.
+💡 WHY (THINKING) : The Neural Mesh is a core component of Cluaiz that enables cross-document connectivity by integrating knowledge from various sources into a unified graph, which is essential for the system's ability to synthesize information across different documents.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [24] | Logical Challenge: How are Large PDF files indexed efficiently?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.66s              | TIME  : 10.54s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Hierarchical Chunking preserves context and logic by splitting text into meaningful sections, which is more efficient for indexing large PDFs than single-string or image-based approaches.
+💡 WHY (THINKING) : No reason provided.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [25] | Logical Challenge: Which module handles 'Shadow' model routing for fallback?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 4.41s              | TIME  : 19.19s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : The 'Shadow' model routing for fallback refers to switching between models, which aligns with the Model Router Service's role in switching from local Qwen to Gemini if local fails.
+💡 WHY (THINKING) : No reason provided.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO [26] | Logical Challenge: How is 'Knowledge Decay' represented visually in the map?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ FAST MODE (Default)     | 🧠 THINKING MODE (/think)
+----------------------------------------------------------------------------
+PICKED: node_a              | PICKED: none
+TIME  : 3.59s              | TIME  : 31.48s
+STATUS: ✅ CORRECT           | STATUS: ❌ WRONG
+💡 WHY (FAST)     : Dynamic Node Opacity visually represents knowledge decay by making nodes less visible as their metabolic heat decreases, indicating fading information.
+💡 WHY (THINKING) : The concept of 'Knowledge Decay' refers to the gradual loss or reduction of knowledge over time. In a visual representation, this would typically be shown through a method that indicates decreasing quality or relevance. Let's evaluate each option:
+
+- node_a: Dynamic Node Opacity - Nodes becoming more transparent as metabolic 'heat' decreases. This directly relates to decay, as transparency visually represents a loss of intensity or value. It's a common technique in data visualization to show diminishing returns or fading relevance.
+
+- node_b: Node Size - Increasing the size of every node until the screen is full. This would actually represent growth, not decay. Increasing size typically signifies increasing importance or activity, which is the opposite of decay.
+
+- node_c: Blinking Lights - Flashy animations for old data. While this might draw attention to old data, it's more about alerting the user rather than representing decay. Flashy animations can be distracting and don't clearly convey the concept of gradual loss.
+
+- node_d: Text underline - Drawing lines under old titles. This is a textual cue rather than a visual representation of decay. It's a simple indicator but doesn't effectively communicate the concept of knowledge fading over time.
+
+- node_e: Table Sorting - Ordering nodes by date in a list view. This is a functional sorting mechanism rather than a visual representation of decay. It's useful for organizing data but doesn't inherently show the decay process.
+
+The best option is node_a because it directly visualizes the concept of decay through transparency, which is a standard and effective way to represent diminishing value or relevance in data visualization.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+

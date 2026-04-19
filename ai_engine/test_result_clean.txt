@@ -1,0 +1,61 @@
+﻿2026-03-27 16:48:37.391 | INFO     | src.core.vector_store:__init__:21 - Connected to Pure Qdrant Engine (Pillar C)
+2026-03-27 16:48:37.909 | INFO     | src.core.memory:__init__:13 -  MemoryManager (Pillar C) initialized using Pure Qdrant via VectorStore.
+DEBUG: 'metabolism_manager' loaded from: C:\Users\Aryan\my\cluaiz\ai_engine\src\services\neural\metabolism\metabolism_manager.py
+DEBUG: 'src' package loaded from: None
+≡ƒºá [CH Archival Test] Simulating Deep Brain Archival...
+2026-03-27 16:48:37.925 | INFO     | src.database.neo4j_client:connect:66 - Γ£à [Neo4j] Connected successfully -> bolt://localhost:7687
+2026-03-27 16:48:37.950 | INFO     | src.database.neo4j_client:_setup_constraints:117 - Γ£à [Neo4j] Schema constraints ready.
+2026-03-27 16:48:38.004 | INFO     | src.services.clickhouse_manager.core.connection:connect:27 - Connected to High-Performance ClickHouse Engine (Analytics Vault)
+
+--- [STEP 1] Generating Crucial Business Context (Topic: Vyapnix Expansion 7a70b2f2) ---
+2026-03-27 16:48:38.004 | INFO     | src.services.neural.graph_manager.orchestrator:sync_interaction_unified:44 -  [GraphManager] Orchestrating unified graph sync for User: boss_user
+2026-03-27 16:48:38.004 | INFO     | src.services.neural.graph_manager.emotional_engine:analyze_sentiment:22 -  [GraphManager] Analyzing emotional feedback...
+2026-03-27 16:48:38.004 | INFO     | src.services.neural.graph_manager.decision_audit:audit_turn:23 -  [GraphManager] Auditing AI decision outcome...
+2026-03-27 16:48:38.005 | INFO     | src.services.neural.graph_manager.chat_processor:process_turn:42 -  [GraphManager] Processing user message for boss_user
+2026-03-27 16:48:38.005 | INFO     | src.services.neural.neurons.memory.episode:sync_dna:38 -  [EpisodeNeuron] Syncing Chat Episode for ep_8c7fbcbc (Role: user)
+2026-03-27 16:48:38.024 | INFO     | src.services.neural.neurons.base_neuron:sync_to_neo4j:83 -  [BaseNeuron] Synced Episode:ep_8c7fbcbc to Knowledge Cognition
+2026-03-27 16:48:38.029 | INFO     | src.services.neural.graph_manager.topic_detector:detect_topic:23 -  [GraphManager] Segmenting topic for structural mapping...
+2026-03-27 16:48:38.052 | INFO     | src.services.neural.graph_manager.orchestrator:sync_interaction_unified:98 -  [GraphManager] Persistence: Syncing NeuralTopic:topic_content_marketing
+2026-03-27 16:48:38.061 | INFO     | src.services.neural.graph_manager.orchestrator:sync_interaction_unified:111 -  [Qdrant] Vectorizing & Storing the 6-Parameter Structured Topic Matrix (YAML)
+2026-03-27 16:48:38.061 | INFO     | src.services.neural.graph_manager.persona_engine:extract_persona_traits:23 -  [GraphManager] Extracting persona traits from interaction...
+2026-03-27 16:48:38.061 | INFO     | src.services.neural.graph_manager.chat_processor:process_turn:42 -  [GraphManager] Processing assistant message for boss_user
+2026-03-27 16:48:38.062 | INFO     | src.services.neural.neurons.memory.episode:sync_dna:38 -  [EpisodeNeuron] Syncing Chat Episode for ep_7bcc0f1f (Role: assistant)
+2026-03-27 16:48:38.074 | INFO     | src.services.neural.neurons.base_neuron:sync_to_neo4j:83 -  [BaseNeuron] Synced Episode:ep_7bcc0f1f to Knowledge Cognition
+2026-03-27 16:48:38.191 | ERROR    | src.core.vector_store:search:138 -  Qdrant search failed: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `global_topics` doesn\'t exist!"},"time":0.000017288}'
+2026-03-27 16:48:38.196 | SUCCESS  | src.services.neural.graph_manager.orchestrator:sync_interaction_unified:142 -  [GraphManager] Unified Graph Sync Complete.
+DEBUG: Manually setting high priority for Content Marketing in Neo4j...
+Γ£à Topic Found in Neo4j: Content Marketing (GID: topic_content_marketing)
+Γ£à Topic Summary in Neo4j: Expansion project summary for Q4.
+
+--- [STEP 2] Triggering Skeleton Archival for topic_content_marketing in test_org_dd1aaa29 ---
+2026-03-27 16:48:38.209 | WARNING  | src.services.neural.metabolism.metabolism_manager:purge_neuron:61 - ≡ƒº¼ [Metabolism] Processing NeuralTopic:topic_content_marketing...
+--- PURGE NEURON: Entering Topic Logic for topic_content_marketing ---
+2026-03-27 16:48:38.209 | INFO     | src.services.neural.metabolism.metabolism_manager:judge_survival:26 - --- JUDGE START: topic_content_marketing in test_org_dd1aaa29 ---
+--- JUDGE START: tid=topic_content_marketing, oid=test_org_dd1aaa29 ---
+--- DEBUG ALL TOPICS: [{'gid': 'topic_content_marketing', 'oid': 'test_org_82115776', 'name': 'Content Marketing'}, {'gid': 'topic_content_marketing', 'oid': 'test_org_9e7f9b89', 'name': 'Content Marketing'}, {'gid': 'topic_content_marketing', 'oid': 'test_org_c4a9f609', 'name': 'Content Marketing'}, {'gid': 'topic_content_marketing', 'oid': 'test_org_dd1aaa29', 'name': 'Content Marketing'}] ---
+--- JUDGE INFO: score=2.5, pillar=Goal ---
+--- JUDGE RESULT: SKELETON_ARCHIVE ---
+--- PURGE NEURON: Strategy for topic_content_marketing is SKELETON_ARCHIVE ---
+2026-03-27 16:48:38.219 | INFO     | src.services.neural.metabolism.metabolism_manager:shred_to_skeleton:89 - --- SHRED START: topic_content_marketing in test_org_dd1aaa29 ---
+2026-03-27 16:48:38.222 | INFO     | src.services.neural.metabolism.metabolism_manager:shred_to_skeleton:97 - --- SHRED INFO: title='Content Marketing', summary='Expansion project su', score=2.5 ---
+--- ARCHIVER START: Inserting topic_content_marketing via RAW SQL ---
+2026-03-27 16:48:38.232 | SUCCESS  | src.services.clickhouse_manager.vault.archiver:archive_memory:26 - ≡ƒôª [CH Vault] Archived Topic:topic_content_marketing permanently.
+2026-03-27 16:48:38.233 | SUCCESS  | src.services.clickhouse_manager.vault.archiver:archive_memory:27 - ≡ƒôª [CH Vault] Archived Topic:topic_content_marketing permanently.
+2026-03-27 16:48:38.233 | INFO     | src.services.neural.metabolism.metabolism_manager:shred_to_skeleton:108 - Γ£é∩╕Å [Metabolism] Shredding flesh from Topic:topic_content_marketing...
+2026-03-27 16:48:38.270 | ERROR    | src.core.vector_store:delete_by_ids:167 -  Qdrant delete failed: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `global_topics` doesn\'t exist!"},"time":9.033e-6}'
+2026-03-27 16:48:38.270 | SUCCESS  | src.services.neural.metabolism.metabolism_manager:shred_to_skeleton:117 - ≡ƒª┤ [Metabolism] Topic:topic_content_marketing reduced to permanent SKELETON.
+
+--- [STEP 3] Verifying Neo4j Skeleton ---
+≡ƒöÑ SUCCESS: Neo4j summary cleared. State: [ARCHIVED_IN_CLICKHOUSE]
+
+--- [STEP 4] Verifying ClickHouse Permanent Storage ---
+2026-03-27 16:48:38.279 | ERROR    | src.services.clickhouse_manager.vault.search:search:35 - Γ¥î [CH Search] Query failed: Received ClickHouse exception, code: 62, server response: Code: 62. DB::Exception: Syntax error: failed at position 195 (Marketing) (line 1, col 195): Marketing
+ FORMAT Native. Expected one of: token sequence, Dot, token, OR, AND, IS NOT DISTINCT FROM, IS DISTINCT FROM, IS NULL, IS NOT NULL, BETWEEN, NOT BETWEEN, LIKE, ILIKE, NOT LIKE, NOT ILIKE, REGEXP, IN, NOT IN, GLOBAL IN, GLOBAL NOT IN, MOD, DIV, alias, AS, Comma, OFFSET, WITH TIES, BY, FETCH, LIMIT, SETTINGS, UNION, EXCEPT, INTERSECT, INTO OUTFILE, FORMAT, ParallelWithClause, PARALLEL WITH, end of query. (SYNTAX_ERROR) (for url http://127.0.0.1:8123)
+Γ¥î FAILURE: Summary not found in new ClickHouse Vault!
+2026-03-27 16:48:38.280 | INFO     | src.database.neo4j_client:close:91 - ≡ƒöî [Neo4j] Connection closed.
+
+≡ƒÅü [CH Archival Test] Test complete.

@@ -1,0 +1,46 @@
+﻿Connecting to Neo4j...
+2026-03-22 08:56:21.394 | INFO     | src.database.neo4j_client:connect:66 - Γ£à [Neo4j] Connected successfully ΓåÆ bolt://localhost:7687
+2026-03-22 08:56:21.417 | INFO     | src.database.neo4j_client:_setup_constraints:115 - Γ£à [Neo4j] Schema constraints ready.
+
+--- 1. ORG_ID FREQUENCY (Top 5) ---
+Org ID: 696a00efe595a3427ba19863 | Count: 14
+
+--- 2. ALL ORG NODES ---
+Org ID: 696a00efe595a3427ba19863 | Name: None
+
+--- 3. SAMPLE NODES (LIMIT 20) ---
+Labels: ['Org'] | Name: N/A | Props: {'last_updated': '2026-03-21T12:32:30.650682+00:00', 'org_id': '696a00efe595a3427ba19863'}
+Labels: ['Document'] | Name: file_69bd63 | Props: {'filename': 'file_69bd63', 'indexed_at': '2026-03-20T15:12:07.348075+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 2, 'doc_id': '69bd637d1d38f64179808a48', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanportfolios.netlify.app | Props: {'filename': 'https://aryanportfolios.netlify.app', 'indexed_at': '2026-03-20T16:23:18.195255+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 0.938, 'node_count': 16, 'doc_id': '69bd732c4225b709119e2a91', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanwebdev.netlify.app | Props: {'filename': 'https://aryanwebdev.netlify.app', 'indexed_at': '2026-03-20T16:57:27.661818+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69bd7b8cd5e493dac3f55f1c', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanwebdev.netlify.app | Props: {'filename': 'https://aryanwebdev.netlify.app', 'indexed_at': '2026-03-21T04:44:22.566112+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be21f2e45a013c48f99c29', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanwebdev.netlify.app | Props: {'filename': 'https://aryanwebdev.netlify.app', 'indexed_at': '2026-03-21T04:53:29.361498+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be240c8d0c376671aaa098', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanwebdev.netlify.app | Props: {'filename': 'https://aryanwebdev.netlify.app', 'indexed_at': '2026-03-21T05:19:03.291896+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be271965ab43a3b567dd40', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: https://aryanwebdev.netlify.app/static/media/Aryan_resume.23034c9be8af0292ee26.pdf | Props: {'filename': 'https://aryanwebdev.netlify.app/static/media/Aryan_resume.23034c9be8af0292ee26.pdf', 'indexed_at': '2026-03-21T05:40:18.239768+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 0.9, 'node_count': 1, 'doc_id': '69be2deb1c607294353f4ab6', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: manual_69be33 | Props: {'filename': 'manual_69be33', 'indexed_at': '2026-03-21T05:59:29.888962+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be339a93e59bd34e99e24c', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: manual_69be3d | Props: {'filename': 'manual_69be3d', 'indexed_at': '2026-03-21T06:42:23.847562+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be3da85a723c809b7cd700', 'decay_rate': 0.0}
+Labels: ['Document'] | Name: manual_69be8f | Props: {'filename': 'manual_69be8f', 'indexed_at': '2026-03-21T12:32:31.403835+00:00', 'org_id': '696a00efe595a3427ba19863', 'confidence': 1.0, 'node_count': 1, 'doc_id': '69be8fb71c3eb134127cceb6', 'decay_rate': 0.0}
+Labels: ['Project'] | Name: Cluaiz AI Bot | Props: {'org_id': '696a00efe595a3427ba19863', 'name': 'Cluaiz AI Bot', 'description': 'IndiaΓÇÖs First Personal Business Pet', 'source_doc_id': '69be8fb71c3eb134127cceb6', 'node_id': 'cluaiz_ai_bot'}
+Labels: ['Person'] | Name: Aryan | Props: {'org_id': '696a00efe595a3427ba19863', 'name': 'Aryan', 'description': 'Owner of Cluaiz AI Bot', 'source_doc_id': '69be8fb71c3eb134127cceb6', 'emp_id': 'aryan'}
+Labels: ['Document'] | Name: Documentation | Props: {'org_id': '696a00efe595a3427ba19863', 'name': 'Documentation', 'description': 'Technical roadmap and documentation', 'doc_id': 'documentation', 'source_doc_id': '69be8fb71c3eb134127cceb6'}
+
+--- 4. ALL RELATIONSHIPS ---
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-20T15:12:07.470883+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-20T16:23:18.247168+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-20T16:57:27.909335+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T04:44:22.818448+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T04:53:10.087291+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T04:53:29.376348+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:06:10.904399+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:06:26.656432+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:19:03.364276+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:35:13.561620+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:40:18.249540+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T05:59:29.901937+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T06:42:23.865052+00:00'}
+['Org'] -[:HAS_DOCUMENT]-> ['Document'] | Props: {'linked_at': '2026-03-21T12:32:31.723145+00:00'}
+['Project'] -[:CREATED_BY]-> ['Person'] | Props: {'org_id': '696a00efe595a3427ba19863', 'description': 'Aryan created Cluaiz AI Bot'}
+['Document'] -[:EXPLAINS]-> ['Project'] | Props: {'org_id': '696a00efe595a3427ba19863', 'description': 'Documentation explains Cluaiz AI Bot'}
+
+--- 5. ORPHANED NODES ---
+2026-03-22 08:56:21.440 | INFO     | src.database.neo4j_client:close:91 - ≡ƒöî [Neo4j] Connection closed.
