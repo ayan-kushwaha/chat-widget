@@ -1,4 +1,4 @@
-# 🏛️ Clage: The AI-Native OS Prototype Hub
+# Cluaiz: The AI-Native OS Prototype Hub
 ## *(Legacy Cluaiz Beta • Learning & Research Sanctuary)*
 
 > [!IMPORTANT]
