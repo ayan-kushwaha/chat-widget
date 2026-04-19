@@ -1,0 +1,185 @@
+{
+    "creditPacks": [
+        {
+            "id": "starter",
+            "name": "Starter",
+            "credits": 1000000,
+            "price": 199,
+            "pricePerMillion": 199,
+            "discount": 0,
+            "popular": false,
+            "description": "Perfect for testing and small websites",
+            "estimatedUsage": {
+                "websites": "~330k tokens",
+                "files": "~500k tokens",
+                "manual": "~1M tokens"
+            }
+        },
+        {
+            "id": "growth",
+            "name": "Growth",
+            "credits": 5000000,
+            "price": 899,
+            "pricePerMillion": 180,
+            "discount": 10,
+            "popular": true,
+            "description": "Best for small businesses",
+            "estimatedUsage": {
+                "websites": "~1.6M tokens",
+                "files": "~2.5M tokens",
+                "manual": "~5M tokens"
+            }
+        },
+        {
+            "id": "pro",
+            "name": "Pro",
+            "credits": 20000000,
+            "price": 2999,
+            "pricePerMillion": 150,
+            "discount": 25,
+            "popular": false,
+            "description": "Ideal for mid-size companies",
+            "estimatedUsage": {
+                "websites": "~6.6M tokens",
+                "files": "~10M tokens",
+                "manual": "~20M tokens"
+            }
+        },
+        {
+            "id": "enterprise",
+            "name": "Enterprise",
+            "credits": 100000000,
+            "price": 12999,
+            "pricePerMillion": 130,
+            "discount": 35,
+            "popular": false,
+            "description": "For large organizations",
+            "estimatedUsage": {
+                "websites": "~33M tokens",
+                "files": "~50M tokens",
+                "manual": "~100M tokens"
+            }
+        }
+    ],
+    "tokenMultipliers": {
+        "MANUAL": {
+            "rate": 1,
+            "name": "Manual Text",
+            "description": "Plain text copy-paste",
+            "costReason": "No processing overhead, just storage"
+        },
+        "API": {
+            "rate": 1.5,
+            "name": "API Data",
+            "description": "Real-time JSON sync",
+            "costReason": "Server bandwidth + parsing overhead"
+        },
+        "FILE": {
+            "rate": 2,
+            "name": "File Upload",
+            "description": "PDF, DOCX, Images",
+            "costReason": "OCR + Vision API costs"
+        },
+        "WEBSITE": {
+            "rate": 3,
+            "name": "Website Crawling",
+            "description": "Live website scraping",
+            "costReason": "Proxy rotation + Puppeteer rendering"
+        }
+    },
+    "featurePricing": {
+        "websiteCrawling": {
+            "name": "Website Crawling",
+            "unit": "PAGE_SYNC",
+            "baseCost": 0.1,
+            "sellPrice": 1.0,
+            "profit": 0.9,
+            "margin": 90,
+            "maxTokens": 5000,
+            "icon": "Globe",
+            "description": "Per-page cost for each sync. Weekly = 4x monthly charge.",
+            "costReason": "Puppeteer CPU + Proxy rotation + Gemini embedding API."
+        },
+        "fileProcessing": {
+            "name": "File Processing",
+            "unit": "FILE_5MB",
+            "baseCost": 2.0,
+            "sellPrice": 15.0,
+            "profit": 13.0,
+            "margin": 87,
+            "maxTokens": 50000,
+            "icon": "FileText",
+            "description": "One-time charge when file is uploaded (max 5MB, 50k tokens).",
+            "costReason": "OCR vision pipeline + Vector embedding generation."
+        },
+        "vectorStorage": {
+            "name": "Vector Storage",
+            "unit": "MB_10",
+            "baseCost": 2.0,
+            "sellPrice": 20.0,
+            "profit": 18.0,
+            "margin": 90,
+            "maxTokens": null,
+            "icon": "Database",
+            "description": "Monthly rental for long-term memory storage.",
+            "costReason": "Cloud vector database (Pinecone/Qdrant) hosting fees."
+        },
+        "apiConnections": {
+            "name": "API Connections",
+            "unit": "REQUESTS_1K",
+            "baseCost": 5.0,
+            "sellPrice": 50.0,
+            "profit": 45.0,
+            "margin": 90,
+            "maxTokens": 4000,
+            "icon": "Network",
+            "description": "Real-time JSON sync from external apps (per 1k requests).",
+            "costReason": "Server load + bandwidth for continuous polling."
+        },
+        "manualTraining": {
+            "name": "Manual Training",
+            "unit": "SNIPPET",
+            "baseCost": 0.0,
+            "sellPrice": 2.0,
+            "profit": 2.0,
+            "margin": 100,
+            "maxTokens": 2000,
+            "icon": "MessageCircle",
+            "description": "Free / Included. User copy-pastes text directly (max 2k tokens).",
+            "costReason": "Negligible cost (~1-2KB DB space per entry)."
+        }
+    },
+    "safetyLimits": {
+        "free": {
+            "websitePage": 2000,
+            "file": 10000,
+            "manualEntry": 500,
+            "apiRequest": 2000
+        },
+        "starter": {
+            "websitePage": 5000,
+            "file": 50000,
+            "manualEntry": 2000,
+            "apiRequest": 4000
+        },
+        "pro": {
+            "websitePage": 10000,
+            "file": 200000,
+            "manualEntry": 10000,
+            "apiRequest": 8000
+        },
+        "enterprise": {
+            "websitePage": null,
+            "file": null,
+            "manualEntry": null,
+            "apiRequest": null
+        }
+    },
+    "metadata": {
+        "currency": "INR",
+        "symbol": "₹",
+        "version": "1.0.0",
+        "lastUpdated": "2026-01-02",
+        "tokenEstimation": "1 token ≈ 4 characters"
+    }
+}

@@ -1,0 +1,107 @@
+version: "3.8"
+
+services:
+  # ==================================
+  #  INFRASTRUCTURE (Databases & AI)
+  # ==================================
+  mongo:
+    image: mongo:latest
+    container_name: cluaiz-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - cluaiz_net
+
+  redis:
+    image: redis:alpine
+    container_name: cluaiz-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - cluaiz_net
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: cluaiz-chroma
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+    networks:
+      - cluaiz_net
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: cluaiz-ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - cluaiz_net
+
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: cluaiz-npm
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - cluaiz_net
+
+  # ==================================
+  #  APPLICATION SERVICES (From Hub)
+  # ==================================
+  backend:
+    image: ${DOCKER_USERNAME}/cluaiz-backend:latest
+    container_name: cluaiz-backend
+    restart: always
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+      - chroma
+      - ollama
+    networks:
+      - cluaiz_net
+
+  frontend:
+    image: ${DOCKER_USERNAME}/cluaiz-frontend:latest
+    container_name: cluaiz-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - PORT=3000
+    depends_on:
+      - backend
+    networks:
+      - cluaiz_net
+
+volumes:
+  mongo_data:
+  chroma_data:
+  ollama_data:
+
+
+networks:
+  cluaiz_net:
+    driver: bridge

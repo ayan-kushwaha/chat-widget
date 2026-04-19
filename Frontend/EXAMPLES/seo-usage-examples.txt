@@ -1,0 +1,165 @@
+/**
+ * EXAMPLE: How to Use SEO Config in Different Pages
+ */
+
+// ============================================
+// EXAMPLE 1: Simple Static Page
+// ============================================
+import { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/seo-config";
+import { getOrganizationSchema, JSONLDScript } from "@/lib/json-ld";
+
+export const metadata: Metadata = generatePageMetadata("pricing");
+
+export default function PricingPage() {
+    const orgSchema = getOrganizationSchema();
+
+    return (
+        <>
+            <JSONLDScript data={orgSchema} />
+            <div>Your pricing page content...</div>
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 2: Dynamic Template Page
+// ============================================
+import { generateTemplateMetadata } from "@/lib/seo-config";
+import { getBreadcrumbSchema, getProductSchema } from "@/lib/json-ld";
+
+export async function generateMetadata({ params }) {
+    return generateTemplateMetadata(params.category, params.slug);
+}
+
+export default function TemplatePage({ params }) {
+    const breadcrumbSchema = getBreadcrumbSchema([
+        { name: "Templates", url: "/templates" },
+        { name: params.category, url: `/templates/${params.category}` },
+    ]);
+
+    return (
+        <>
+            <JSONLDScript data={breadcrumbSchema} />
+            {/* Page content */}
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 3: Blog Post Page
+// ============================================
+import { getArticleSchema } from "@/lib/json-ld";
+
+export default function BlogPost({ post }) {
+    const articleSchema = getArticleSchema({
+        title: post.title,
+        description: post.excerpt,
+        author: post.author,
+        publishedDate: post.date,
+        image: post.coverImage,
+        url: `/blog/${post.slug}`,
+    });
+
+    return (
+        <>
+            <JSONLDScript data={articleSchema} />
+            {/* Blog content */}
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 4: Product Page
+// ============================================
+import { getProductSchema } from "@/lib/json-ld";
+
+export default function ProductPage() {
+    const productSchema = getProductSchema({
+        name: "AI Website Builder",
+        description: "Create websites in seconds with AI",
+        image: "/products/builder.png",
+        url: "/website/builder",
+    });
+
+    return (
+        <>
+            <JSONLDScript data={productSchema} />
+            {/* Product content */}
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 5: FAQ Page
+// ============================================
+import { getFAQSchema } from "@/lib/json-ld";
+
+export default function FAQPage() {
+    const faqs = [
+        {
+            question: "How much does Cluaiz cost?",
+            answer: "Cluaiz is free during public beta. No credit card required.",
+        },
+        {
+            question: "Can I use it on multiple websites?",
+            answer: "Yes! Unlimited websites on all plans.",
+        },
+    ];
+
+    const faqSchema = getFAQSchema(faqs);
+
+    return (
+        <>
+            <JSONLDScript data={faqSchema} />
+            {/* FAQ content */}
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 6: Custom Metadata Override
+// ============================================
+export const metadata: Metadata = generatePageMetadata("custom", {
+    title: "Custom Page Title | Cluaiz",
+    description: "Custom description for this specific page",
+    keywords: ["custom", "keyword", "list"],
+});
+
+// ============================================
+// EXAMPLE 7: Breadcrumbs Usage
+// ============================================
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { getBreadcrumbSchema } from "@/lib/json-ld";
+
+export default function SomePage() {
+    const breadcrumbs = [
+        { name: "Templates", url: "/templates" },
+        { name: "Booking", url: "/templates/booking" },
+        { name: "Gym", url: "/templates/booking/gym" },
+    ];
+
+    const schema = getBreadcrumbSchema(breadcrumbs);
+
+    return (
+        <>
+            <JSONLDScript data={schema} />
+            <Breadcrumbs items={breadcrumbs} className="mb-8" />
+            {/* Page content */}
+        </>
+    );
+}
+
+// ============================================
+// EXAMPLE 8: Auto-generate Breadcrumbs from URL
+// ============================================
+"use client";
+import { usePathname } from "next/navigation";
+import { generateBreadcrumbs } from "@/components/shared/Breadcrumbs";
+
+export function AutoBreadcrumbs() {
+    const pathname = usePathname();
+    const breadcrumbs = generateBreadcrumbs(pathname);
+
+    return <Breadcrumbs items={breadcrumbs} />;
+}

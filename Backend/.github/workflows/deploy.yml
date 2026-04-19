@@ -1,0 +1,60 @@
+name: Deploy Backend & Stack
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/cluaiz-backend:latest
+
+      # NEW: Copy Compose File to VPS
+      - name: Copy Compose File to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOSTINGER_IP }}
+          username: ${{ secrets.HOSTINGER_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "docker-compose.prod.yml"
+          target: "/root/cluaiz"
+          strip_components: 0
+
+      - name: Deploy Stack on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_IP }}
+          username: ${{ secrets.HOSTINGER_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /root/cluaiz
+            # Rename for convenience if needed, but we used source name
+            mv Backend/docker-compose.prod.yml docker-compose.yml || true
+            rm -rf Backend # Cleanup scp folder artifact if any
+            
+            # Export Docker Username for Compose to use
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            
+            # Pull Latest Images (Backend, Frontend, and DBs)
+            docker compose pull
+            
+            # Start/Update Services
+            docker compose up -d --remove-orphans
+            
+            # Prune old images to save space
+            docker image prune -f

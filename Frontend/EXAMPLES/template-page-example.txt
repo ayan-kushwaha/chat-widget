@@ -1,0 +1,167 @@
+/**
+ * EXAMPLE: Dynamic Template Page with SEO
+ * Location: app/templates/[category]/[slug]/page.tsx
+ * 
+ * This shows how to use the Master SEO Config for dynamic pages
+ */
+
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { generateTemplateMetadata } from "@/lib/seo-config";
+import { getTemplateBySlug, TEMPLATES, TEMPLATE_CATEGORIES } from "@/data/templates";
+import { getBreadcrumbSchema, getProductSchema, JSONLDScript } from "@/lib/json-ld";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+
+// This generates all possible template pages at build time
+export async function generateStaticParams() {
+    return TEMPLATES.map((template) => ({
+        category: template.category,
+        slug: template.slug,
+    }));
+}
+
+// Dynamic metadata generation
+export async function generateMetadata({
+    params,
+}: {
+    params: { category: string; slug: string };
+}): Promise<Metadata> {
+    const template = getTemplateBySlug(params.category, params.slug);
+
+    if (!template) {
+        return {
+            title: "Template Not Found | Cluaiz",
+        };
+    }
+
+    return generateTemplateMetadata(
+        params.category as any,
+        params.slug
+    );
+}
+
+// The actual page component
+export default function TemplatePage({
+    params,
+}: {
+    params: { category: string; slug: string };
+}) {
+    const template = getTemplateBySlug(params.category, params.slug);
+
+    if (!template) {
+        notFound();
+    }
+
+    const category = TEMPLATE_CATEGORIES[params.category];
+
+    // Breadcrumb data
+    const breadcrumbs = [
+        { name: "Templates", url: "/templates" },
+        { name: category.name, url: `/templates/${params.category}` },
+        { name: template.title, url: `/templates/${params.category}/${params.slug}` },
+    ];
+
+    // JSON-LD schemas
+    const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
+    const productSchema = getProductSchema({
+        name: template.title,
+        description: template.description,
+        image: "/templates/og-image.png",
+        url: `/templates/${params.category}/${params.slug}`,
+    });
+
+    return (
+        <>
+            {/* JSON-LD Scripts */}
+            <JSONLDScript data={breadcrumbSchema} />
+            <JSONLDScript data={productSchema} />
+
+            <main className="min-h-screen bg-slate-950 text-white">
+                {/* Breadcrumbs */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+                    <Breadcrumbs items={breadcrumbs} />
+                </div>
+
+                {/* Template Hero */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div className="flex items-center space-x-3 mb-4">
+                        <span className="text-4xl">{template.icon}</span>
+                        <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-sm font-medium">
+                            {category.name}
+                        </span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                        {template.title}
+                    </h1>
+
+                    <p className="text-xl text-slate-400 max-w-3xl">
+                        {template.description}
+                    </p>
+                </section>
+
+                {/* Template Features */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {template.features.map((feature, index) => (
+                            <li
+                                key={index}
+                                className="flex items-start space-x-3 p-4 rounded-lg bg-slate-900/50 border border-slate-800"
+                            >
+                                <span className="text-indigo-400">✓</span>
+                                <span className="text-slate-300">{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+                {/* Conversation Flow */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <h2 className="text-2xl font-bold mb-6">Conversation Flow</h2>
+                    <div className="space-y-4">
+                        {template.flowSteps.map((step, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start space-x-4 p-4 rounded-lg bg-indigo-500/5 border border-indigo-500/20"
+                            >
+                                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold">
+                                    {index + 1}
+                                </span>
+                                <span className="text-slate-300">{step}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Use Cases */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <h2 className="text-2xl font-bold mb-6">Perfect For</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {template.useCases.map((useCase, index) => (
+                            <span
+                                key={index}
+                                className="px-4 py-2 rounded-full bg-slate-800 text-slate-300"
+                            >
+                                {useCase}
+                            </span>
+                        ))}
+                    </div>
+                </section>
+
+                {/* CTA */}
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div className="p-8 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-center">
+                        <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+                        <p className="text-lg mb-6 opacity-90">
+                            Use this template for your business in just 2 minutes
+                        </p>
+                        <button className="px-8 py-3 bg-white text-indigo-600 font-bold rounded-lg hover:bg-slate-100 transition">
+                            Use This Template
+                        </button>
+                    </div>
+                </section>
+            </main>
+        </>
+    );
+}

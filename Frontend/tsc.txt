@@ -1,0 +1,19 @@
+﻿src/app/eyes/page.tsx(6,19): error TS2614: Module '"@/components/neural-display-v2/EmoEyes"' has no exported member 'EmoEmotion'. Did you mean to use 'import EmoEmotion from "@/components/neural-display-v2/EmoEyes"' instead?
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(131,29): error TS2349: This expression is not callable.
+  Type 'Boolean' has no call signatures.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(131,29): error TS2448: Block-scoped variable 'allDead' used before its declaration.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(131,29): error TS2454: Variable 'allDead' is used before being assigned.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(322,41): error TS2554: Expected 3 arguments, but got 4.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(384,24): error TS2448: Block-scoped variable 'W' used before its declaration.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(384,24): error TS2454: Variable 'W' is used before being assigned.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(384,36): error TS2448: Block-scoped variable 'H' used before its declaration.
+src/components/neural-display-v2/skills/games/BbattleSnake/BattleSnakeGame.tsx(384,36): error TS2454: Variable 'H' is used before being assigned.
+src/components/neural-display-v2/skills/games/BreakoutGameSkill.tsx(32,13): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/BreakoutGameSkill.tsx(48,28): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/BreakoutGameSkill.tsx(79,13): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/BreakoutGameSkill.tsx(111,153): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/FlappyBirdSkill.tsx(100,133): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/RacingGameSkill.tsx(100,135): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/TTSGameSkill.tsx(40,35): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/TTSGameSkill.tsx(51,13): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.
+src/components/neural-display-v2/skills/games/TTSGameSkill.tsx(78,43): error TS2367: This comparison appears to be unintentional because the types 'GameMode' and '"Autoplay"' have no overlap.

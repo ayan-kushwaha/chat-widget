@@ -1,0 +1,74 @@
+# 🏛️ Cluaiz Pure Token-to-Token Billing Architecture
+Professional SaaS Logic: **Base Rate vs. Sell Rate**
+
+Is document me humne Cluaiz ke billing system ka ek-ek point aur file reference detail me samjhaya hai.
+
+---
+
+## 1. Request Flow (Step-by-Step)
+Jab AI koi task karta hai, toh ye flow follow hota hai:
+
+1.  **Trigger (AI Engine)**: Python side se AI task complete hota hai aur Backend ([UsageService](file:///c:/Users/Aryan/my/cluaiz/Backend/src/services/usage.service.ts#14-271)) ko usage details (Tokens + Skill Name) bheji jaati hain.
+2.  **Lookup (Backend)**: System `UsageService.ts` me check karta hai:
+    - Kya ye **AI Chat** hai? -> [model_pricing.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/model_pricing.config.ts) se rate lega.
+    - Kya ye **Agent Skill** hai? -> [skills.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/skills.config.ts) se category dekh kar [billing.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/billing.config.ts) se rate lega.
+3.  **Calculation**: Usage ko rate aur profit margin se multiply kiya jata hai.
+4.  **Deduction (Database)**: User ki `Organization` collection me `tokensUsed` increment hota hai aur Wallet se tokens minus hote hain.
+
+---
+
+## 2. File-by-File Technical Role
+
+### 📂 [Backend/src/config/model_pricing.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/model_pricing.config.ts)
+**Role**: AI "Brain" (Gemini/OpenAI/Ollama) ki pricing manage karna.
+*   **Base Rate**: Provider ka asli cost per 1M tokens.
+*   **Margin**: 1.50 (50% Profit Markup).
+*   **calculateTokensToBurn**: Ye function tokens nikalne ka master formula hai.
+
+### 📂 [Backend/src/config/skills.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/skills.config.ts)
+**Role**: Agent ki specialist "Skills" ko categories me baantna.
+*   Maps all 20+ skills from [agents-data.ts](file:///c:/Users/Aryan/my/cluaiz/Frontend/src/lib/agents-data.ts) to 4 key categories:
+    - `SKILL_OUTREACH` (Sales/Marketing)
+    - `SKILL_ANALYSIS` (Data/Audit)
+    - `SKILL_AUTOMATION` (Operations/Refunds)
+    - `SKILL_NAVIGATION` (Support/Teleport)
+
+### 📂 [Backend/src/config/billing.config.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/config/billing.config.ts)
+**Role**: Global infrastructure costs aur Skill-category rates store karna.
+*   **TOKEN_BURN_RATES**: Categories ke fixed rates (e.g. Outreach = 500 Tnk).
+*   **WEB_SEARCH**: Google Search ka constant rate (500 Tnk).
+*   **STORAGE_RENT_CONFIG**: MBs ke hisaab se daily token deduction ka logic.
+
+### 📂 [Backend/src/services/usage.service.ts](file:///c:/Users/Aryan/my/cluaiz/Backend/src/services/usage.service.ts)
+**Role**: Billing ka **"Engine"**.
+*   [trackActivity()](file:///c:/Users/Aryan/my/cluaiz/Backend/src/services/usage.service.ts#38-162): Ye main function hai jo tokens ko DB me save karta hai.
+*   [trackSkillUsage()](file:///c:/Users/Aryan/my/cluaiz/Backend/src/services/usage.service.ts#177-185): Skill ka naam dekh kar automatic sahi category ki fee kaatta hai.
+
+---
+
+## 3. Profit & Logic Breakdown
+
+### 💎 AI Usage Logic (Variable)
+> [(Input + Output Tokens) * (Base Rate * 1.5 Markup)](file:///c:/Users/Aryan/my/cluaiz/Frontend/src/components/browser-voice/BrowserTTS.ts#365-375)
+- Yahan token count fix nahi hota, isiliye hum usage-based multiply karte hain.
+- **Profit**: 50% Markup = 33% Net Profit on every chat.
+
+### 🛠️ Skill Execution Logic (Fixed)
+> `Skill Category Fee (e.g. 500) * MARKUP_FACTOR fallback`
+- Yahan hum "Action" ki value bill karte hain. WhatsApp msg bhejna 500 tokens ka "Service Charge" hai.
+- **Profit**: Isme cost nahi hai (except compute), toh poora amount tumhara profit hai.
+
+---
+
+## 4. Why 1.5 Markup = 33% Profit? (Math Check)
+*   **Cost**: 100 Tokens (Base).
+*   **Markup**: 50% (Multiply by 1.5).
+*   **Sell Price**: 150 Tokens.
+*   **Total Profit**: 50 Tokens.
+*   **Profit % Calculation**: [(Profit 50 / Sell 150) * 100 = 33.33%](file:///c:/Users/Aryan/my/cluaiz/Frontend/src/components/browser-voice/BrowserTTS.ts#365-375).
+
+---
+
+## 5. UI Implementation
+*   **Billing Calculator**: [BillingCalculator.tsx](file:///c:/Users/Aryan/my/cluaiz/Frontend/src/app/dashboard/settings/billing/components/BillingCalculator.tsx) me exactly yahi 1.5 (50%) wala logic apply kiya hai taaki user ko transparent simulation dikhe.
+*   **Activity Logs**: Backend [ActivityLog](file:///c:/Users/Aryan/my/cluaiz/Backend/src/models/ActivityLog.ts#41-48) model me har burn ko logic ke saath save karta hai taaki analytics clear rahe.
