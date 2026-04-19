@@ -1,0 +1,33 @@
+# 🏛️ Archer Project Isolation Filter
+# ──────────────────────────────────────────────────────────────
+
+# Sensitive Data
+.agent/
+.env
+*.pem
+*.key
+
+# Large Model Data (Rule: No 100MB+ Binaries)
+AI_Models/
+qwen3_fine_tune_data/
+Qwen3VL4B_fine_tune_data/
+
+# Temporary & Discussion Folders
+other/
+notes/
+*.log
+build_err.log
+
+# Build Artifacts
+node_modules/
+target/
+dist/
+__pycache__/
+*.exe
+*.obj
+*.pdb
+.vscode/
+
+# System Files
+.DS_Store
+Thumbs.db
